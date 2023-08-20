@@ -9550,11 +9550,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\onur_\\source\\repos\\ToDoMvcUI\\ToDo.MvcUI\\ToDo.MvcUI.csproj",
+      "projectUniqueName": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\ToDo.MvcUI.csproj",
       "projectName": "ToDo.MvcUI",
-      "projectPath": "C:\\Users\\onur_\\source\\repos\\ToDoMvcUI\\ToDo.MvcUI\\ToDo.MvcUI.csproj",
+      "projectPath": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\ToDo.MvcUI.csproj",
       "packagesPath": "C:\\Users\\onur_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\onur_\\source\\repos\\ToDoMvcUI\\ToDo.MvcUI\\obj\\",
+      "outputPath": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

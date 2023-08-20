@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "u32WFUrH0n7DhYhBPPtg/gz7SYyqOeu3NGzatfeVfdCOokxvsnYfh6WsdI18DN1tHt1SYM/Ga5zPCO64Mscllw==",
+  "dgSpecHash": "y7pA2vzai8K2V9Vga3kDAECh68BPQ1kCbuOWwzlU+1V5xtuTVtzTEucGFgr2TKFp+BuqyB81UdkgcSWYW9Zdyg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\onur_\\source\\repos\\ToDoMvcUI\\ToDo.MvcUI\\ToDo.MvcUI.csproj",
+  "projectFilePath": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\ToDo.MvcUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\onur_\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\onur_\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

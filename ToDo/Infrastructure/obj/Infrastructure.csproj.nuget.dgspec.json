@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\onur_\\source\\repos\\ToDo\\Infrastructure\\Infrastructure.csproj": {}
+    "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDo\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\onur_\\source\\repos\\ToDo\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDo\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\onur_\\source\\repos\\ToDo\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDo\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\onur_\\source\\repos\\ToDo\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDo\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\onur_\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\onur_\\source\\repos\\ToDo\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDo\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

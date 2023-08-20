@@ -2520,11 +2520,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\onur_\\source\\repos\\ToDo\\ToDo.Business\\ToDo.Business.csproj",
+      "projectUniqueName": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDo\\ToDo.Business\\ToDo.Business.csproj",
       "projectName": "ToDo.Business",
-      "projectPath": "C:\\Users\\onur_\\source\\repos\\ToDo\\ToDo.Business\\ToDo.Business.csproj",
+      "projectPath": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDo\\ToDo.Business\\ToDo.Business.csproj",
       "packagesPath": "C:\\Users\\onur_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\onur_\\source\\repos\\ToDo\\ToDo.Business\\obj\\",
+      "outputPath": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDo\\ToDo.Business\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2546,11 +2546,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\onur_\\source\\repos\\ToDo\\ToDo.DataAccess\\ToDo.DataAccess.csproj": {
-              "projectPath": "C:\\Users\\onur_\\source\\repos\\ToDo\\ToDo.DataAccess\\ToDo.DataAccess.csproj"
+            "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDo\\ToDo.DataAccess\\ToDo.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDo\\ToDo.DataAccess\\ToDo.DataAccess.csproj"
             },
-            "C:\\Users\\onur_\\source\\repos\\ToDo\\ToDo.Model\\ToDo.Model.csproj": {
-              "projectPath": "C:\\Users\\onur_\\source\\repos\\ToDo\\ToDo.Model\\ToDo.Model.csproj"
+            "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDo\\ToDo.Model\\ToDo.Model.csproj": {
+              "projectPath": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDo\\ToDo.Model\\ToDo.Model.csproj"
             }
           }
         }
