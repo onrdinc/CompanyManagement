@@ -11,6 +11,7 @@ namespace ToDo.Model.Dto.ProjectParticipant
     {
         public int ProjectId { get; set; }
         public int UserId { get; set; }
-        public int CompanyId { get; set; }
+        public string Duty { get; set; }
+
     }
 }

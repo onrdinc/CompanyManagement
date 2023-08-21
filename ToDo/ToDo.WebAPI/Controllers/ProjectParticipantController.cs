@@ -24,7 +24,7 @@ namespace ToDo.WebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var response = await _projectParticipantBs.GetByIdAsync(id, "Project", "Company", "User");
+            var response = await _projectParticipantBs.GetByIdAsync(id, "Project", "User");
             return await SendResponseAsync(response);
 
 
@@ -40,7 +40,7 @@ namespace ToDo.WebAPI.Controllers
         public async Task<IActionResult> GetUsers()
         {
 
-            var response = await _projectParticipantBs.GetUsersAsync("Project", "Company", "User");
+            var response = await _projectParticipantBs.GetUsersAsync("Project", "User");
 
             return await SendResponseAsync(response);
 
@@ -53,7 +53,7 @@ namespace ToDo.WebAPI.Controllers
             if (response.ErrorMessages != null && response.ErrorMessages.Count > 0)
                 return await SendResponseAsync(response);
             else
-                return CreatedAtAction(nameof(GetById), new { id = response.Data.Id }, response.Data);
+                return CreatedAtAction(nameof(GetById), new { id = response.Data.Id }, response);
 
         }
 
@@ -70,9 +70,9 @@ namespace ToDo.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int Id)
+        public async Task<IActionResult> DeleteUser(int id)
         {
-            var response = await _projectParticipantBs.DeleteAsync(Id);
+            var response = await _projectParticipantBs.DeleteAsync(id);
 
             return await SendResponseAsync(response);
         }

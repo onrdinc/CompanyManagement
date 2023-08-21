@@ -18,12 +18,11 @@ namespace ToDo.Model.Entities
         public int Id { get; set; }
         public int ProjectId { get; set; }
         public int UserId { get; set; }
-        public int CompanyId { get; set; }
+        public string Duty { get; set; }
+
 
         [ForeignKey("ProjectId")]
         public Project? Project { get; set; }
-        [ForeignKey("CompanyId")]
-        public Company? Company { get; set; }
         [ForeignKey("UserId")]
         public User? User { get; set; }
     }

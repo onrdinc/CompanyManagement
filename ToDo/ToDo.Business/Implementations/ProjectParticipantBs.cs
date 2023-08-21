@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using ToDo.Business.CustomExceptions;
 using ToDo.Business.Interfaces;
 using ToDo.DataAccess.Interfaces;
+using ToDo.Model.Dto.Project;
 using ToDo.Model.Dto.ProjectParticipant;
 using ToDo.Model.Dto.User;
 using ToDo.Model.Entities;
@@ -52,29 +53,33 @@ namespace ToDo.Business.Implementations
         public async Task<ApiResponse<List<ProjectParticipantGetDto>>> GetUsersAsync(params string[] includeList)
         {
             var users = await _repo.GetAllAsync(includeList: includeList);
-            if (users.Count > 0)
-            {
-                var returnList = _mapper.Map<List<ProjectParticipantGetDto>>(users);
-                var response = ApiResponse<List<ProjectParticipantGetDto>>.Success(StatusCodes.Status200OK, returnList);
-                return response;
-            }
-            throw new NotFoundException("Kişiler Bulunamadı");
+            //if (users.Count > 0)
+            //{
+            //    var returnList = _mapper.Map<List<ProjectParticipantGetDto>>(users);
+            //    var response = ApiResponse<List<ProjectParticipantGetDto>>.Success(StatusCodes.Status200OK, returnList);
+            //    return response;
+            //}
+            //throw new NotFoundException("Kişiler Bulunamadı");
+            var returnList = _mapper.Map<List<ProjectParticipantGetDto>>(users);
+            var response = ApiResponse<List<ProjectParticipantGetDto>>.Success(StatusCodes.Status200OK, returnList);
+            return response;
         }
 
-        public async Task<ApiResponse<ProjectParticipant>> InsertAsync(ProjectParticipantPostDto dto)
+        public async Task<ApiResponse<ProjectParticipantGetDto>> InsertAsync(ProjectParticipantPostDto dto)
         {
-            if (dto != null)
+            if (dto == null)
                 throw new BadRequestException("Kaydedilecek kişi bilgisi yollamalısınız");
             var user = _mapper.Map<ProjectParticipant>(dto);
 
             var insertedUser = await _repo.InsertAsync(user);
+            var retCat = _mapper.Map<ProjectParticipantGetDto>(insertedUser);
 
-            return ApiResponse<ProjectParticipant>.Success(StatusCodes.Status201Created, insertedUser);
+            return ApiResponse<ProjectParticipantGetDto>.Success(StatusCodes.Status201Created, retCat);
         }
 
         public async Task<ApiResponse<NoData>> UpdateAsync(ProjectParticipantPutDto dto)
         {
-            if (dto != null)
+            if (dto == null)
                 throw new BadRequestException("Kaydedilecek kişi bilgisi yollamalısınız");
             var user = _mapper.Map<ProjectParticipant>(dto);
 

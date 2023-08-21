@@ -28,6 +28,9 @@ namespace ToDo.Business
             services.AddScoped<IProjectBs, ProjectBs>();
             services.AddScoped<IProjectRepository, ProjectRepository>();
 
+            services.AddScoped<IProjectParticipantBs, ProjectParticipantBs>();
+            services.AddScoped<IProjectParticipantRepository, ProjectParticipantRepository>();
+
             services.AddScoped<IDepartmentBs, DepartmentBs>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 

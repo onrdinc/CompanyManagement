@@ -8,11 +8,7 @@ namespace ToDo.Business.Profiles
     {
         public ProjectParticipantProfile()
         {
-            CreateMap<ProjectParticipant, ProjectParticipantGetDto>()
-               .ForMember(dest => dest.ProjectId, opt => opt.MapFrom(src => src.Project.Id))
-               .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.User.Id))
-               .ForMember(dest => dest.CompanyId, opt => opt.MapFrom(src => src.Company.Id));
-
+            CreateMap<ProjectParticipant, ProjectParticipantGetDto>();
             CreateMap<ProjectParticipantPostDto, ProjectParticipant>();
             CreateMap<ProjectParticipantPutDto, ProjectParticipant>();
         }
