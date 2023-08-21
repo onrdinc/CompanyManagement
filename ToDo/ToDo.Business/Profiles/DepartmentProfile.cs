@@ -14,9 +14,7 @@ namespace ToDo.Business.Profiles
     {
         public DepartmentProfile() 
         {
-            CreateMap<Department, DepartmentGetDto>()
-               .ForMember(dest => dest.CompanyId, opt => opt.MapFrom(src => src.Company.Id));
-
+            CreateMap<Department, DepartmentGetDto>();
             CreateMap<DepartmentPostDto, Department>();
             CreateMap<DepartmentPutDto, Department>();
         }

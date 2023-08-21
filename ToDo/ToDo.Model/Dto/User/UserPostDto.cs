@@ -9,6 +9,7 @@ namespace ToDo.Model.Dto.User
 {
     public class UserPostDto:IDto
     {
+        public int DepartmentId { get; set; }
         public string? Name { get; set; }
         public string? Surname { get; set; }
         public string? Nickname { get; set; }

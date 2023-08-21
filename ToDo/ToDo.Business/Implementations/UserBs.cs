@@ -21,6 +21,8 @@ namespace ToDo.Business.Implementations
 
         public async Task<ApiResponse<NoData>> DeleteAsync(int Id)
         {
+            if (Id == null)
+                throw new BadRequestException("Silinecek Kullanıcı Bulunamadı");
             if (Id <= 0)
                 throw new BadRequestException("id değeri 0 dan büyük olmalıdır");
             var user = await _repo.GetByIdAsync(Id);
@@ -52,32 +54,35 @@ namespace ToDo.Business.Implementations
         public async Task<ApiResponse<List<UserGetDto>>> GetUsersAsync(params string[] includeList)
         {
             var users = await _repo.GetAllAsync(includeList : includeList);
-            if (users.Count > 0)
-            {
-                var returnList = _mapper.Map<List<UserGetDto>>(users);
-                var response = ApiResponse<List<UserGetDto>>.Success(StatusCodes.Status200OK, returnList);
-                return response;
-            }
-            throw new NotFoundException("Kişiler Bulunamadı");
+            //if (users.Count > 0)
+            //{
+            //    var returnList = _mapper.Map<List<UserGetDto>>(users);
+            //    var response = ApiResponse<List<UserGetDto>>.Success(StatusCodes.Status200OK, returnList);
+            //    return response;
+            //}
+            //throw new NotFoundException("Kişiler Bulunamadı");
+            var returnList = _mapper.Map<List<UserGetDto>>(users);
+            var response = ApiResponse<List<UserGetDto>>.Success(StatusCodes.Status200OK, returnList);
+            return response;
 
         }
 
         public async Task<ApiResponse<UserGetDto>> InsertAsync(UserPostDto dto)
         {
-            //if (dto != null)
-            //    throw new BadRequestException("Kaydedilecek kişi bilgisi yollamalısınız");
+            if (dto == null)
+                throw new BadRequestException("Kaydedilecek kişi bilgisi yollamalısınız");
 
-            //if (dto.Name != null)
-            //    throw new BadRequestException("İsim Boş Olamaz");
+            if (dto.Name == null)
+                throw new BadRequestException("İsim Boş Olamaz");
 
-            //if (dto.Surname != null)
-            //    throw new BadRequestException("Soyisim Boş Olamaz");
-            //if (dto.Email != null)
-            //    throw new BadRequestException("Email Boş Olamaz");
-            //if (dto.Password != null)
-            //    throw new BadRequestException("Şifre Boş Olamaz");
-            //if (dto.Nickname != null)
-            //    throw new BadRequestException("Kullanıcı Adı Boş Olamaz");
+            if (dto.Surname == null)
+                throw new BadRequestException("Soyisim Boş Olamaz");
+            if (dto.Email == null)
+                throw new BadRequestException("Email Boş Olamaz");
+            if (dto.Password == null)
+                throw new BadRequestException("Şifre Boş Olamaz");
+            if (dto.Nickname == null)
+                throw new BadRequestException("Kullanıcı Adı Boş Olamaz");
 
             var user = _mapper.Map<User>(dto);
 
@@ -100,10 +105,10 @@ namespace ToDo.Business.Implementations
                 throw new BadRequestException("Soyisim Boş Olamaz");
             if (dto.Email == null)
                 throw new BadRequestException("Email Boş Olamaz");
-            //if (dto.Password != null)
-            //    throw new BadRequestException("Şifre Boş Olamaz");
-            //if (dto.Nickname != null)
-            //    throw new BadRequestException("Kullanıcı Adı Boş Olamaz");
+            if (dto.Password == null)
+                throw new BadRequestException("Şifre Boş Olamaz");
+            if (dto.Nickname == null)
+                throw new BadRequestException("Kullanıcı Adı Boş Olamaz");
 
             var user = _mapper.Map<User>(dto);
 

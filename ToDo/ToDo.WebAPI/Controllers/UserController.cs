@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Infrastructure.Utilities.ApiResponses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ToDo.Business.Implementations;
@@ -12,6 +13,7 @@ namespace ToDo.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UserController : BaseController
     {
         private readonly IUserBs _userBs;
@@ -29,7 +31,7 @@ namespace ToDo.WebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var response =await _userBs.GetByIdAsync(id);
+            var response =await _userBs.GetByIdAsync(id,"Department");
             return await SendResponseAsync(response);
 
 
@@ -45,7 +47,7 @@ namespace ToDo.WebAPI.Controllers
         public async Task<IActionResult> GetUsers()
         {
             
-            var response =await _userBs.GetUsersAsync();
+            var response =await _userBs.GetUsersAsync("Department");
 
             return await SendResponseAsync(response);
 

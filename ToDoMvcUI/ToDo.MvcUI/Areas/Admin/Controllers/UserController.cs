@@ -9,6 +9,7 @@ using ToDo.MvcUI.Areas.Admin.Filters;
 using ToDo.MvcUI.Areas.Admin.HttpApiServices;
 using ToDo.MvcUI.Areas.Admin.Models;
 using ToDo.MvcUI.Areas.Admin.Models.Dtos.UserDtos;
+using ToDo.MvcUI.Areas.Admin.ViewModels;
 
 namespace ToDo.MvcUI.Areas.Admin.Controllers
 {
@@ -29,18 +30,24 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
         {
             var token = HttpContext.Session.GetObject<AccessTokenItem>("AccessToken");
 
-            var response = await _httpApiService.GetData<ResponseBody<List<UserItem>>>("/user",token.Token);
-            return View(response.Data);
+            var userResponse = await _httpApiService.GetData<ResponseBody<List<UserItem>>>("/user",token.Token);
+            var departmentResponse = await _httpApiService.GetData<ResponseBody<List<DepartmentItem>>>("/department",token.Token);
+            UserViewModel vm = new UserViewModel();
+            vm.Users = userResponse.Data;
+            vm.Departments = departmentResponse.Data;
+            return View(vm);
         }
 
 
         [HttpPost]
         public async Task<IActionResult> GetUser(int id)
         {
-            var response =
-              await _httpApiService.GetData<ResponseBody<UserItem>>($"/user/{id}");
+            var token = HttpContext.Session.GetObject<AccessTokenItem>("AccessToken");
 
-            return Json(new { Name = response.Data.Name, Surname = response.Data.Surname, Email = response.Data.Email, PicturePath = response.Data.PicturePath });
+            var response =
+              await _httpApiService.GetData<ResponseBody<UserItem>>($"/user/{id}",token.Token);
+
+            return Json(new { Name = response.Data.Name, Surname = response.Data.Surname, Email = response.Data.Email,Nickname = response.Data.Nickname,Password = response.Data.Password,DepartmentName = response.Data.DepartmentName,DepartmentId = response.Data.DepartmentId, PicturePath = response.Data.PicturePath });
         }
 
         [HttpPost]
@@ -80,6 +87,9 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
                     Name = dto.Name,
                     Surname = dto.Surname,
                     Email = dto.Email,
+                    Nickname = dto.Nickname,
+                    DepartmentId = dto.DepartmentId,
+                    Password = dto.Password,
                     PicturePath = picturePath,
                     PictureBase64 = Convert.ToBase64String(System.IO.File.ReadAllBytes(upload)),
                 };
@@ -157,6 +167,9 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
                     Name = dto.Name,
                     Surname = dto.Surname,
                     Email = dto.Email,
+                    Nickname = dto.Nickname,
+                    DepartmentId = dto.DepartmentId,
+                    Password = dto.Password,
                     PicturePath = picturePath,
                     PictureBase64 = Convert.ToBase64String(System.IO.File.ReadAllBytes(upload)),
                 };

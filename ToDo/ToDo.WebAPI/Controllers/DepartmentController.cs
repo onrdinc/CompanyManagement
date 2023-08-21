@@ -30,7 +30,7 @@ namespace ToDo.WebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] int Id)
         {
-            var response = await _departmentBs.GetByIdAsync(Id, "Company");
+            var response = await _departmentBs.GetByIdAsync(Id);
             return await SendResponseAsync(response);
 
         }
@@ -42,10 +42,10 @@ namespace ToDo.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<List<DepartmentGetDto>>))]
         #endregion
         [HttpGet]
-        public async Task<IActionResult> GetProjects()
+        public async Task<IActionResult> GetDepartments()
         {
             ;
-            var response = await _departmentBs.GetDepartmentsAsync("Company");
+            var response = await _departmentBs.GetDepartmentsAsync();
 
             return await SendResponseAsync(response);
 
@@ -53,13 +53,13 @@ namespace ToDo.WebAPI.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> SaveNewCompany([FromBody] DepartmentPostDto dto)
+        public async Task<IActionResult> SaveNewDepartment([FromBody] DepartmentPostDto dto)
         {
             var response = await _departmentBs.InsertAsync(dto);
             if (response.ErrorMessages != null && response.ErrorMessages.Count > 0)
                 return await SendResponseAsync(response);
             else
-                return CreatedAtAction(nameof(GetById), new { id = response.Data.Id }, response.Data);
+                return CreatedAtAction(nameof(GetById), new { id = response.Data.Id }, response);
 
         }
 
@@ -69,7 +69,7 @@ namespace ToDo.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
         #endregion
         [HttpPut]
-        public async Task<IActionResult> UpdateProduct([FromBody] DepartmentPutDto dto)
+        public async Task<IActionResult> UpdateDepartment([FromBody] DepartmentPutDto dto)
         {
             var response = await _departmentBs.UpdateAsync(dto);
             return await SendResponseAsync(response);
@@ -79,7 +79,7 @@ namespace ToDo.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct(int Id)
+        public async Task<IActionResult> DeleteDepartment(int Id)
         {
             var response = await _departmentBs.DeleteAsync(Id);
 

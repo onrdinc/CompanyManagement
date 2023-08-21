@@ -15,10 +15,7 @@ namespace ToDo.Model.Entities
     {
         [Key]
         public int Id { get; set; }
-        public int CompanyId { get; set; }
         public string? Name { get; set; }
 
-        [ForeignKey("CompanyId")]
-        public Company? Company { get; set; }
     }
 }
