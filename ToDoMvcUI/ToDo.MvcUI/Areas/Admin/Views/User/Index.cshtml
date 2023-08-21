@@ -39,6 +39,18 @@
                 }],
             });
 
+            $(".btnAdd").click(function () {
+
+                $("#fuUserPhoto").val();
+                $("#txtUserName").val();
+                $("#txtUserSurname").val();
+                $("#txtEmail").val();
+                $("#txtUserNickname").val();
+                $("#txtUserPassword").val();
+                $("#departmentSelect").val();
+                $("#userAddModal").modal("show");
+            });
+
 
             $("#btnSave").click(function () {
 
@@ -103,14 +115,15 @@
 
                                     $("#btnClear").trigger("click");
 
+                                    $("#userAddModal").modal("hide");
 
-                                    //bakılacak
+                                    ////bakılacak
 
-                                    $("button[id='#pills-profile-tab']").addClass("active").attr("aria-selected", "true");
-                                    $("button[id='#pills-home-tab']").removeClass("active").attr("aria-selected", "false");
+                                    //$("button[id='#pills-profile-tab']").addClass("active").attr("aria-selected", "true");
+                                    //$("button[id='#pills-home-tab']").removeClass("active").attr("aria-selected", "false");
 
-                                    $("#pills-profile-tab").removeClass("active").attr("aria-selected", "false");
-                                    $("#pills-home-tab").addClass("active").attr("aria-selected", "true");
+                                    //$("#pills-profile-tab").removeClass("active").attr("aria-selected", "false");
+                                    //$("#pills-home-tab").addClass("active").attr("aria-selected", "true");
 
 
 
@@ -292,106 +305,184 @@
     </script>
 }
 
-<div class="card">
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Personel Yönetimi</h3>
+            </div>
+            <div class="list-group-item">
+                <button type="button" class="btn btn-light btnAdd"><i class="fa fa-add"></i>Ekle</button>
+            </div>
+            @*<div class="list-group-item">
+
+            <button class="btn btn-sm float-right"><i class="fa fa-add"></i>Personel Ekle</button>
+        </div>*@
+            <div class="card-body">
+                <table id="userList" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>#</th>
+                            <th>Departman</th>
+                            <th>Ad</th>
+                            <th>Soyad</th>
+                            <th>Email</th>
+                            <th>Kullanıcı Adı</th>
+                            <th>Şifre</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Users)
+                        {
+
+
+                            <tr>
+                                <td>
+                                    @*@if (!string.IsNullOrEmpty(item.UserPicture))
+                                {
+                                    <img src='@($"data:image/jpeg;base64,{item.UserPicture}")' style="width:150px;" />
+
+                                }
+                                else
+                                {
+                                    "Resim yok";
+                                }*@
+                                </td>
+                                <td>
+                                    <img src='@item.PicturePath' style="width:150px;" />
+                                </td>
+                                <td>@item.DepartmentName</td>
+                                <td>@item.Name</td>
+                                <td>@item.Surname</td>
+                                <td>@item.Email</td>
+                                <td>@item.Nickname</td>
+                                <td>@item.Password</td>
+                                <td>
+                                    <button id="btnDelete" type="button" class="btn btn-danger btnDelete" userId='@item.Id'>SİL</button>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-warning btnEdit" userId='@item.Id'>
+                                        DÜZENLE
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <th>#</th>
+                            <th>Departman</th>
+                            <th>Ad</th>
+                            <th>Soyad</th>
+                            <th>Email</th>
+                            <th>Kullanıcı Adı</th>
+                            <th>Şifre</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="modal fade" data-backdrop="static" id="userAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Etiket Ekleme Formu</h1>
+                @*<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>*@
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Departman</label>
+                            <select id="departmentSelect" class="form-control">
+                                <option selected value="-1">Departman Seciniz</option>
+                                @foreach (var department in Model.Departments)
+                                {
+                                    <option value="@department.Id">@department.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName">Adı</label>
+                            <input type="text" class="form-control" id="txtUserName" placeholder="Ad Giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName">Soyadı</label>
+                            <input type="text" class="form-control" id="txtUserSurname" placeholder="Soyad Giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName">Email</label>
+                            <input type="email" class="form-control" id="txtEmail" placeholder="Email Giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName">Kullanıcı Adı</label>
+                            <input type="text" class="form-control" id="txtUserNickname" placeholder="Kullanıcı Adı Giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName">Şifre</label>
+                            <input type="text" class="form-control" id="txtUserPassword" placeholder="Şifre Giriniz">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleInputFile">Resim</label>
+                            <div class="input-group">
+                                @*<label for="exampleInputFile" class="form-label">Dosya Seçiniz</label>*@
+                                <input class="form-control" type="file" id="fuUserPhoto">
+                            </div>
+                        </div>
+                        @*<div class="form-group">
+                    <label for="exampleInputFile">Resim</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="fuUserPhoto">
+                            <label class="custom-file-label" for="exampleInputFile">Dosya Seçiniz</label>
+                        </div>
+                    </div>
+                </div>*@
+
+
+                    </div>
+
+                    <div class="card-footer">
+                        <button id="btnSave" type="button" class="btn btn-primary">Kaydet</button>
+                    </div>
+
+
+                    <button id="btnClear" type="reset" style="display:none;"></button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--<div class="card">
     <div class="card-header">
         <h3 class="card-title">Personel Yönetimi</h3>
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Personel Listesi</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Ekle</button>
-            </li>
 
-        </ul>
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Personeller</h3>
-                            </div>
-                            @*<div class="list-group-item">
 
-                                    <button class="btn btn-sm float-right"><i class="fa fa-add"></i>Personel Ekle</button>
-                                </div>*@
-                            <div class="card-body">
-                                <table id="userList" class="display" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>#</th>
-                                            <th>Departman</th>
-                                            <th>Ad</th>
-                                            <th>Soyad</th>
-                                            <th>Email</th>
-                                            <th>Kullanıcı Adı</th>
-                                            <th>Şifre</th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model.Users)
-                                        {
-
-
-                                            <tr>
-                                                <td>
-                                                    @*@if (!string.IsNullOrEmpty(item.UserPicture))
-                                                        {
-                                                            <img src='@($"data:image/jpeg;base64,{item.UserPicture}")' style="width:150px;" />
-
-                                                        }
-                                                        else
-                                                        {
-                                                            "Resim yok";
-                                                        }*@
-                                                </td>
-                                                <td>
-                                                    <img src='@item.PicturePath' style="width:150px;" />
-                                                </td>
-                                                <td>@item.DepartmentName</td>
-                                                <td>@item.Name</td>
-                                                <td>@item.Surname</td>
-                                                <td>@item.Email</td>
-                                                <td>@item.Nickname</td>
-                                                <td>@item.Password</td>
-                                                <td>
-                                                    <button id="btnDelete" type="button" class="btn btn-danger btnDelete" userId='@item.Id'>SİL</button>
-                                                </td>
-                                                <td>
-                                                    <button type="button" class="btn btn-warning btnEdit" userId='@item.Id'>
-                                                        DÜZENLE
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        }
-
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>#</th>
-                                            <th>Departman</th>
-                                            <th>Ad</th>
-                                            <th>Soyad</th>
-                                            <th>Email</th>
-                                            <th>Kullanıcı Adı</th>
-                                            <th>Şifre</th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
 
 
             </div>
@@ -436,23 +527,23 @@
 
                             <div class="form-group">
                                 <label for="exampleInputFile">Resim</label>
-                                <div class="input-group">
+                                <div class="input-group">-->
                                     @*<label for="exampleInputFile" class="form-label">Dosya Seçiniz</label>*@
-                                    <input class="form-control" type="file" id="fuUserPhoto">
+                                    <!--<input class="form-control" type="file" id="fuUserPhoto">
                                 </div>
-                            </div>
+                            </div>-->
                             @*<div class="form-group">
-            <label for="exampleInputFile">Resim</label>
-            <div class="input-group">
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="fuUserPhoto">
-                    <label class="custom-file-label" for="exampleInputFile">Dosya Seçiniz</label>
-                </div>
-            </div>
-        </div>*@
+                                    <label for="exampleInputFile">Resim</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="fuUserPhoto">
+                                            <label class="custom-file-label" for="exampleInputFile">Dosya Seçiniz</label>
+                                        </div>
+                                    </div>
+                                </div>*@
 
 
-                        </div>
+                        <!--</div>
 
                         <div class="card-footer">
                             <button id="btnSave" type="button" class="btn btn-primary">Kaydet</button>
@@ -473,7 +564,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 
 <div class="modal fade" data-backdrop="static" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
