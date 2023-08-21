@@ -28,9 +28,9 @@ namespace ToDo.WebAPI.Controllers
         #endregion
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById([FromRoute] int Id)
+        public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var response = await _departmentBs.GetByIdAsync(Id);
+            var response = await _departmentBs.GetByIdAsync(id);
             return await SendResponseAsync(response);
 
         }

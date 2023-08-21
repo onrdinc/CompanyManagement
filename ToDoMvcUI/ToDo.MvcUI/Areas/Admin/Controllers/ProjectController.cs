@@ -45,7 +45,7 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
             var response =
               await _httpApiService.GetData<ResponseBody<ProjectItem>>($"/project/{id}", token.Token);
 
-            return Json(new { Name = response.Data.Name, Description = response.Data.Description, DepartmentId = response.Data.DepartmentId, ServiceId = response.Data.ServiceId, DepartmentName = response.Data.DepartmentName,ServiceName = response.Data.ServiceName });
+            return Json(new { Name = response.Data.Name, Description = response.Data.Description, DepartmentId = response.Data.Department.Id, ServiceId = response.Data.Service.Id, DepartmentName = response.Data.Department.Name,ServiceName = response.Data.Service.Name });
         }
 
         public async Task<IActionResult> Delete(int id)
