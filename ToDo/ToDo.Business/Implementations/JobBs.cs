@@ -5,6 +5,7 @@ using ToDo.Business.CustomExceptions;
 using ToDo.Business.Interfaces;
 using ToDo.DataAccess.Interfaces;
 using ToDo.Model.Dto.Job;
+using ToDo.Model.Dto.Milestone;
 using ToDo.Model.Dto.User;
 using ToDo.Model.Entities;
 
@@ -48,43 +49,48 @@ namespace ToDo.Business.Implementations
         public async Task<ApiResponse<List<JobGetDto>>> GetJobsAsync(params string[] includeList)
         {
             var jobs = await _repo.GetAllAsync(includeList: includeList);
-            if (jobs.Count > 0)
-            {
-                var returnList = _mapper.Map<List<JobGetDto>>(jobs);
-                var response = ApiResponse<List<JobGetDto>>.Success(StatusCodes.Status200OK, returnList);
-                return response;
-            }
-            throw new NotFoundException("İşler Bulunamadı");
+            //if (jobs.Count > 0)
+            //{
+            //    var returnList = _mapper.Map<List<JobGetDto>>(jobs);
+            //    var response = ApiResponse<List<JobGetDto>>.Success(StatusCodes.Status200OK, returnList);
+            //    return response;
+            //}
+            //throw new NotFoundException("İşler Bulunamadı");
+            var returnList = _mapper.Map<List<JobGetDto>>(jobs);
+            var response = ApiResponse<List<JobGetDto>>.Success(StatusCodes.Status200OK, returnList);
+            return response;
         }
 
-        public async Task<ApiResponse<Job>> InsertAsync(JobPostDto dto)
+        public async Task<ApiResponse<JobGetDto>> InsertAsync(JobPostDto dto)
         {
-            if (dto != null)
+            if (dto == null)
                 throw new BadRequestException("Kaydedilecek iş bilgisi yollamalısınız");
 
-            if (dto.Detail != null)
+            if (dto.Detail == null)
                 throw new BadRequestException("İş Detayı Boş Olamaz");
 
-            if (dto.JobTitle != null)
+            if (dto.JobTitle == null)
                 throw new BadRequestException("İş Adı Boş Olamaz");
            
 
             var job = _mapper.Map<Job>(dto);
 
             var insertedJob = await _repo.InsertAsync(job);
+            var retCat = _mapper.Map<JobGetDto>(insertedJob);
 
-            return ApiResponse<Job>.Success(StatusCodes.Status201Created, insertedJob);
+
+            return ApiResponse<JobGetDto>.Success(StatusCodes.Status201Created, retCat);
         }
 
         public async Task<ApiResponse<NoData>> UpdateAsync(JobPutDto dto)
         {
-            if (dto != null)
+            if (dto == null)
                 throw new BadRequestException("Kaydedilecek iş bilgisi yollamalısınız");
 
-            if (dto.Detail != null)
+            if (dto.Detail == null)
                 throw new BadRequestException("İş Detayı Boş Olamaz");
 
-            if (dto.JobTitle != null)
+            if (dto.JobTitle == null)
                 throw new BadRequestException("İş Adı Boş Olamaz");
 
             var job = _mapper.Map<Job>(dto);

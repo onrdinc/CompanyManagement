@@ -9,7 +9,10 @@ namespace ToDo.Model.Dto.Job
 {
     public class JobPutDto : IDto
     {
-        public int MilestoneId { get; set; }
+        public int Id { get; set; }
+        public int LabelId { get; set; }
+        public int UserId { get; set; }
+        public int StatuId { get; set; }
         public string? JobTitle { get; set; }
         public string? Detail { get; set; }
         public int ProjectId { get; set; }

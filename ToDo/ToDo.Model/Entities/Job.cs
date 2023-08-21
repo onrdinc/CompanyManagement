@@ -15,14 +15,11 @@ namespace ToDo.Model.Entities
         public string? Detail { get; set; }
         public int ProjectId { get; set; }
         public int LabelId { get; set; }
+        public int UserId { get; set; }
 
-
-        [ForeignKey("ProjectId")]
         public Project? Project { get; set; }
-
-        [ForeignKey("StatuId")]
         public Statu? Statu { get; set; }
-        [ForeignKey("LabelId")]
         public Label? Label { get; set; }
+        public User? User { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace ToDo.Business.Interfaces
     {
         Task<ApiResponse<List<JobGetDto>>> GetJobsAsync(params string[] includeList);
         Task<ApiResponse<JobGetDto>> GetByIdAsync(int Id, params string[] includeList);
-        Task<ApiResponse<Job>> InsertAsync(JobPostDto dto);
+        Task<ApiResponse<JobGetDto>> InsertAsync(JobPostDto dto);
         Task<ApiResponse<NoData>> UpdateAsync(JobPutDto dto);
         Task<ApiResponse<NoData>> DeleteAsync(int Id);
     }
