@@ -241,17 +241,33 @@
 
                     <div class="container">
                         <div class="row">
-                            <div class="col-auto">
-                                <a href="/Admin/Project/Index" class="btn btn-primary">Tümü</a>
+                            <div class="col">
+                                <strong>Hizmetler</strong>
+                                <div class="col-auto mb-1">
+                                    <a href="/Admin/Project/Index" class="btn btn-primary">Tümü</a>
+                                </div>
+                                <div class="col-auto">
+                                    @foreach (var item in Model.Services)
+                                    {
+                                        <a href="/Admin/Project/Index/@item.Id" class="btn btn-secondary">@item.Name</a>
+                                    }
+                                </div>
                             </div>
-                            <div class="col-auto">
-                                @foreach (var item in Model.Services)
-                                {
-                                    <a href="/Admin/Project/Index/@item.Id" class="btn btn-secondary">@item.Name</a>
-                                }
+                            <div class="col">
+                                <strong>Departmanlar</strong>
+                                <div class="col-auto mb-1">
+                                    <a href="/Admin/Project/Index" class="btn btn-primary">Tümü</a>
+                                </div>
+                                <div class="col-auto">
+                                    @foreach (var item in Model.Departments)
+                                    {
+                                        <a href="/Admin/Project/DepartmentProject/@item.Id" class="btn btn-secondary">@item.Name</a>
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
+
 
                     <div class="card-body">
                         <table id="projectList" class="display" style="width:100%">

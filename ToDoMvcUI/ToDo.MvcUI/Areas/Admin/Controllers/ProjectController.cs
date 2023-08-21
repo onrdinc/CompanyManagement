@@ -40,6 +40,26 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
             return View(vm);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> DepartmentProject(int? id)
+        {
+            var token = HttpContext.Session.GetObject<AccessTokenItem>("AccessToken");
+
+            var serviceResponse = await _httpApiService.GetData<ResponseBody<List<ServiceItem>>>("/service", token.Token);
+            var departmentResponse = await _httpApiService.GetData<ResponseBody<List<DepartmentItem>>>("/department", token.Token);
+
+            //var projectResponse = await _httpApiService.GetData<ResponseBody<List<ProjectItem>>>("/project", token.Token);
+
+            var projectResponse = id == null
+            ? await _httpApiService.GetData<ResponseBody<List<ProjectItem>>>("/project", token.Token)
+            : await _httpApiService.GetData<ResponseBody<List<ProjectItem>>>($"/project/getByDepartmentId?id={id}", token.Token);
+            ProjectViewModel vm = new ProjectViewModel();
+            vm.Departments = departmentResponse.Data;
+            vm.Services = serviceResponse.Data;
+            vm.Projects = projectResponse.Data;
+            return View("Index", vm);
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> GetProject(int id)
