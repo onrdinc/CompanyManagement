@@ -2,8 +2,10 @@
 using Infrastructure.Utilities.ApiResponses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ToDo.Business.Implementations;
 using ToDo.Business.Interfaces;
 using ToDo.Model.Dto.Project;
+using ToDo.Model.Dto.ProjectParticipant;
 
 namespace ToDo.WebAPI.Controllers
 {
@@ -80,6 +82,32 @@ namespace ToDo.WebAPI.Controllers
         {
             var response = await _projectBs.DeleteAsync(Id);
 
+            return await SendResponseAsync(response);
+        }
+
+        #region SWAGGER DOC
+        [Produces("application/json", "text/plain")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<List<ProjectGetDto>>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
+        #endregion
+        [HttpGet("getByDepartmentId")]
+        public async Task<IActionResult> GetByProjectDepartment([FromQuery] int id)
+        {
+            var response = await _projectBs.GetByProjectDepartmentAsync(id, "Service", "Department");
+            return await SendResponseAsync(response);
+        }
+
+        #region SWAGGER DOC
+        [Produces("application/json", "text/plain")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<List<ProjectGetDto>>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
+        #endregion
+        [HttpGet("getByServiceId")]
+        public async Task<IActionResult> GetByProjectService([FromQuery] int id)
+        {
+            var response = await _projectBs.GetByProjectServiceAsync(id, "Service", "Department");
             return await SendResponseAsync(response);
         }
     }

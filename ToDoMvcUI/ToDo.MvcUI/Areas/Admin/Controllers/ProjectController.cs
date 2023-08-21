@@ -14,21 +14,25 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
     [SessionAspect]
     public class ProjectController : Controller
     {
-        private readonly IWebHostEnvironment _webHostEnvironment;
+
         private readonly IHttpApiService _httpApiService;
-        public ProjectController(IWebHostEnvironment webHostEnvironment, IHttpApiService httpApiService)
+        public ProjectController(IHttpApiService httpApiService)
         {
-            _webHostEnvironment = webHostEnvironment;
             _httpApiService = httpApiService;
         }
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
             var token = HttpContext.Session.GetObject<AccessTokenItem>("AccessToken");
 
             var serviceResponse = await _httpApiService.GetData<ResponseBody<List<ServiceItem>>>("/service", token.Token);
             var departmentResponse = await _httpApiService.GetData<ResponseBody<List<DepartmentItem>>>("/department", token.Token);
-            var projectResponse = await _httpApiService.GetData<ResponseBody<List<ProjectItem>>>("/project", token.Token);
+
+            //var projectResponse = await _httpApiService.GetData<ResponseBody<List<ProjectItem>>>("/project", token.Token);
+
+            var projectResponse = id == null
+            ? await _httpApiService.GetData<ResponseBody<List<ProjectItem>>>("/project", token.Token)
+            : await _httpApiService.GetData<ResponseBody<List<ProjectItem>>>($"/project/getByServiceId?id={id}", token.Token);
             ProjectViewModel vm = new ProjectViewModel();
             vm.Departments = departmentResponse.Data;
             vm.Services = serviceResponse.Data;
@@ -45,7 +49,7 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
             var response =
               await _httpApiService.GetData<ResponseBody<ProjectItem>>($"/project/{id}", token.Token);
 
-            return Json(new { Name = response.Data.Name, Description = response.Data.Description, DepartmentId = response.Data.Department.Id, ServiceId = response.Data.Service.Id, DepartmentName = response.Data.Department.Name,ServiceName = response.Data.Service.Name });
+            return Json(new { Name = response.Data.Name, Description = response.Data.Description, DepartmentId = response.Data.Department.Id, ServiceId = response.Data.Service.Id, DepartmentName = response.Data.Department.Name, ServiceName = response.Data.Service.Name });
         }
 
         public async Task<IActionResult> Delete(int id)
@@ -71,7 +75,7 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
                 Description = dto.Description,
                 DepartmentId = dto.DepartmentId,
                 ServiceId = dto.ServiceId,
-                
+
             };
 
             var response = await _httpApiService.PostData<ResponseBody<ProjectItem>>("/project", JsonSerializer.Serialize(postObj), token.Token);

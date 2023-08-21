@@ -6,6 +6,7 @@ using ToDo.Business.Interfaces;
 using ToDo.DataAccess.Interfaces;
 using ToDo.Model.Dto.Department;
 using ToDo.Model.Dto.Project;
+using ToDo.Model.Dto.User;
 using ToDo.Model.Entities;
 
 namespace ToDo.Business.Implementations
@@ -42,6 +43,40 @@ namespace ToDo.Business.Implementations
                 return ApiResponse<ProjectGetDto>.Success(StatusCodes.Status200OK, dto);
             }
             throw new NotFoundException("Proje Bulunamadı");
+        }
+
+        public async Task<ApiResponse<List<ProjectGetDto>>> GetByProjectDepartmentAsync(int departmentId, params string[] includeList)
+        {
+            if (departmentId <= 0)
+            {
+                throw new BadRequestException("Id değeri 0'dan büyük olmalıdır.");
+            }
+            var users = await _repo.GetByProjectDepartmentAsync(departmentId, includeList);
+            //if (users != null && users.Count > 0)
+            //{
+            //    var returnList = _mapper.Map<List<UserGetDto>>(users);
+            //    return ApiResponse<List<UserGetDto>>.Success(StatusCodes.Status200OK, returnList);
+            //}
+            //throw new NotFoundException("İçerik bulunamadı.");
+            var returnList = _mapper.Map<List<ProjectGetDto>>(users);
+            return ApiResponse<List<ProjectGetDto>>.Success(StatusCodes.Status200OK, returnList);
+        }
+
+        public async Task<ApiResponse<List<ProjectGetDto>>> GetByProjectServiceAsync(int serviceId, params string[] includeList)
+        {
+            if (serviceId <= 0)
+            {
+                throw new BadRequestException("Id değeri 0'dan büyük olmalıdır.");
+            }
+            var users = await _repo.GetByProjectServiceAsync(serviceId, includeList);
+            //if (users != null && users.Count > 0)
+            //{
+            //    var returnList = _mapper.Map<List<UserGetDto>>(users);
+            //    return ApiResponse<List<UserGetDto>>.Success(StatusCodes.Status200OK, returnList);
+            //}
+            //throw new NotFoundException("İçerik bulunamadı.");
+            var returnList = _mapper.Map<List<ProjectGetDto>>(users);
+            return ApiResponse<List<ProjectGetDto>>.Success(StatusCodes.Status200OK, returnList);
         }
 
         public async Task<ApiResponse<List<ProjectGetDto>>> GetProjectsAsync(params string[] includeList)
