@@ -22,6 +22,12 @@
                 },
             });
 
+            $(".btnAdd").click(function () {
+
+                $("#txtName").val();
+                $("#departmentAddModal").modal("show");
+            });
+
 
             $("#btnSave").click(function () {
 
@@ -53,8 +59,9 @@
                                 confirmButtonText: 'Tamam'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                 
+
                                     $("#btnClear").trigger("click");
+                                    $("#departmentAddModal").modal("hide");
 
 
                                     ////bakılacak
@@ -156,7 +163,7 @@
                 fd.append("id", id);
                 fd.append("name", name);
 
-            
+
 
                 $.ajax({
                     url: "/Admin/Department/Update",
@@ -166,7 +173,7 @@
                     processData: false,
                     data: fd,
                     success: function (response) {
-            
+
                         if (response.isSuccess) {
                             Swal.fire({
                                 title: 'İşlem Başarılı',
@@ -177,7 +184,7 @@
                                 confirmButtonText: 'Tamam'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                 
+
                                     //------------------------------------------------
 
                                     $("#departmentModal").modal("hide");
@@ -192,7 +199,7 @@
 
                                     // elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
 
-                                  /*  $("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>DÜZENLE</td><td><button type='button' class='btn btn-danger btnDelete' id='" + response.id + "'>SİL</button></td></tr>");*/
+                                    /*  $("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>DÜZENLE</td><td><button type='button' class='btn btn-danger btnDelete' id='" + response.id + "'>SİL</button></td></tr>");*/
 
                                 }
                             });
@@ -209,113 +216,91 @@
     </script>
 }
 
-<div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Departman Yönetimi</h3>
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Departman Listesi</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Ekle</button>
-            </li>
 
-        </ul>
-        <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Departmanlar</h3>
-                            </div>
-                            @*<div class="list-group-item">
-
-                                    <button class="btn btn-sm float-right"><i class="fa fa-add"></i>Personel Ekle</button>
-                                </div>*@
-                            <div class="card-body">
-                                <table id="departmentList" class="display" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Departman Adı</th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model)
-                                        {
-
-
-                                            <tr>
-                                                <td></td>
-                                                <td>@item.Name</td>
-                                                <td>
-                                                    <button id="btnDelete" type="button" class="btn btn-danger btnDelete" departmentId='@item.Id'>SİL</button>
-                                                </td>
-                                                <td>
-                                                    <button type="button" class="btn btn-warning btnEdit" departmentId='@item.Id'>
-                                                        DÜZENLE
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        }
-
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Departman Adı</th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-
+<div class="modal fade" data-backdrop="static" id="departmentAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Etiket Ekleme Formu</h1>
+                @*<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>*@
             </div>
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Yeni Departman Kayıt Formu</h3>
+            <div class="modal-body">
+                <form>
+
+
+
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Departman Adı</label>
+                            <input type="text" class="form-control" id="txtName" placeholder="Departman Adı Giriniz">
+                        </div>
+
                     </div>
-                    <form>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="exampleInputName">Adı</label>
-                                <input type="text" class="form-control" id="txtName" placeholder="Ad Giriniz">
-                            </div>
-                          
-                        </div>
+                    <!-- /.card-body -->
 
-                        <div class="card-footer">
-                            <button id="btnSave" type="button" class="btn btn-primary">Kaydet</button>
-                        </div>
+                    <div class="card-footer">
+                        <button id="btnSave" type="button" class="btn btn-primary">Kaydet</button>
+                    </div>
 
 
-                        <button id="btnClear" type="reset" style="display:none;"></button>
+                    <button id="btnClear" type="reset" style="display:none;"></button>
 
-                    </form>
-                </div>
-
-
-
-
-
-
-
+                </form>
             </div>
         </div>
     </div>
 </div>
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Departman Yönetimi</h3>
+    </div>
+    <div class="list-group-item">
+        <button type="button" class="btn btn-light btnAdd"><i class="fa fa-add"></i>Ekle</button>
+    </div>
+    <div class="card-body">
+        <table id="departmentList" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Departman Adı</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+
+
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>
+                            <button id="btnDelete" type="button" class="btn btn-danger btnDelete" departmentId='@item.Id'>SİL</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-warning btnEdit" departmentId='@item.Id'>
+                                DÜZENLE
+                            </button>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>#</th>
+                    <th>Departman Adı</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+
+    </div>
+</div>
+
 
 
 <div class="modal fade" data-backdrop="static" id="departmentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
