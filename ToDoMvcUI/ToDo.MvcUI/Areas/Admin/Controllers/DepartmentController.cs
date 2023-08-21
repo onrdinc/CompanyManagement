@@ -5,7 +5,6 @@ using ToDo.MvcUI.Areas.Admin.Filters;
 using ToDo.MvcUI.Areas.Admin.HttpApiServices;
 using ToDo.MvcUI.Areas.Admin.Models;
 using ToDo.MvcUI.Areas.Admin.Models.Dtos.DepartmentDtos;
-using ToDo.MvcUI.Areas.Admin.Models.Dtos.UserDtos;
 
 namespace ToDo.MvcUI.Areas.Admin.Controllers
 {

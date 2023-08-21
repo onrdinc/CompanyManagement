@@ -27,6 +27,7 @@ namespace ToDo.DataAccess.EF.Contexts
         public DbSet<Milestone> Milestones { get; set; }
         public DbSet<MilestoneJob> MilestoneJobs { get; set; }
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Service> Services { get; set; }
         public DbSet<ProjectParticipant> ProjectParticipants { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<AdminUser> AdminUsers { get; set; }
