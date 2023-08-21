@@ -22,7 +22,6 @@ namespace ToDo.DataAccess.EF.Contexts
         public DbSet<CompanyTeam> CompanyTeams { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Job> Jobs { get; set; }
-        public DbSet<JobLabel> JobLabels { get; set; }
         public DbSet<JobParticipant> JobParticipants { get; set; }
         public DbSet<Label> Labels { get; set; }
         public DbSet<Milestone> Milestones { get; set; }

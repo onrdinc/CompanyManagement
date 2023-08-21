@@ -31,9 +31,6 @@ namespace ToDo.Business
             services.AddScoped<IDepartmentBs, DepartmentBs>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 
-            services.AddScoped<IJobLabelBs, JobLabelBs>();
-            services.AddScoped<IJobLabelRepository, JobLabelRepository>();
-
             services.AddScoped<ILabelBs, LabelBs>();
             services.AddScoped<ILabelRepository, LabelRepository>();
 

@@ -26,7 +26,7 @@ namespace ToDo.WebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var response = await _labelBs.GetByIdAsync(id, "Project");
+            var response = await _labelBs.GetByIdAsync(id);
             return await SendResponseAsync(response);
 
 
@@ -42,7 +42,7 @@ namespace ToDo.WebAPI.Controllers
         public async Task<IActionResult> GetLabels()
         {
 
-            var response = await _labelBs.GetLabelsAsync("Project");
+            var response = await _labelBs.GetLabelsAsync();
 
             return await SendResponseAsync(response);
 
@@ -55,7 +55,7 @@ namespace ToDo.WebAPI.Controllers
             if (response.ErrorMessages != null && response.ErrorMessages.Count > 0)
                 return await SendResponseAsync(response);
             else
-                return CreatedAtAction(nameof(GetById), new { id = response.Data.Id }, response.Data);
+                return CreatedAtAction(nameof(GetById), new { id = response.Data.Id }, response);
 
         }
 

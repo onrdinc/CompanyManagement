@@ -10,9 +10,9 @@ namespace ToDo.Model.Dto.Label
 {
     public class LabelGetDto : IDto
     {
+        public int Id { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
-        public int ProjectId { get; set; }
-        public ProjectGetDto Project { get; set; }
+
     }
 }

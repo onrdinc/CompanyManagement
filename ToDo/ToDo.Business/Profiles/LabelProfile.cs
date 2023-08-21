@@ -14,9 +14,7 @@ namespace ToDo.Business.Profiles
     {
         public LabelProfile()
         {
-            CreateMap<Label, LabelGetDto>()
-                 .ForMember(dest => dest.ProjectId, opt => opt.MapFrom(src => src.Project.Id));
-
+            CreateMap<Label, LabelGetDto>();
             CreateMap<LabelPostDto, Label>();
             CreateMap<LabelPutDto, Label>();
         }

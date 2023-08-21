@@ -14,7 +14,7 @@ namespace ToDo.Business.Interfaces
     {
         Task<ApiResponse<List<LabelGetDto>>> GetLabelsAsync(params string[] includeList);
         Task<ApiResponse<LabelGetDto>> GetByIdAsync(int Id, params string[] includeList);
-        Task<ApiResponse<Label>> InsertAsync(LabelPostDto dto);
+        Task<ApiResponse<LabelGetDto>> InsertAsync(LabelPostDto dto);
         Task<ApiResponse<NoData>> UpdateAsync(LabelPutDto dto);
         Task<ApiResponse<NoData>> DeleteAsync(int Id);
     }
