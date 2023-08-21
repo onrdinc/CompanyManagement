@@ -8,7 +8,7 @@ namespace ToDo.Business.Interfaces
     {
         Task<ApiResponse<List<ProjectGetDto>>> GetProjectsAsync(params string[] includeList);
         Task<ApiResponse<ProjectGetDto>> GetByIdAsync(int Id, params string[] includeList);
-        Task<ApiResponse<Project>> InsertAsync(ProjectPostDto dto);
+        Task<ApiResponse<ProjectGetDto>> InsertAsync(ProjectPostDto dto);
         Task<ApiResponse<NoData>> UpdateAsync(ProjectPutDto dto);
         Task<ApiResponse<NoData>> DeleteAsync(int Id);
     }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Infrastructure.Utilities.ApiResponses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ToDo.Business.Interfaces;
 using ToDo.Model.Dto.Project;
@@ -8,6 +9,7 @@ namespace ToDo.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProjectController : BaseController
     {
         private readonly IProjectBs _projectBs;
@@ -27,7 +29,7 @@ namespace ToDo.WebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] int Id)
         {
-            var response = await _projectBs.GetByIdAsync(Id, "Company","Department");
+            var response = await _projectBs.GetByIdAsync(Id, "Service","Department");
             return await SendResponseAsync(response);
 
         }
@@ -42,7 +44,7 @@ namespace ToDo.WebAPI.Controllers
         public async Task<IActionResult> GetProjects()
         {
             ;
-            var response = await _projectBs.GetProjectsAsync("Company","Department");
+            var response = await _projectBs.GetProjectsAsync("Service", "Department");
 
             return await SendResponseAsync(response);
 
@@ -56,7 +58,7 @@ namespace ToDo.WebAPI.Controllers
             if (response.ErrorMessages != null && response.ErrorMessages.Count > 0)
                 return await SendResponseAsync(response);
             else
-                return CreatedAtAction(nameof(GetById), new { id = response.Data.Id }, response.Data);
+                return CreatedAtAction(nameof(GetById), new { id = response.Data.Id }, response);
 
         }
 

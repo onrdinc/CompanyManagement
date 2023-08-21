@@ -9,8 +9,10 @@ namespace ToDo.Model.Dto.Project
 {
     public class ProjectPutDto : IDto
     {
-        public int CompanyId { get; set; }
+        public int Id { get; set; }
+        public int ServiceId { get; set; }
         public int DepartmentId { get; set; }
         public string? Name { get; set; }
+        public string? Description { get; set; }
     }
 }

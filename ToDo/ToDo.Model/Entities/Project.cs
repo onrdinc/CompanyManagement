@@ -14,12 +14,14 @@ namespace ToDo.Model.Entities
     {
         [Key]
         public int Id { get;set; }
-        public int CompanyId { get;set; }
+        public int ServiceId { get;set; }
         public int DepartmentId { get;set; }
         public string? Name { get;set; }
+        public string? Description { get; set; }
 
-        [ForeignKey("CompanyId")]
-        public Company? Company { get;set; }
+
+        [ForeignKey("ServiceId")]
+        public Service? Service { get;set; }
 
         [ForeignKey("DepartmentId")]
         public Department? Department { get;set; }

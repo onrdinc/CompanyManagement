@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using ToDo.Business.CustomExceptions;
 using ToDo.Business.Interfaces;
 using ToDo.DataAccess.Interfaces;
+using ToDo.Model.Dto.Department;
 using ToDo.Model.Dto.Project;
 using ToDo.Model.Entities;
 
@@ -46,51 +47,52 @@ namespace ToDo.Business.Implementations
         public async Task<ApiResponse<List<ProjectGetDto>>> GetProjectsAsync(params string[] includeList)
         {
             var projects = await _repo.GetAllAsync(includeList: includeList);
-            if (projects.Count > 0)
-            {
-                var returnList = _mapper.Map<List<ProjectGetDto>>(projects);
-                var response = ApiResponse<List<ProjectGetDto>>.Success(StatusCodes.Status200OK, returnList);
-                return response;
-            }
-            throw new NotFoundException("Projeler Bulunamadı");
+            //if (projects.Count > 0)
+            //{
+            //    var returnList = _mapper.Map<List<ProjectGetDto>>(projects);
+            //    var response = ApiResponse<List<ProjectGetDto>>.Success(StatusCodes.Status200OK, returnList);
+            //    return response;
+            //}
+            //throw new NotFoundException("Projeler Bulunamadı");
+            var returnList = _mapper.Map<List<ProjectGetDto>>(projects);
+            var response = ApiResponse<List<ProjectGetDto>>.Success(StatusCodes.Status200OK, returnList);
+            return response;
         }
 
-        public async Task<ApiResponse<Project>> InsertAsync(ProjectPostDto dto)
+        public async Task<ApiResponse<ProjectGetDto>> InsertAsync(ProjectPostDto dto)
         {
-            if (dto != null)
+            if (dto == null)
                 throw new BadRequestException("Kaydedilecek kişi bilgisi yollamalısınız");
-
-            if (dto.Name != null)
-                throw new BadRequestException("İsim Boş Olamaz");
-
-            if (dto.Name != null)
+            if (dto.Name == null)
                 throw new BadRequestException("Proje Adı Olamaz");
-            if (dto.CompanyId != null)
-                throw new BadRequestException("Lütfen Şirket Seçiniz");
-            if (dto.DepartmentId != null)
+            if (dto.ServiceId == null)
+                throw new BadRequestException("Lütfen Hizmet Alanı Seçiniz");
+            if (dto.DepartmentId == null)
                 throw new BadRequestException("Lütfen Departman Seçiniz");
            
 
             var project = _mapper.Map<Project>(dto);
 
             var insertedProject = await _repo.InsertAsync(project);
+            var retCat = _mapper.Map<ProjectGetDto>(insertedProject);
 
-            return ApiResponse<Project>.Success(StatusCodes.Status201Created, insertedProject);
+
+            return ApiResponse<ProjectGetDto>.Success(StatusCodes.Status201Created, retCat);
         }
 
         public async Task<ApiResponse<NoData>> UpdateAsync(ProjectPutDto dto)
         {
-            if (dto != null)
+            if (dto == null)
                 throw new BadRequestException("Kaydedilecek kişi bilgisi yollamalısınız");
 
-            if (dto.Name != null)
+            if (dto.Name == null)
                 throw new BadRequestException("İsim Boş Olamaz");
 
-            if (dto.Name != null)
+            if (dto.Name == null)
                 throw new BadRequestException("Proje Adı Olamaz");
-            if (dto.CompanyId != null)
-                throw new BadRequestException("Lütfen Şirket Seçiniz");
-            if (dto.DepartmentId != null)
+            if (dto.ServiceId == null)
+                throw new BadRequestException("Lütfen Hizmet Alanı Seçiniz");
+            if (dto.DepartmentId == null)
                 throw new BadRequestException("Lütfen Departman Seçiniz");
 
             var project = _mapper.Map<Project>(dto);
