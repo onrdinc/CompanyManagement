@@ -26,11 +26,23 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
             var token = HttpContext.Session.GetObject<AccessTokenItem>("AccessToken");
 
-            var userResponse = await _httpApiService.GetData<ResponseBody<List<UserItem>>>("/user",token.Token);
+            //var userResponse = null;
+
+            //if (id == null)
+            //{
+            //    userResponse = await _httpApiService.GetData<ResponseBody<List<UserItem>>>("/user", token.Token);
+            //}
+            //else
+            //{
+            //    userResponse = _httpApiService.GetData<ResponseBody<List<UserItem>>>($"/user/getByDepartmentId?id{id}", token.Token);
+            //}
+            var userResponse = id == null
+                ? await _httpApiService.GetData<ResponseBody<List<UserItem>>>("/user", token.Token)
+                : await _httpApiService.GetData<ResponseBody<List<UserItem>>>($"/user/getByDepartmentId?id={id}",token.Token);
             var departmentResponse = await _httpApiService.GetData<ResponseBody<List<DepartmentItem>>>("/department",token.Token);
             UserViewModel vm = new UserViewModel();
             vm.Users = userResponse.Data;

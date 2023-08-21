@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using ToDo.Business.Implementations;
 using ToDo.Business.Interfaces;
 using ToDo.Model.Dto.Company;
+using ToDo.Model.Dto.Project;
 using ToDo.Model.Dto.User;
 using ToDo.Model.Entities;
 
@@ -90,6 +91,19 @@ namespace ToDo.WebAPI.Controllers
         {
             var response = await _userBs.DeleteAsync(Id);
 
+            return await SendResponseAsync(response);
+        }
+
+        #region SWAGGER DOC
+        [Produces("application/json", "text/plain")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<List<UserGetDto>>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
+        #endregion
+        [HttpGet("getByDepartmentId")]
+        public async Task<IActionResult> GetByDepartmentId([FromQuery] int id)
+        {
+            var response = await _userBs.GetByDepartmentAsync(id, "Department");
             return await SendResponseAsync(response);
         }
 

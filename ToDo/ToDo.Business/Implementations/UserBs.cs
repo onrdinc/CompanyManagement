@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Http;
 using ToDo.Business.CustomExceptions;
 using ToDo.Business.Interfaces;
 using ToDo.DataAccess.Interfaces;
+using ToDo.Model.Dto.Department;
+using ToDo.Model.Dto.Project;
 using ToDo.Model.Dto.User;
 using ToDo.Model.Entities;
 
@@ -34,6 +36,23 @@ namespace ToDo.Business.Implementations
                 return ApiResponse<NoData>.Success(StatusCodes.Status200OK);
             }
             throw new NotFoundException("Kullanıcı Bulunamadı");
+        }
+
+        public async Task<ApiResponse<List<UserGetDto>>> GetByDepartmentAsync(int departmentId, params string[] includeList)
+        {
+            if (departmentId <= 0)
+            {
+                throw new BadRequestException("Id değeri 0'dan büyük olmalıdır.");
+            }
+            var users = await _repo.GetByDepartmentAsync(departmentId, includeList);
+            //if (users != null && users.Count > 0)
+            //{
+            //    var returnList = _mapper.Map<List<UserGetDto>>(users);
+            //    return ApiResponse<List<UserGetDto>>.Success(StatusCodes.Status200OK, returnList);
+            //}
+            //throw new NotFoundException("İçerik bulunamadı.");
+            var returnList = _mapper.Map<List<UserGetDto>>(users);
+            return ApiResponse<List<UserGetDto>>.Success(StatusCodes.Status200OK, returnList);
         }
 
         public async Task<ApiResponse<UserGetDto>> GetByIdAsync(int Id, params string[] includeList)

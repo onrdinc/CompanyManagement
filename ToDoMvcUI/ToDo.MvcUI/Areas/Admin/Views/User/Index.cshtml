@@ -315,6 +315,23 @@
             <div class="list-group-item">
                 <button type="button" class="btn btn-light btnAdd"><i class="fa fa-add"></i>Ekle</button>
             </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-auto">
+                        <a href="/Admin/User/Index" class="btn btn-primary">Tümü</a>
+                    </div>
+                    <div class="col-auto">
+                        @foreach (var item in Model.Departments)
+                        {
+                            <a href="/Admin/User/Index/@item.Id" class="btn btn-secondary">@item.Name</a>
+                        }
+                    </div>
+                </div>
+            </div>
+
+
+        
             @*<div class="list-group-item">
 
             <button class="btn btn-sm float-right"><i class="fa fa-add"></i>Personel Ekle</button>

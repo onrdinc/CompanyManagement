@@ -14,6 +14,11 @@ namespace ToDo.DataAccess.EF.Repositories
 {
     public class UserRepository : BaseRepository<User, ToDoContext>, IUserRepository
     {
+        public async Task<List<User>> GetByDepartmentAsync(int departmentId, params string[] includeList)
+        {
+            return await GetAllAsync(k => k.DepartmentId == departmentId, includeList);
+        }
+
         public async Task<User> GetByIdAsync(int Id, params string[] includeList)
         {
             return await GetAsync(k => k.Id == Id, includeList);
