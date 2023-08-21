@@ -23,12 +23,17 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
             var token = HttpContext.Session.GetObject<AccessTokenItem>("AccessToken");
 
             var userResponse = await _httpApiService.GetData<ResponseBody<List<UserItem>>>("/user", token.Token);
-            var participantResponse = await _httpApiService.GetData<ResponseBody<List<ProjectParticipantItem>>>("/ProjectParticipant", token.Token);
+
+            var participantResponse = id == null
+  ? await _httpApiService.GetData<ResponseBody<List<ProjectParticipantItem>>>("/ProjectParticipant", token.Token)
+  : await _httpApiService.GetData<ResponseBody<List<ProjectParticipantItem>>>($"/projectparticipant/getByProjectId?id={id}", token.Token);
+
+            //var participantResponse = await _httpApiService.GetData<ResponseBody<List<ProjectParticipantItem>>>("/ProjectParticipant", token.Token);
             var projectResponse = await _httpApiService.GetData<ResponseBody<List<ProjectItem>>>("/project", token.Token);
             ProjectParticipantViewModel vm = new ProjectParticipantViewModel();
             vm.Users = userResponse.Data;

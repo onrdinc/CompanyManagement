@@ -12,5 +12,6 @@ namespace ToDo.Business.Interfaces
         Task<ApiResponse<ProjectParticipantGetDto>> InsertAsync(ProjectParticipantPostDto dto);
         Task<ApiResponse<NoData>> UpdateAsync(ProjectParticipantPutDto dto);
         Task<ApiResponse<NoData>> DeleteAsync(int Id);
+        Task<ApiResponse<List<ProjectParticipantGetDto>>> GetByParticipantAsync(int projectId, params string[] includeList);
     }
 }

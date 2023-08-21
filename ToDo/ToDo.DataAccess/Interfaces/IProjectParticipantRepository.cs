@@ -11,6 +11,7 @@ namespace ToDo.DataAccess.Interfaces
     public interface IProjectParticipantRepository : IBaseRepository<ProjectParticipant>
     {
         Task<ProjectParticipant> GetByIdAsync(int Id, params string[] includeList);
+        Task<List<ProjectParticipant>> GetByParticipantAsync(int projectId, params string[] includeList);
 
     }
 }

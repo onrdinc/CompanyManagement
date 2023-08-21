@@ -2,8 +2,10 @@
 using Infrastructure.Utilities.ApiResponses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ToDo.Business.Implementations;
 using ToDo.Business.Interfaces;
 using ToDo.Model.Dto.ProjectParticipant;
+using ToDo.Model.Dto.User;
 
 namespace ToDo.WebAPI.Controllers
 {
@@ -77,6 +79,19 @@ namespace ToDo.WebAPI.Controllers
         {
             var response = await _projectParticipantBs.DeleteAsync(id);
 
+            return await SendResponseAsync(response);
+        }
+
+        #region SWAGGER DOC
+        [Produces("application/json", "text/plain")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<List<ProjectParticipantGetDto>>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
+        #endregion
+        [HttpGet("getByProjectId")]
+        public async Task<IActionResult> GetByParticipantAsync([FromQuery] int id)
+        {
+            var response = await _projectParticipantBs.GetByParticipantAsync(id, "Project","User");
             return await SendResponseAsync(response);
         }
     }
