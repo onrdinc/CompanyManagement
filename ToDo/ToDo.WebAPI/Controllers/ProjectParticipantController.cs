@@ -1,5 +1,6 @@
 ﻿
 using Infrastructure.Utilities.ApiResponses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ToDo.Business.Interfaces;
 using ToDo.Model.Dto.ProjectParticipant;
@@ -8,6 +9,8 @@ namespace ToDo.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class ProjectParticipantController : BaseController
     {
         private readonly IProjectParticipantBs _projectParticipantBs;

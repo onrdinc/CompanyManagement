@@ -12,6 +12,6 @@ namespace ToDo.Model.Dto.Job
         public int ProjectId { get; set; }
 
         public ProjectGetDto? Project { get; set; }
-        public MilestoneGetDto? Milestone { get; set; }
+        public StatuGetDto? Milestone { get; set; }
     }
 }

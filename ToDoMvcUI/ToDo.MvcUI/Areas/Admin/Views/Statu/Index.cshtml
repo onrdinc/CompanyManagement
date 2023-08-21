@@ -1,0 +1,349 @@
+﻿@using ToDo.MvcUI.Areas.Admin.Models
+@model List<StatuItem>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section customStyles{
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <link href="~/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+
+}
+@section customScripts{
+    <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/sweetalert2/sweetalert2.all.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //new DataTable('#userList');
+            new DataTable('#statuList', {
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/tr.json',
+                },
+            });
+            $(".btnAdd").click(function () {
+
+                $("#txtName").val();
+                $("#statuAddModal").modal("show");
+            });
+
+
+            $("#btnSave").click(function () {
+
+                var name = $("#txtName").val();
+                var fd = new FormData();
+                fd.append("name", name);
+
+
+
+                $.ajax({
+                    url: "/Admin/Statu/Save",
+                    method: "post",
+                    datatype: "json",
+                    contentType: false,
+                    processData: false,
+                    data: fd,
+                    success: function (response) {
+                        //if (response.isSuccess) {
+                        //    Swal.fire('İşlem Başarılı', response.message, 'success')
+                        //    $("#btnClear").trigger("click");
+                        //}
+                        if (response.isSuccess) {
+                            Swal.fire({
+                                title: 'İşlem Başarılı',
+                                text: response.message,
+                                icon: 'success',
+                                showCancelButton: false,
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'Tamam'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+
+                                    $("#btnClear").trigger("click");
+
+
+                                    ////bakılacak
+
+                                    //$("button[id='#pills-profile-tab']").addClass("active").attr("aria-selected", "true");
+                                    //$("button[id='#pills-home-tab']").removeClass("active").attr("aria-selected", "false");
+
+                                    //$("#pills-profile-tab").removeClass("active").attr("aria-selected", "false");
+                                    //$("#pills-home-tab").addClass("active").attr("aria-selected", "true");
+
+
+
+
+
+                                    //// elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
+
+                                    //$("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>DÜZENLE</td><td><button type='button' class='btn btn-danger btnDelete' id='" + response.id + "'>SİL</button></td></tr>");
+
+                                }
+                            });
+                        }
+
+                        else {
+                            Swal.fire('İşlem Başarısız', response.message, 'error')
+                        }
+                    }
+                })
+            });
+
+            $(".btnDelete").click(function () {
+
+                // $(this) --> bu olayı çalıştıran html elementidir
+                var id = $(this).attr("statuId");
+
+                Swal.fire({
+                    title: 'Emin misiniz?',
+                    text: "Silme işlemi geri alınamaz!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sil!',
+                    cancelButtonText: 'Vazgeç!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // sunucuya veriyi gönderip silinmesini sağlayacağız
+
+                        $.ajax({
+                            url: "/Admin/Statu/Delete/" + id,
+                            method: "post",
+                            datatype: "json",
+                            success: function (response) {
+                                if (response.isSuccess) {
+                                    Swal.fire('İşlem Başarılı', response.message, 'success')
+                                }
+                                else {
+                                    var errors = "";
+                                    for (var i = 0; i < response.errorMessages.length; i++) {
+                                        errors += response.errorMessages[i] + "<br />";
+                                    }
+
+                                    Swal.fire('İşlem Başarısız', response.message + "<br />" + errors, 'error')
+                                }
+                            }
+                        });
+                    }
+                    else {
+                        Swal.fire('İşlem İptal Edildi', '', 'info')
+                    }
+                })
+            });
+
+            $(".btnEdit").click(function () {
+
+                var id = $(this).attr("statuId");
+
+                $.ajax({
+                    url: "/Admin/Statu/GetStatu/" + id,
+                    method: "post",
+                    datatype: "json",
+
+
+                    success: function (response) {
+                        $("#txtNameEdit").val(response.name);
+                        $("#hfStatuId").val(id);
+
+                        $("#statuModal").modal("show");
+                    }
+                });
+
+            });
+
+            $("#btnUpdate").click(function () {
+
+                var name = $("#txtNameEdit").val();
+                var id = $("#hfStatuId").val();
+
+                var fd = new FormData();
+                fd.append("id", id);
+                fd.append("name", name);
+
+
+
+                $.ajax({
+                    url: "/Admin/Statu/Update",
+                    method: "post",
+                    datatype: "json",
+                    contentType: false,
+                    processData: false,
+                    data: fd,
+                    success: function (response) {
+
+                        if (response.isSuccess) {
+                            Swal.fire({
+                                title: 'İşlem Başarılı',
+                                text: response.message,
+                                icon: 'success',
+                                showCancelButton: false,
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'Tamam'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+
+                                    //------------------------------------------------
+
+                                    $("#statuModal").modal("hide");
+
+
+                                    //bakılacak
+
+
+
+
+
+
+                                    // elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
+
+                                    /*  $("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>DÜZENLE</td><td><button type='button' class='btn btn-danger btnDelete' id='" + response.id + "'>SİL</button></td></tr>");*/
+
+                                }
+                            });
+                        }
+
+                        else {
+                            Swal.fire('İşlem Başarısız', response.message, 'error')
+                        }
+                    }
+                })
+            });
+
+        });
+    </script>
+}
+<div class="modal fade" data-backdrop="static" id="statuAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Etiket Ekleme Formu</h1>
+                @*<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>*@
+            </div>
+            <div class="modal-body">
+                <form>
+
+
+
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Süreç Adı</label>
+                            <input type="text" class="form-control" id="txtName" placeholder="Süreç Adı Giriniz">
+                        </div>
+                     
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button id="btnSave" type="button" class="btn btn-primary">Kaydet</button>
+                    </div>
+
+
+                    <button id="btnClear" type="reset" style="display:none;"></button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Süreç Yönetimi</h3>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="list-group-item">
+                        <button type="button" class="btn btn-light btnAdd"><i class="fa fa-add"></i>Ekle</button>
+                    </div>
+                    <div class="card-body">
+                        <table id="statuList" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Süreç Adı</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+
+
+                                    <tr>
+                                        <td></td>
+                                        <td>@item.Name</td>
+                                        <td>
+                                            <button id="btnDelete" type="button" class="btn btn-danger btnDelete" statuId='@item.Id'>SİL</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-warning btnEdit" statuId='@item.Id'>
+                                                DÜZENLE
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Süreç Adı</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="modal fade" data-backdrop="static" id="statuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Süreç Düzenleme Formu</h1>
+                @*<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>*@
+            </div>
+            <div class="modal-body">
+                <form>
+                    @*Aşağıdaki hidden input içerisinde güncellenmek istenen kategorinin id si tutuluyor. btnEdit e tıklandığında hangi kategorinin güncelleneceği bu inputtan okunabilir.*@
+                    <input type="hidden" id="hfStatuId" />
+
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Süreç Adı</label>
+                            <input type="text" class="form-control" id="txtNameEdit" placeholder="Süreç Adı Giriniz">
+                        </div>
+                      
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button id="btnUpdate" type="button" class="btn btn-primary">Kaydet</button>
+                    </div>
+
+
+                    <button id="btnClearEdit" type="reset" style="display:none;"></button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

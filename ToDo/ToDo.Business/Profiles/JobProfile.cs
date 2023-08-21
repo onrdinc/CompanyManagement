@@ -15,7 +15,7 @@ namespace ToDo.Business.Profiles
         public JobProfile() 
         {
             CreateMap<Job, JobGetDto>()
-               .ForMember(dest => dest.MilestoneId, opt => opt.MapFrom(src => src.Milestone.Id))
+               //.ForMember(dest => dest.MilestoneId, opt => opt.MapFrom(src => src.Milestone.Id))
                .ForMember(dest => dest.ProjectId, opt => opt.MapFrom(src => src.Project.Id));
 
             CreateMap<JobPostDto, Job>();

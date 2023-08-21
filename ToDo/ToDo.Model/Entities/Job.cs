@@ -10,16 +10,19 @@ namespace ToDo.Model.Entities
     {
         [Key]
         public int Id { get; set; }
-        public int MilestoneId { get; set; }
+        public int StatuId { get; set; }
         public string? JobTitle { get; set; }
         public string? Detail { get; set; }
         public int ProjectId { get; set; }
+        public int LabelId { get; set; }
 
 
         [ForeignKey("ProjectId")]
         public Project? Project { get; set; }
 
-        [ForeignKey("MilestoneId")]
-        public Milestone? Milestone { get; set; }
+        [ForeignKey("StatuId")]
+        public Statu? Statu { get; set; }
+        [ForeignKey("LabelId")]
+        public Label? Label { get; set; }
     }
 }

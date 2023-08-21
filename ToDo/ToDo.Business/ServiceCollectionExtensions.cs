@@ -43,11 +43,9 @@ namespace ToDo.Business
             services.AddScoped<IJobParticipantBs, JobParticipantBs>();
             services.AddScoped<IJobParticipantRepository, JobParticipantRepository>();
 
-            services.AddScoped<IMilestoneBs, MilestoneBs>();
-            services.AddScoped<IMilestoneRepository, MilestoneRepository>();
+            services.AddScoped<IStatuBs, StatuBs>();
+            services.AddScoped<IStatuRepository, StatuRepository>();
 
-            services.AddScoped<IMilestoneJobBs, MilestoneJobBs>();
-            services.AddScoped<IMilestoneJobRepository, MilestoneJobRepository>();
 
             services.AddScoped<IDepartmentBs, DepartmentBs>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
