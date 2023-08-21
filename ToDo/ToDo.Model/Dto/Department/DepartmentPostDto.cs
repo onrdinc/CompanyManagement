@@ -9,7 +9,6 @@ namespace ToDo.Model.Dto.Department
 {
     public class DepartmentPostDto : IDto
     {
-        public int CompanyId { get; set; }
         public string? Name { get; set; }
     }
 }

@@ -52,44 +52,41 @@ namespace ToDo.Business.Implementations
         public async Task<ApiResponse<List<DepartmentGetDto>>> GetDepartmentsAsync(params string[] includeList)
         {
             var departments = await _repo.GetAllAsync(includeList: includeList);
-            if (departments.Count > 0)
-            {
-                var returnList = _mapper.Map<List<DepartmentGetDto>>(departments);
-                var response = ApiResponse<List<DepartmentGetDto>>.Success(StatusCodes.Status200OK, returnList);
-                return response;
-            }
-            throw new NotFoundException("Kişiler Bulunamadı");
+            //if (departments.Count > 0)
+            //{
+            //    var returnList = _mapper.Map<List<DepartmentGetDto>>(departments);
+            //    var response = ApiResponse<List<DepartmentGetDto>>.Success(StatusCodes.Status200OK, returnList);
+            //    return response;
+            //}
+            //throw new NotFoundException("Kişiler Bulunamadı");
+            var returnList = _mapper.Map<List<DepartmentGetDto>>(departments);
+            var response = ApiResponse<List<DepartmentGetDto>>.Success(StatusCodes.Status200OK, returnList);
+            return response;
         }
 
-        public async Task<ApiResponse<Department>> InsertAsync(DepartmentPostDto dto)
+        public async Task<ApiResponse<DepartmentGetDto>> InsertAsync(DepartmentPostDto dto)
         {
-            if (dto != null)
+            if (dto == null)
                 throw new BadRequestException("Kaydedilecek departman bilgisi yollamalısınız");
 
-            if (dto.Name != null)
+            if (dto.Name == null)
                 throw new BadRequestException("Departman Adı Boş Olamaz");
-
-            if (dto.CompanyId != null)
-                throw new BadRequestException("Lütfen Şirket Seçiniz");
-           
 
             var department = _mapper.Map<Department>(dto);
 
             var insertedDepartment = await _repo.InsertAsync(department);
+            var retCat = _mapper.Map<DepartmentGetDto>(insertedDepartment);
 
-            return ApiResponse<Department>.Success(StatusCodes.Status201Created, insertedDepartment);
+            return ApiResponse<DepartmentGetDto>.Success(StatusCodes.Status201Created, retCat);
         }
 
         public async Task<ApiResponse<NoData>> UpdateAsync(DepartmentPutDto dto)
         {
-            if (dto != null)
+            if (dto == null)
                 throw new BadRequestException("Kaydedilecek departman bilgisi yollamalısınız");
 
-            if (dto.Name != null)
+            if (dto.Name == null)
                 throw new BadRequestException("Departman Adı Boş Olamaz");
-
-            if (dto.CompanyId != null)
-                throw new BadRequestException("Lütfen Şirket Seçiniz");
 
             var department = _mapper.Map<Department>(dto);
 

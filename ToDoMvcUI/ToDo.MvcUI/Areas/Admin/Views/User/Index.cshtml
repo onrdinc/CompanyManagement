@@ -1,5 +1,6 @@
 ﻿@using ToDo.MvcUI.Areas.Admin.Models
-@model List<UserItem>
+@using ToDo.MvcUI.Areas.Admin.ViewModels
+@model UserViewModel
 
 @{
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -45,11 +46,17 @@
                 var name = $("#txtUserName").val();
                 var surname = $("#txtUserSurname").val();
                 var email = $("#txtEmail").val();
+                var nickname = $("#txtUserNickname").val();
+                var password = $("#txtUserPassword").val();
+                var departmentId = $("#departmentSelect").val();
                 var fd = new FormData();
                 fd.append("userPhoto", file);
                 fd.append("name", name);
                 fd.append("surname", surname);
                 fd.append("email", email);
+                fd.append("nickname", nickname);
+                fd.append("password", password);
+                fd.append("departmentId", departmentId);
 
                 //var formDataObject = {
                 //    Name: $("txtUserName").val(),
@@ -181,6 +188,9 @@
                         $("#txtUserNameEdit").val(response.name);
                         $("#txtUserSurnameEdit").val(response.surname);
                         $("#txtEmailEdit").val(response.email);
+                        $("#txtNicknameEdit").val(response.nickname);
+                        $("#txtPasswordEdit").val(response.password);
+                        $("#departmentEditSelect").val(response.departmentId);
                         $("#imgUserPhotoEdit").attr("src", response.picturePath);
                         $("#hfUserId").val(id);
 
@@ -196,6 +206,9 @@
                 var name = $("#txtUserNameEdit").val();
                 var surname = $("#txtUserSurnameEdit").val();
                 var email = $("#txtEmailEdit").val();
+                var nickname = $("#txtNicknameEdit").val();
+                var password = $("#txtPasswordEdit").val();
+                var departmentId = $("#departmentEditSelect").val();
                 var id = $("#hfUserId").val();
                 var fd = new FormData();
                 fd.append("id", id);
@@ -203,6 +216,9 @@
                 fd.append("name", name);
                 fd.append("surname", surname);
                 fd.append("email", email);
+                fd.append("nickname", nickname);
+                fd.append("password", password);
+                fd.append("departmentId", departmentId);
 
                 //var formDataObject = {
                 //    Name: $("txtUserName").val(),
@@ -259,7 +275,7 @@
 
                                     // elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
 
-                                  /*  $("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>DÜZENLE</td><td><button type='button' class='btn btn-danger btnDelete' id='" + response.id + "'>SİL</button></td></tr>");*/
+                                    /*  $("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>DÜZENLE</td><td><button type='button' class='btn btn-danger btnDelete' id='" + response.id + "'>SİL</button></td></tr>");*/
 
                                 }
                             });
@@ -307,15 +323,18 @@
                                         <tr>
                                             <th>#</th>
                                             <th>#</th>
+                                            <th>Departman</th>
                                             <th>Ad</th>
                                             <th>Soyad</th>
                                             <th>Email</th>
+                                            <th>Kullanıcı Adı</th>
+                                            <th>Şifre</th>
                                             <th></th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var item in Model)
+                                        @foreach (var item in Model.Users)
                                         {
 
 
@@ -334,9 +353,12 @@
                                                 <td>
                                                     <img src='@item.PicturePath' style="width:150px;" />
                                                 </td>
+                                                <td>@item.DepartmentName</td>
                                                 <td>@item.Name</td>
                                                 <td>@item.Surname</td>
                                                 <td>@item.Email</td>
+                                                <td>@item.Nickname</td>
+                                                <td>@item.Password</td>
                                                 <td>
                                                     <button id="btnDelete" type="button" class="btn btn-danger btnDelete" userId='@item.Id'>SİL</button>
                                                 </td>
@@ -353,9 +375,12 @@
                                         <tr>
                                             <th>#</th>
                                             <th>#</th>
+                                            <th>Departman</th>
                                             <th>Ad</th>
                                             <th>Soyad</th>
                                             <th>Email</th>
+                                            <th>Kullanıcı Adı</th>
+                                            <th>Şifre</th>
                                             <th></th>
                                             <th></th>
                                         </tr>
@@ -378,6 +403,16 @@
                     <form>
                         <div class="card-body">
                             <div class="form-group">
+                                <label>Departman</label>
+                                <select id="departmentSelect" class="form-control">
+                                    <option selected value="-1">Departman Seciniz</option>
+                                    @foreach (var department in Model.Departments)
+                                    {
+                                        <option value="@department.Id">@department.Name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputName">Adı</label>
                                 <input type="text" class="form-control" id="txtUserName" placeholder="Ad Giriniz">
                             </div>
@@ -389,6 +424,14 @@
                                 <label for="exampleInputName">Email</label>
                                 <input type="email" class="form-control" id="txtEmail" placeholder="Email Giriniz">
                             </div>
+                            <div class="form-group">
+                                <label for="exampleInputName">Kullanıcı Adı</label>
+                                <input type="text" class="form-control" id="txtUserNickname" placeholder="Kullanıcı Adı Giriniz">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName">Şifre</label>
+                                <input type="text" class="form-control" id="txtUserPassword" placeholder="Şifre Giriniz">
+                            </div>
 
 
                             <div class="form-group">
@@ -399,14 +442,14 @@
                                 </div>
                             </div>
                             @*<div class="form-group">
-                                    <label for="exampleInputFile">Resim</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="fuUserPhoto">
-                                            <label class="custom-file-label" for="exampleInputFile">Dosya Seçiniz</label>
-                                        </div>
-                                    </div>
-                                </div>*@
+            <label for="exampleInputFile">Resim</label>
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="fuUserPhoto">
+                    <label class="custom-file-label" for="exampleInputFile">Dosya Seçiniz</label>
+                </div>
+            </div>
+        </div>*@
 
 
                         </div>
@@ -447,6 +490,16 @@
 
                     <div class="card-body">
                         <div class="form-group">
+                            <label>Departman</label>
+                            <select id="departmentEditSelect" class="form-control">
+                                <option selected value="-1">Departman Seciniz</option>
+                                @foreach (var department in Model.Departments)
+                                {
+                                    <option value="@department.Id">@department.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputEmail1">Adı</label>
                             <input type="text" class="form-control" id="txtUserNameEdit" placeholder="Ad Giriniz">
                         </div>
@@ -457,6 +510,14 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
                             <input type="text" class="form-control" id="txtEmailEdit" placeholder="Email Giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName">Kullanıcı Adı</label>
+                            <input type="text" class="form-control" id="txtNicknameEdit" placeholder="Kullanıcı Adı Giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName">Şifre</label>
+                            <input type="text" class="form-control" id="txtPasswordEdit" placeholder="Şifre Giriniz">
                         </div>
 
                         <div class="form-group">

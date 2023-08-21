@@ -10,13 +10,12 @@ namespace ToDo.Model.Dto.User
     public class UserPutDto : IDto
     {
         public int Id { get; set; }
+        public int DepartmentId { get; set; }
         public string? Name { get; set; }
         public string? Surname { get; set; }
         public string? Nickname { get; set; }
         public string? Email { get; set; }
         public string? Password { get; set; }
-        public string? Country { get; set; }
-        public string? City { get; set; }
         public string? PicturePath { get; set; }
         public string? PictureBase64 { get; set; }
     }

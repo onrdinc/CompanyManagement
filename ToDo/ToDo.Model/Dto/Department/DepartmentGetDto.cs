@@ -5,9 +5,7 @@ namespace ToDo.Model.Dto.Department
 {
     public class DepartmentGetDto : IDto
     {
-        public int CompanyId { get; set; }
+        public int Id { get; set; }
         public string? Name { get; set; }
-        public CompanyGetDto? Company { get; set; }
-
     }
 }

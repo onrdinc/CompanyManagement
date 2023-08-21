@@ -9,17 +9,19 @@ namespace ToDo.Model.Entities
     {
         [Key]
         public int Id { get; set; }
+        public int DepartmentId { get; set; }
         public string? Name { get; set;}
         public string? Surname { get; set;}
         public string? Nickname { get; set;}
         public string? Email { get; set;}
         public string? Password { get; set;}
-        public string? Country { get; set;}
-        public string? City { get; set;}
         public string? PicturePath { get; set;}
         public byte[]? Picture { get; set; }
         public bool? IsDeleted { get; set; } =false;
 
+
+        [ForeignKey("DepartmentId")]
+        public Department? Department { get; set; }
 
         [NotMapped] // bu propertynin veritabanındaki ilgili tabloyla bir alakası yok bunula ilgili birşey yapma çalışma
         public string Base64Picture

@@ -15,7 +15,7 @@ namespace ToDo.DataAccess.EF.Repositories
 
         public async Task<AdminUser> GetByUserNameAndPasswordAsync(string userName, string password, params string[] includeList)
         {
-            return await GetAsync(k => k.UserName == userName && k.Password == password && k.IsDeleted.Value);
+            return await GetAsync(k => k.UserName == userName && k.Password == password && k.IsDeleted == false);
         }
     }
 }
