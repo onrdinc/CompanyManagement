@@ -18,15 +18,13 @@ namespace ToDo.DataAccess.EF.Contexts
             optionsBuilder.UseSqlServer("server=.\\SQLEXPRESS;database=ToDo;trusted_connection=true;");
         }
 
-        public DbSet<Company> Companys { get; set; }
-        public DbSet<CompanyTeam> CompanyTeams { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<JobParticipant> JobParticipants { get; set; }
         public DbSet<Label> Labels { get; set; }
         public DbSet<Statu> Status { get; set; }
         public DbSet<Project> Projects { get; set; }
-        public DbSet<Service> Services { get; set; }
+        public DbSet<Service> Service { get; set; }
         public DbSet<ProjectParticipant> ProjectParticipants { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<AdminUser> AdminUsers { get; set; }

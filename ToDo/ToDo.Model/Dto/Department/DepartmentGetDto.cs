@@ -1,5 +1,4 @@
 ﻿using Infrastructure.Model;
-using ToDo.Model.Dto.Company;
 
 namespace ToDo.Model.Dto.Department
 {

@@ -19,8 +19,7 @@ namespace ToDo.Business
         {
             services.AddAutoMapper(typeof(UserProfile));
 
-            services.AddScoped<ICompanyBs, CompanyBs>();
-            services.AddScoped<ICompanyRepository, CompanyRepository>();
+
 
             services.AddScoped<IUserBs, UserBs>();
             services.AddScoped<IUserRepository, UserRepository>();
@@ -51,8 +50,6 @@ namespace ToDo.Business
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 
 
-            services.AddScoped<ICompanyTeamBs, CompanyTeamBs>();
-            services.AddScoped<ICompanyTeamRepository, CompanyTeamRepository>();
 
             services.AddScoped<IAdminUserBs, AdminUserBs>();
             services.AddScoped<IAdminUserRepository, AdminUserRepository>();

@@ -1,14 +1,8 @@
-﻿using AutoMapper;
-using Infrastructure.Utilities.ApiResponses;
+﻿using Infrastructure.Utilities.ApiResponses;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ToDo.Business.Implementations;
 using ToDo.Business.Interfaces;
-using ToDo.Model.Dto.Company;
-using ToDo.Model.Dto.Project;
 using ToDo.Model.Dto.User;
-using ToDo.Model.Entities;
 
 namespace ToDo.WebAPI.Controllers
 {
