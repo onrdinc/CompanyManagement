@@ -71,6 +71,23 @@ namespace ToDo.Business.Implementations
             return ApiResponse<List<JobGetDto>>.Success(StatusCodes.Status200OK, returnList);
         }
 
+        public async Task<ApiResponse<List<JobGetDto>>> GetByUserJobAsync(int userId, params string[] includeList)
+        {
+            if (userId <= 0)
+            {
+                throw new BadRequestException("Id değeri 0'dan büyük olmalıdır.");
+            }
+            var users = await _repo.GetByUserJobAsync(userId, includeList);
+            //if (users != null && users.Count > 0)
+            //{
+            //    var returnList = _mapper.Map<List<UserGetDto>>(users);
+            //    return ApiResponse<List<UserGetDto>>.Success(StatusCodes.Status200OK, returnList);
+            //}
+            //throw new NotFoundException("İçerik bulunamadı.");
+            var returnList = _mapper.Map<List<JobGetDto>>(users);
+            return ApiResponse<List<JobGetDto>>.Success(StatusCodes.Status200OK, returnList);
+        }
+
         public async Task<ApiResponse<List<JobGetDto>>> GetJobsAsync(params string[] includeList)
         {
             var jobs = await _repo.GetAllAsync(k=>k.IsDeleted == false, includeList: includeList);

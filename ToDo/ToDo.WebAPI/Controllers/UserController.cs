@@ -1,7 +1,9 @@
 ﻿using Infrastructure.Utilities.ApiResponses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ToDo.Business.Implementations;
 using ToDo.Business.Interfaces;
+using ToDo.Model.Dto.AdminUser;
 using ToDo.Model.Dto.User;
 
 namespace ToDo.WebAPI.Controllers
@@ -16,6 +18,23 @@ namespace ToDo.WebAPI.Controllers
         public UserController(IUserBs userBs)
         {
             _userBs = userBs;
+        }
+
+        #region SWAGGER DOC
+        [Produces("application/json", "text/plain")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<List<UserGetDto>>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
+        #endregion
+        [AllowAnonymous]
+        [HttpGet("logIn")]
+        public async Task<IActionResult> LogIn([FromQuery] string nickname, [FromQuery] string password)
+        {
+
+            var response = await _userBs.LogIn(nickname, password);
+
+            return await SendResponseAsync(response);
+
         }
 
         #region SWAGGER DOC

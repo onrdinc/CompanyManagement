@@ -12,6 +12,7 @@ namespace ToDo.DataAccess.Interfaces
     {
         Task<ProjectParticipant> GetByIdAsync(int Id, params string[] includeList);
         Task<List<ProjectParticipant>> GetByParticipantAsync(int projectId, params string[] includeList);
+        Task<List<ProjectParticipant>> GetByUserProjectAsync(int userId, params string[] includeList);
 
     }
 }

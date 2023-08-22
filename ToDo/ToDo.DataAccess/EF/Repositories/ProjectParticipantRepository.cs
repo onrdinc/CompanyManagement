@@ -21,5 +21,10 @@ namespace ToDo.DataAccess.EF.Repositories
         {
             return await GetAllAsync(k => k.ProjectId == projectId && k.IsDeleted == false, includeList);
         }
+
+        public async Task<List<ProjectParticipant>> GetByUserProjectAsync(int userId, params string[] includeList)
+        {
+            return await GetAllAsync(k => k.UserId == userId && k.IsDeleted == false, includeList);
+        }
     }
 }

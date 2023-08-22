@@ -7,5 +7,6 @@ namespace ToDo.DataAccess.Interfaces
     {
         Task<Job> GetByIdAsync(int Id, params string[] includeList);
         Task<List<Job>> GetByProjectJobAsync(int projectId, params string[] includeList);
+        Task<List<Job>> GetByUserJobAsync(int userId, params string[] includeList);
     }
 }

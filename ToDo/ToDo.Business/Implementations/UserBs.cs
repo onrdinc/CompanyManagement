@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using ToDo.Business.CustomExceptions;
 using ToDo.Business.Interfaces;
 using ToDo.DataAccess.Interfaces;
+using ToDo.Model.Dto.AdminUser;
 using ToDo.Model.Dto.Department;
 using ToDo.Model.Dto.Project;
 using ToDo.Model.Dto.User;
@@ -110,6 +111,35 @@ namespace ToDo.Business.Implementations
             var retCat = _mapper.Map<UserGetDto>(insertedUser);
 
             return ApiResponse<UserGetDto>.Success(StatusCodes.Status201Created, retCat);
+        }
+
+        public async Task<ApiResponse<UserGetDto>> LogIn(string nickname, string password, params string[] includeList)
+        {
+            nickname = nickname.Trim();
+            if (string.IsNullOrEmpty(nickname))
+            {
+                throw new BadRequestException("Kullanıcı Adı Boş Bırakılamaz.");
+            }
+
+            if (nickname.Length <= 2)
+            {
+                throw new BadRequestException("Kullanıcı Adı en az 3 karakter olmalıdır.");
+            }
+
+            password = password.Trim();
+            if (string.IsNullOrEmpty(password))
+            {
+                throw new BadRequestException("Şifre Boş Bırakılamaz.");
+            }
+
+            var user = await _repo.GetByUserNameAndPasswordAsync(nickname, password, includeList);
+
+            if (user != null)
+            {
+                var dto = _mapper.Map<UserGetDto>(user);
+                return ApiResponse<UserGetDto>.Success(StatusCodes.Status200OK, dto);
+            }
+            throw new NotFoundException("İçerik Bulunamadı.");
         }
 
         public async Task<ApiResponse<NoData>> UpdateAsync(UserPutDto dto)

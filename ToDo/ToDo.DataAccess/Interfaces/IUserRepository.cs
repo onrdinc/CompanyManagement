@@ -7,6 +7,7 @@ namespace ToDo.DataAccess.Interfaces
     {
         Task<User> GetByIdAsync(int Id, params string[] includeList);
         Task<List<User>> GetByDepartmentAsync(int departmentId, params string[] includeList);
+        Task<User> GetByUserNameAndPasswordAsync(string nickname, string password, params string[] includeList);
 
     }
 }

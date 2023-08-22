@@ -13,5 +13,6 @@ namespace ToDo.Business.Interfaces
         Task<ApiResponse<NoData>> UpdateAsync(JobPutDto dto);
         Task<ApiResponse<NoData>> DeleteAsync(int Id);
         Task<ApiResponse<List<JobGetDto>>> GetByProjectJobAsync(int projectId, params string[] includeList);
+        Task<ApiResponse<List<JobGetDto>>> GetByUserJobAsync(int userId, params string[] includeList);
     }
 }

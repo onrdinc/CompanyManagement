@@ -1,0 +1,105 @@
+﻿@using ToDo.MvcUI.Areas.Admin.ViewModels
+@model ProjectParticipantViewModel
+
+@{
+    Layout = "~/Areas/User/Views/Shared/_userLayout.cshtml";
+}
+
+<style>
+    .jobparticipantimg {
+        height: 50px;
+        width: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px solid lightgray;
+        margin: 1px 0px 0px 1px;
+    }
+</style>
+
+@section customStyles{
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <link href="~/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+
+}
+@section customScripts{
+    <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/sweetalert2/sweetalert2.all.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //new DataTable('#userList');
+            new DataTable('#projectUserList', {
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/tr.json',
+                },
+            });
+        });
+    </script>
+}
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Proje Ekipleri Yönetimi</h3>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+
+                    <div class="card-body">
+                        <table id="projectUserList" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Proje Adı</th>
+                                    <th>Kullanıcı</th>
+                                    <th>Görevi</th>
+                              
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.ProjectParticipants)
+                                {
+
+
+                                    <tr>
+                                        <td></td>
+                                        <td>@item.Project.Name</td>
+                                        <td><img src='@item.User.PicturePath' class="jobparticipantimg" /> @item.User.Name @item.User.Surname </td>
+                                        <td>@item.Duty</td>
+                                       
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Proje Adı</th>
+                                    <th>Kullanıcı</th>
+                                    <th>Görevi</th>
+                             
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

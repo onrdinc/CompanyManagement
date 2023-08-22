@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToDo.Model.Dto.AdminUser;
 using ToDo.Model.Dto.Department;
 using ToDo.Model.Dto.Project;
 using ToDo.Model.Dto.User;
@@ -19,6 +20,7 @@ namespace ToDo.Business.Interfaces
         Task<ApiResponse<NoData>> UpdateAsync(UserPutDto dto);
         Task<ApiResponse<NoData>> DeleteAsync(int Id);
         Task<ApiResponse<List<UserGetDto>>> GetByDepartmentAsync(int departmentId, params string[] includeList);
+        Task<ApiResponse<UserGetDto>> LogIn(string nickname, string password, params string[] includeList);
 
     }
 }

@@ -36,4 +36,11 @@ app.MapAreaControllerRoute(
     pattern: "{area}/{controller=Authentication}/{action=LogIn}/{id?}"
   );
 
+app.MapAreaControllerRoute(
+    name: "userAreaDefault",
+    areaName: "user",
+    pattern: "{area}/{controller=Authentication}/{action=LogIn}/{id?}"
+  );
+
+
 app.Run();

@@ -68,6 +68,34 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcV2FnZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/onur_/Documents/GitHub/CompanyManagement/ToDoMvcUI/ToDo.MvcUI/Areas/User/Views/Authentication/LogIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xBdXRoZW50aWNhdGlvblxMb2dJbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/onur_/Documents/GitHub/CompanyManagement/ToDoMvcUI/ToDo.MvcUI/Areas/User/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xIb21lXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/onur_/Documents/GitHub/CompanyManagement/ToDoMvcUI/ToDo.MvcUI/Areas/User/Views/MyJobs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xNeUpvYnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/onur_/Documents/GitHub/CompanyManagement/ToDoMvcUI/ToDo.MvcUI/Areas/User/Views/MyProfile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xNeVByb2ZpbGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/onur_/Documents/GitHub/CompanyManagement/ToDoMvcUI/ToDo.MvcUI/Areas/User/Views/MyProject/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xNeVByb2plY3RcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/onur_/Documents/GitHub/CompanyManagement/ToDoMvcUI/ToDo.MvcUI/Areas/User/Views/Shared/Components/UserSideBar/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xTaGFyZWRcQ29tcG9uZW50c1xVc2VyU2lkZUJhclxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/onur_/Documents/GitHub/CompanyManagement/ToDoMvcUI/ToDo.MvcUI/Areas/User/Views/Shared/_userLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xTaGFyZWRcX3VzZXJMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/onur_/Documents/GitHub/CompanyManagement/ToDoMvcUI/ToDo.MvcUI/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

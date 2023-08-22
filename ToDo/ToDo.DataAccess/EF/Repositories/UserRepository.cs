@@ -23,5 +23,10 @@ namespace ToDo.DataAccess.EF.Repositories
         {
             return await GetAsync(k => k.Id == Id && k.IsDeleted == false, includeList);
         }
+
+        public async Task<User> GetByUserNameAndPasswordAsync(string nickname, string password, params string[] includeList)
+        {
+            return await GetAsync(k => k.Nickname == nickname && k.Password == password && k.IsDeleted == false);
+        }
     }
 }

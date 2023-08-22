@@ -1,0 +1,157 @@
+﻿@{ Layout = null;}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo.MvcUI</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome/css/all.min.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="container-fluid vh-100 justify-content-between">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                         class="img-fluid" alt="Sample image">
+                </div>
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                    <div class="text-center">
+                        <h3 class="text-primary">Giriş Yap</h3>
+                    </div>
+
+                    <form class="justify-content-center">
+                        <div class="p-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-primary">
+                                    <i class="fa fa-user text-white"></i>
+                                </span>
+                                <input id="txtNickname" type="text" class="form-control" placeholder="Kullanıcı Adı">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-primary">
+                                    <i class="fa fa-key text-white"></i>
+                                </span>
+                                <input id="txtPassword" type="password" class="form-control" placeholder="Şifre">
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Beni Hatırla
+                                </label>
+                            </div>
+                            <button id="btnLogIn" class="btn btn-primary text-center mt-2" type="button">
+                                Oturum Aç
+                            </button>
+                            <p class="text-center mt-5">
+                                Hesabın yok mu ?
+                                <a href="~/Home/Signup">
+                                    <span class="text-primary">Üye Ol</span>
+                                </a>
+                            </p>
+                            <a href="~/Home/ForgotPassword">
+                                <p class="text-center text-primary">Parolamı Unuttum ?</p>
+                            </a>
+                        </div>
+                    </form>
+                    <div id="divMessages">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    @*<script>
+
+            $(document).ready(function () {
+                $("#btnLogIn").click(function () {
+
+                    var formDataObject =
+                    {
+                        UserName: $("#txtUserName").val(),
+                        Password: $("#txtPassword").val()
+                    };
+
+                    $.ajax({
+                        url: "/Admin/Authentication/LogIn",
+                        method: "post",
+                        dataType: "json",
+                        data: { dto: formDataObject },
+                        success: function (response) {
+                            if (response.isSuccess) {
+                                window.location.href = "/Admin/Home/Index";
+                            }
+                            else {
+                                var content = "<div class='alert alert-danger'>";
+
+                                for (var i = 0; i < response.messages.length; i++) {
+                                    content += response.messages[i] + "<br />";
+                                }
+
+                                content += "</div>";
+
+                                $("#divMessages").html(content);
+                            }
+                        }
+                    });
+
+                });
+            });
+
+        </script>*@
+    <script>
+
+        $(document).ready(function () {
+            $("#btnLogIn").click(function () {
+
+                var formDataObject =
+                {
+                    UserName: $("#txtNickname").val(),
+                    Password: $("#txtPassword").val()
+                };
+
+                $.ajax({
+                    url: "/User/Authentication/LogIn",
+                    method: "post",
+                    dataType: "json",
+                    data: { dto: formDataObject },
+                    success: function (response) {
+                        if (response.isSuccess) {
+                            window.location.href = "/User/Home/Index/";
+                        }
+                        else {
+                            var content = "<div class='alert alert-danger'>";
+
+                            for (var i = 0; i < response.messages.length; i++) {
+                                content += response.messages[i] + "<br />";
+                            }
+
+                            content += "</div>";
+
+                            $("#divMessages").html(content);
+                        }
+                    }
+                });
+
+            });
+        });
+
+
+    </script>
+
+</body>
+</html>
+
+

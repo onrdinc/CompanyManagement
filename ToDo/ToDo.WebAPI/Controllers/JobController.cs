@@ -93,5 +93,18 @@ namespace ToDo.WebAPI.Controllers
             var response = await _jobBs.GetByProjectJobAsync(id, "Project", "Statu", "Label", "User");
             return await SendResponseAsync(response);
         }
+
+        #region SWAGGER DOC
+        [Produces("application/json", "text/plain")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<List<JobGetDto>>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
+        #endregion
+        [HttpGet("getByUserId")]
+        public async Task<IActionResult> GetByUserJob([FromQuery] int id)
+        {
+            var response = await _jobBs.GetByUserJobAsync(id, "Project", "Statu", "Label", "User");
+            return await SendResponseAsync(response);
+        }
     }
 }
