@@ -16,5 +16,10 @@ namespace ToDo.DataAccess.EF.Repositories
         {
             return await GetAsync(k => k.Id == Id, includeList);
         }
+
+        public async Task<List<Job>> GetByProjectJobAsync(int projectId, params string[] includeList)
+        {
+            return await GetAllAsync(k => k.ProjectId == projectId, includeList);
+        }
     }
 }

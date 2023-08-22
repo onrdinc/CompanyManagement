@@ -13,7 +13,7 @@ namespace ToDo.MvcUI.Areas.Admin.Filters
             {
                 //login sayfasına yönlendirecek 
                 //return new RedirectToAction("LogIn", "Authentication");
-                context.Result = new RedirectToActionResult("LogIn", "Authentication", null);
+                context.Result = new RedirectResult("/Admin/Authentication/LogIn");
             }
         }
     }

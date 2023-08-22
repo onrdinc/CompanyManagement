@@ -1,5 +1,6 @@
 ﻿using Infrastructure.Utilities.ApiResponses;
 using ToDo.Model.Dto.Job;
+using ToDo.Model.Dto.User;
 using ToDo.Model.Entities;
 
 namespace ToDo.Business.Interfaces
@@ -11,5 +12,6 @@ namespace ToDo.Business.Interfaces
         Task<ApiResponse<JobGetDto>> InsertAsync(JobPostDto dto);
         Task<ApiResponse<NoData>> UpdateAsync(JobPutDto dto);
         Task<ApiResponse<NoData>> DeleteAsync(int Id);
+        Task<ApiResponse<List<JobGetDto>>> GetByProjectJobAsync(int projectId, params string[] includeList);
     }
 }

@@ -262,6 +262,24 @@
                     <div class="list-group-item">
                         <button type="button" class="btn btn-light btnAdd"><i class="fa fa-add"></i>Ekle</button>
                     </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <strong>Projeler</strong>
+                                <div class="col-auto mb-1">
+                                    <a href="/Admin/Job/Index" class="btn btn-primary">Tümü</a>
+                                </div>
+                                <div class="col-auto">
+                                    @foreach (var item in Model.Projects)
+                                    {
+                                        <a href="/Admin/Job/Index/@item.Id" class="btn btn-secondary">@item.Name</a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="card-body">
                         <table id="jobList" class="display" style="width:100%">
                             <thead>

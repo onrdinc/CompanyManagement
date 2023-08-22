@@ -6,5 +6,6 @@ namespace ToDo.DataAccess.Interfaces
     public interface IJobRepository : IBaseRepository<Job>
     {
         Task<Job> GetByIdAsync(int Id, params string[] includeList);
+        Task<List<Job>> GetByProjectJobAsync(int projectId, params string[] includeList);
     }
 }

@@ -22,7 +22,7 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
             _httpApiService = httpApiService;
         }
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
             var token = HttpContext.Session.GetObject<AccessTokenItem>("AccessToken");
 
@@ -31,7 +31,11 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
             var labelResponse = await _httpApiService.GetData<ResponseBody<List<LabelItem>>>("/label", token.Token);
             var statuResponse = await _httpApiService.GetData<ResponseBody<List<StatuItem>>>("/statu", token.Token);
             var userResponse = await _httpApiService.GetData<ResponseBody<List<UserItem>>>("/user", token.Token);
-            var jobResponse = await _httpApiService.GetData<ResponseBody<List<JobItem>>>("/job", token.Token);
+            //var jobResponse = await _httpApiService.GetData<ResponseBody<List<JobItem>>>("/job", token.Token);
+
+            var jobResponse = id == null
+              ? await _httpApiService.GetData<ResponseBody<List<JobItem>>>("/job", token.Token)
+              : await _httpApiService.GetData<ResponseBody<List<JobItem>>>($"/job/getByProjectId?id={id}", token.Token);
             //List<ProjectParticipantItem> users = new List<ProjectParticipantItem>(); 
             //foreach (var item in projectResponse.Data)
             //{
