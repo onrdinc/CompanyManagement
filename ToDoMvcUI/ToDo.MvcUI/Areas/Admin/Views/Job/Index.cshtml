@@ -277,7 +277,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Proje Adı</th>
-                                    <th>Kullanıcı</th>
+                                    <th>Personel</th>
                                     <th>İş Başlığı</th>
                                     <th>Detayı</th>
                                     <th>Durum</th>
@@ -316,7 +316,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Proje Adı</th>
-                                    <th>Kullanıcı</th>
+                                    <th>Personel</th>
                                     <th>İş Başlığı</th>
                                     <th>Detayı</th>
                                     <th>Durum</th>
@@ -341,7 +341,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Proje Ekibi Ekleme Formu</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">İş Ekleme Formu</h1>
                 @*<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>*@
             </div>
             <div class="modal-body">
@@ -362,13 +362,13 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Kullanıcı</label>
+                            <label>Personel</label>
                             <select id="userSelect" class="form-control">
-                                <option selected value="-1">Kullanıcı Seciniz</option>
+                                <option selected value="-1">Personel Seciniz</option>
 
                                 @foreach (var user in Model.Users)
                                 {
-                                    <option value="@user.Id"> @user.Name</option>
+                                    <option value="@user.Id"> @user.Name @user.Surname</option>
 
                                 }
 
@@ -401,7 +401,7 @@
                         <div class="form-group">
                             <label>Etiket</label>
                             <select id="labelSelect" class="form-control">
-                                <option selected value="-1">Kullanıcı Seciniz</option>
+                                <option selected value="-1">Etiket Seciniz</option>
                                 @foreach (var label in Model.Labels)
                                 {
                                     <option value="@label.Id">@label.Name</option>
@@ -457,12 +457,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Kullanıcı</label>
+                                <label>Personel</label>
                                 <select id="userEditSelect" class="form-control">
-                                    <option selected value="-1">Kullanıcı Seciniz</option>
+                                    <option selected value="-1">Personel Seciniz</option>
                                     @foreach (var user in Model.Users)
                                     {
-                                        <option value="@user.Id">@user.Name</option>
+                                        <option value="@user.Id">@user.Name @user.Surname</option>
                                     }
                                 </select>
                             </div>
@@ -496,7 +496,7 @@
                         <div class="form-group">
                             <label>Etiket</label>
                             <select id="labelEditSelect" class="form-control">
-                                <option selected value="-1">Kullanıcı Seciniz</option>
+                                <option selected value="-1">Etiket Seciniz</option>
                                 @foreach (var label in Model.Labels)
                                 {
                                     <option value="@label.Id">@label.Name</option>
