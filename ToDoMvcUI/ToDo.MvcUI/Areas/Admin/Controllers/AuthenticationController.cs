@@ -49,5 +49,11 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
 
             HttpContext.Session.SetObject("AccessToken", response.Data);
         }
+
+        public async Task<IActionResult> SignOut()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index","Admin");
+        }
     }
 }
