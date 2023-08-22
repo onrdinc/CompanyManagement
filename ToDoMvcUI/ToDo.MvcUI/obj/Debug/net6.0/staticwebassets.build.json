@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "s+2N4p8lTXl/d9wleRMMfuDtLfhy3NR7jS9L0tTbqWM=",
+  "Hash": "XRkWQ0bG2991ZeIJ21CsvJmGA7jJ0UWmI9UOGs9YqBg=",
   "Source": "ToDo.MvcUI",
   "BasePath": "_content/ToDo.MvcUI",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\Images\\0731c623-6359-4187-b869-498813c08385.jpg",
+      "SourceId": "ToDo.MvcUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\",
+      "BasePath": "_content/ToDo.MvcUI",
+      "RelativePath": "Images/0731c623-6359-4187-b869-498813c08385.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\0731c623-6359-4187-b869-498813c08385.jpg"
     },
     {
       "Identity": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\Images\\1e28151c-c31e-4a84-a3a8-ff03a5ab05ed.jpg",
@@ -236,6 +253,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\66a537dd-858d-46e9-8317-99366e9f3b0e.png"
+    },
+    {
+      "Identity": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\Images\\79b29d79-2774-4098-a865-efca7784dc6d.jpeg",
+      "SourceId": "ToDo.MvcUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\",
+      "BasePath": "_content/ToDo.MvcUI",
+      "RelativePath": "Images/79b29d79-2774-4098-a865-efca7784dc6d.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\79b29d79-2774-4098-a865-efca7784dc6d.jpeg"
     },
     {
       "Identity": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\Images\\7c6327b9-ca63-4744-adcd-4130bd317a8d.png",

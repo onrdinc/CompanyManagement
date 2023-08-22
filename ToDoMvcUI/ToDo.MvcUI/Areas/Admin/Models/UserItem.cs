@@ -13,6 +13,7 @@
         public string? UserPicture { get; set; }
         public string? PicturePath { get; set; }
 
+        public string Duty { get; set; }
 
     }
 }

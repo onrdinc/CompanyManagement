@@ -15,8 +15,8 @@ namespace ToDo.Model.Dto.User
         public string? Nickname { get; set; }
         public string? Email { get; set; }
         public string? Password { get; set; }
-        public string? Country { get; set; }
-        public string? City { get; set; }
+        public string? Duty { get; set; }
+
         public string? PicturePath { get; set; }
         public string? PictureBase64 { get; set; }
     }

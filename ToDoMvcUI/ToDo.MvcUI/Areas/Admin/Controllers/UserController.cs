@@ -59,7 +59,7 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
             var response =
               await _httpApiService.GetData<ResponseBody<UserItem>>($"/user/{id}",token.Token);
 
-            return Json(new { Name = response.Data.Name, Surname = response.Data.Surname, Email = response.Data.Email,Nickname = response.Data.Nickname,Password = response.Data.Password,DepartmentName = response.Data.DepartmentName,DepartmentId = response.Data.DepartmentId, PicturePath = response.Data.PicturePath });
+            return Json(new { Name = response.Data.Name, Surname = response.Data.Surname, Email = response.Data.Email,Nickname = response.Data.Nickname,Password = response.Data.Password,DepartmentName = response.Data.DepartmentName,DepartmentId = response.Data.DepartmentId, PicturePath = response.Data.PicturePath,Duty = response.Data.Duty });
         }
 
         [HttpPost]
@@ -99,6 +99,7 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
                     Name = dto.Name,
                     Surname = dto.Surname,
                     Email = dto.Email,
+                    Duty = dto.Duty,
                     Nickname = dto.Nickname,
                     DepartmentId = dto.DepartmentId,
                     Password = dto.Password,
@@ -179,6 +180,7 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
                     Name = dto.Name,
                     Surname = dto.Surname,
                     Email = dto.Email,
+                    Duty = dto.Duty,
                     Nickname = dto.Nickname,
                     DepartmentId = dto.DepartmentId,
                     Password = dto.Password,

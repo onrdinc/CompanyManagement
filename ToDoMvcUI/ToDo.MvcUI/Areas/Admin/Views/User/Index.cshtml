@@ -70,6 +70,7 @@
                 var name = $("#txtUserName").val();
                 var surname = $("#txtUserSurname").val();
                 var email = $("#txtEmail").val();
+                var duty = $("#txtDuty").val();
                 var nickname = $("#txtUserNickname").val();
                 var password = $("#txtUserPassword").val();
                 var departmentId = $("#departmentSelect").val();
@@ -78,6 +79,7 @@
                 fd.append("name", name);
                 fd.append("surname", surname);
                 fd.append("email", email);
+                fd.append("duty", duty);
                 fd.append("nickname", nickname);
                 fd.append("password", password);
                 fd.append("departmentId", departmentId);
@@ -143,7 +145,7 @@
 
                                     // elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
 
-                                    $("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + response.departmentName + "</td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>" + nickname + "</td><td>" + password + "</td><td><button type='button' class='btn btn-danger btnDelete' userId='" + response.id + "'>SİL</button></td><td><button type='button' class='btn btn-warning btnEdit' userId='" + response.id + "'>DÜZENLE</button></td></tr>");
+                                    $("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + response.departmentName + "</td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>" + duty + "</td><td>" + nickname + "</td><td>" + password + "</td><td><button type='button' class='btn btn-danger btnDelete' userId='" + response.id + "'>SİL</button></td><td><button type='button' class='btn btn-warning btnEdit' userId='" + response.id + "'>DÜZENLE</button></td></tr>");
 
                                 }
                             });
@@ -213,6 +215,7 @@
                         $("#txtUserNameEdit").val(response.name);
                         $("#txtUserSurnameEdit").val(response.surname);
                         $("#txtEmailEdit").val(response.email);
+                        $("#txtDutyEdit").val(response.duty);
                         $("#txtNicknameEdit").val(response.nickname);
                         $("#txtPasswordEdit").val(response.password);
                         $("#departmentEditSelect").val(response.departmentId);
@@ -231,6 +234,7 @@
                 var name = $("#txtUserNameEdit").val();
                 var surname = $("#txtUserSurnameEdit").val();
                 var email = $("#txtEmailEdit").val();
+                var duty = $("#txtDutyEdit").val();
                 var nickname = $("#txtNicknameEdit").val();
                 var password = $("#txtPasswordEdit").val();
                 var departmentId = $("#departmentEditSelect").val();
@@ -241,6 +245,7 @@
                 fd.append("name", name);
                 fd.append("surname", surname);
                 fd.append("email", email);
+                fd.append("duty", duty);
                 fd.append("nickname", nickname);
                 fd.append("password", password);
                 fd.append("departmentId", departmentId);
@@ -361,6 +366,7 @@
                             <th>Ad</th>
                             <th>Soyad</th>
                             <th>Email</th>
+                            <th>Görevi</th>
                             <th>Kullanıcı Adı</th>
                             <th>Şifre</th>
                             <th></th>
@@ -391,6 +397,7 @@
                                 <td>@item.Name</td>
                                 <td>@item.Surname</td>
                                 <td>@item.Email</td>
+                                <td>@item.Duty</td>
                                 <td>@item.Nickname</td>
                                 <td>@item.Password</td>
                                 <td>
@@ -413,6 +420,7 @@
                             <th>Ad</th>
                             <th>Soyad</th>
                             <th>Email</th>
+                            <th>Görevi</th>
                             <th>Kullanıcı Adı</th>
                             <th>Şifre</th>
                             <th></th>
@@ -462,6 +470,10 @@
                             <input type="email" class="form-control" id="txtEmail" placeholder="Email Giriniz">
                         </div>
                         <div class="form-group">
+                            <label for="exampleInputName">Görevi</label>
+                            <input type="text" class="form-control" id="txtDuty" placeholder="Görevi Giriniz">
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputName">Kullanıcı Adı</label>
                             <input type="text" class="form-control" id="txtUserNickname" placeholder="Kullanıcı Adı Giriniz">
                         </div>
@@ -479,14 +491,14 @@
                             </div>
                         </div>
                         @*<div class="form-group">
-                    <label for="exampleInputFile">Resim</label>
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="fuUserPhoto">
-                            <label class="custom-file-label" for="exampleInputFile">Dosya Seçiniz</label>
-                        </div>
-                    </div>
-                </div>*@
+            <label for="exampleInputFile">Resim</label>
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="fuUserPhoto">
+                    <label class="custom-file-label" for="exampleInputFile">Dosya Seçiniz</label>
+                </div>
+            </div>
+        </div>*@
 
 
                     </div>
@@ -638,6 +650,10 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
                             <input type="text" class="form-control" id="txtEmailEdit" placeholder="Email Giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Görevi</label>
+                            <input type="text" class="form-control" id="txtDutyEdit" placeholder="Görevi Giriniz">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputName">Kullanıcı Adı</label>

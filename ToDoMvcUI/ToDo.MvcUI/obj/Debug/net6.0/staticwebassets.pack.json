@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\ToDo.MvcUI.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\Images\\0731c623-6359-4187-b869-498813c08385.jpg",
+      "PackagePath": "staticwebassets\\Images\\0731c623-6359-4187-b869-498813c08385.jpg"
+    },
+    {
       "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\Images\\1e28151c-c31e-4a84-a3a8-ff03a5ab05ed.jpg",
       "PackagePath": "staticwebassets\\Images\\1e28151c-c31e-4a84-a3a8-ff03a5ab05ed.jpg"
     },
@@ -39,6 +43,10 @@
     {
       "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\Images\\66a537dd-858d-46e9-8317-99366e9f3b0e.png",
       "PackagePath": "staticwebassets\\Images\\66a537dd-858d-46e9-8317-99366e9f3b0e.png"
+    },
+    {
+      "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\Images\\79b29d79-2774-4098-a865-efca7784dc6d.jpeg",
+      "PackagePath": "staticwebassets\\Images\\79b29d79-2774-4098-a865-efca7784dc6d.jpeg"
     },
     {
       "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\Images\\7c6327b9-ca63-4744-adcd-4130bd317a8d.png",

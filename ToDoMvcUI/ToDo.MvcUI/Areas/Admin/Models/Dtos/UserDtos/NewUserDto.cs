@@ -7,6 +7,7 @@
         public string Email { get;set; }
         public string Password { get;set; }
         public string Nickname { get;set; }
+        public string Duty { get;set; }
         public int DepartmentId { get;set; }
         //public IFormFile UserPhoto { get;set; }
     }
