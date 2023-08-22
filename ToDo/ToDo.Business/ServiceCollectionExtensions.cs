@@ -48,6 +48,8 @@ namespace ToDo.Business
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 
 
+            services.AddScoped<IWageBs, WageBs>();
+            services.AddScoped<IWageRepository, WageRepository>();
 
             services.AddScoped<IAdminUserBs, AdminUserBs>();
             services.AddScoped<IAdminUserRepository, AdminUserRepository>();

@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
 using Infrastructure.Utilities.ApiResponses;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ToDo.Business.Interfaces;
 using ToDo.Model.Dto.Department;
-using ToDo.Model.Dto.Project;
 
 namespace ToDo.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class DepartmentController : BaseController
     {
         private readonly IDepartmentBs _departmentBs;
