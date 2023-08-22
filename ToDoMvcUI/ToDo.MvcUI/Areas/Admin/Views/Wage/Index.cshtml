@@ -287,7 +287,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Proje Ekibi Ekleme Formu</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Personel Maaş Ekleme Formu</h1>
                 @*<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>*@
             </div>
             <div class="modal-body">
@@ -300,10 +300,10 @@
                         <div class="form-group">
                             <label>Personel</label>
                             <select id="userSelect" class="form-control">
-                                <option selected value="-1">Proje Seciniz</option>
+                                <option selected value="-1">Personel Seciniz</option>
                                 @foreach (var user in Model.Users)
                                 {
-                                    <option value="@user.Id">@user.Name</option>
+                                    <option value="@user.Id">@user.Name @user.Surname</option>
 
                                 }
                             </select>
@@ -333,7 +333,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Proje Ekibi Düzenleme Formu</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Personel Maaşları Düzenleme Formu</h1>
                 @*<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>*@
             </div>
             <div class="modal-body">
