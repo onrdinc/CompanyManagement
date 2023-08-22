@@ -63,21 +63,7 @@
                                     $("#labelAddModal").modal("hide");
 
 
-                                    ////bakılacak
-
-                                    //$("button[id='#pills-profile-tab']").addClass("active").attr("aria-selected", "true");
-                                    //$("button[id='#pills-home-tab']").removeClass("active").attr("aria-selected", "false");
-
-                                    //$("#pills-profile-tab").removeClass("active").attr("aria-selected", "false");
-                                    //$("#pills-home-tab").addClass("active").attr("aria-selected", "true");
-
-
-
-
-
-                                    //// elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
-
-                                    //$("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>DÜZENLE</td><td><button type='button' class='btn btn-danger btnDelete' id='" + response.id + "'>SİL</button></td></tr>");
+                                    $("#labelList tbody").append("<tr><td></td><td>" + name + "</td><td>" + description + "</td><td><button type='button' class='btn btn-danger btnDelete' labelId='" + response.id + "'>SİL</button></td><td><button type='button' class='btn btn-warning btnEdit' labelId='" + response.id + "'>DÜZENLE</button></td></tr>");
 
                                 }
                             });
