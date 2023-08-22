@@ -14,12 +14,12 @@ namespace ToDo.DataAccess.EF.Repositories
     {
         public async Task<Job> GetByIdAsync(int Id, params string[] includeList)
         {
-            return await GetAsync(k => k.Id == Id, includeList);
+            return await GetAsync(k => k.Id == Id && k.IsDeleted == false, includeList);
         }
 
         public async Task<List<Job>> GetByProjectJobAsync(int projectId, params string[] includeList)
         {
-            return await GetAllAsync(k => k.ProjectId == projectId, includeList);
+            return await GetAllAsync(k => k.ProjectId == projectId && k.IsDeleted == false, includeList);
         }
     }
 }

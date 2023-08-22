@@ -9,21 +9,18 @@ using System.Threading.Tasks;
 
 namespace ToDo.Model.Entities
 {
-    [Table("ProjectParticipants")]
 
     public class ProjectParticipant:IEntity
     {
-        [Key]
 
         public int Id { get; set; }
         public int ProjectId { get; set; }
         public int UserId { get; set; }
         public string Duty { get; set; }
 
+        public bool? IsDeleted { get; set; } = false;
 
-        [ForeignKey("ProjectId")]
         public Project? Project { get; set; }
-        [ForeignKey("UserId")]
         public User? User { get; set; }
     }
 }

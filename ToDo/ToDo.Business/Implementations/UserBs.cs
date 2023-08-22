@@ -30,9 +30,9 @@ namespace ToDo.Business.Implementations
             var user = await _repo.GetByIdAsync(Id);
             if(user != null)
             {
-                //user.IsDeleted = true;
-                //await _repo.UpdateAsync(user);
-                await _repo.DeleteAsync(user);
+                user.IsDeleted = true;
+                await _repo.UpdateAsync(user);
+                //await _repo.DeleteAsync(user);
                 return ApiResponse<NoData>.Success(StatusCodes.Status200OK);
             }
             throw new NotFoundException("Kullanıcı Bulunamadı");
@@ -72,7 +72,7 @@ namespace ToDo.Business.Implementations
 
         public async Task<ApiResponse<List<UserGetDto>>> GetUsersAsync(params string[] includeList)
         {
-            var users = await _repo.GetAllAsync(includeList : includeList);
+            var users = await _repo.GetAllAsync(k=>k.IsDeleted == false ,includeList : includeList);
             //if (users.Count > 0)
             //{
             //    var returnList = _mapper.Map<List<UserGetDto>>(users);

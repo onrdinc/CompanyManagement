@@ -4,10 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ToDo.Model.Entities
 {
-    [Table("Users")]
     public class User:IEntity
     {
-        [Key]
         public int Id { get; set; }
         public int DepartmentId { get; set; }
         public string? Name { get; set;}
@@ -20,7 +18,6 @@ namespace ToDo.Model.Entities
         public bool? IsDeleted { get; set; } =false;
 
 
-        [ForeignKey("DepartmentId")]
         public Department? Department { get; set; }
 
         [NotMapped] // bu propertynin veritabanındaki ilgili tabloyla bir alakası yok bunula ilgili birşey yapma çalışma

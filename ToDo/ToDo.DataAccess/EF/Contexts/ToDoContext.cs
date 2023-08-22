@@ -15,7 +15,7 @@ namespace ToDo.DataAccess.EF.Contexts
         {
             //_configuration.GetConnectionString("ToDoConnStr");
             //optionsBuilder.UseSqlServer();
-            optionsBuilder.UseSqlServer("server=.\\SQLEXPRESS;database=ToDo;trusted_connection=true;");
+            optionsBuilder.UseSqlServer("server=.\\SQLEXPRESS;database=ToDoApp;trusted_connection=true;");
         }
 
         public DbSet<Department> Departments { get; set; }

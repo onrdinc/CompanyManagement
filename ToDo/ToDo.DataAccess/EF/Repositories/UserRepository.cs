@@ -16,12 +16,12 @@ namespace ToDo.DataAccess.EF.Repositories
     {
         public async Task<List<User>> GetByDepartmentAsync(int departmentId, params string[] includeList)
         {
-            return await GetAllAsync(k => k.DepartmentId == departmentId, includeList);
+            return await GetAllAsync(k => k.DepartmentId == departmentId && k.IsDeleted == false, includeList);
         }
 
         public async Task<User> GetByIdAsync(int Id, params string[] includeList)
         {
-            return await GetAsync(k => k.Id == Id, includeList);
+            return await GetAsync(k => k.Id == Id && k.IsDeleted == false, includeList);
         }
     }
 }

@@ -9,13 +9,12 @@ using System.Threading.Tasks;
 
 namespace ToDo.Model.Entities
 {
-    [Table("Departments")]
 
     public class Department:IEntity
     {
-        [Key]
         public int Id { get; set; }
         public string? Name { get; set; }
+        public bool? IsDeleted { get; set; } = false;
 
     }
 }

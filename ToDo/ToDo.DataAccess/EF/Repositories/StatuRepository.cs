@@ -14,7 +14,7 @@ namespace ToDo.DataAccess.EF.Repositories
     {
         public async Task<Statu> GetByIdAsync(int Id, params string[] includeList)
         {
-            return await GetAsync(k => k.Id == Id, includeList);
+            return await GetAsync(k => k.Id == Id && k.IsDeleted == false, includeList);
         }
     }
 }

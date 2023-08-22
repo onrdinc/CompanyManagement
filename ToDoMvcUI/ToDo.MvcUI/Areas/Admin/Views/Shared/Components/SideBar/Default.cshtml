@@ -7,24 +7,27 @@
         </a>
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
             <li class="nav-item">
-                <a href="#" class="nav-link align-middle px-0">
-                    <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                <a href="/Admin/Home/Index" class="nav-link align-middle px-0">
+                    <i class="fs-4 fa fa-home"></i> <span class="ms-1 d-none d-sm-inline">Ana Sayfa</span>
                 </a>
             </li>
             <li>
                 <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Yönetim</span>
                 </a>
                 <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                     <li class="w-100">
-                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
+                        <a href="/Admin/User/Index" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fa fa-user"></i> Personeller</span></a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
+                        <a href="/Admin/Service/Index" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fa fa-wrench"></i> Hizmetler</span></a>
+                    </li>
+                    <li>
+                        <a href="/Admin/Department/Index" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fa fa-building"></i> Departmanlar</span></a>
                     </li>
                 </ul>
             </li>
-            <li>
+            @*<li>
                 <a href="/Admin/User/Index" class="nav-link px-0 align-middle">
                     <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Personeller</span>
                 </a>
@@ -33,44 +36,43 @@
                 <a href="/Admin/Department/Index" class="nav-link px-0 align-middle">
                     <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Departmanlar</span>
                 </a>
-            </li>
+            </li>*@
             <li>
                 <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                    <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span>
+                    <i class="fs-4"></i> <span class="ms-1 d-none d-sm-inline">Proje Yönetimi</span>
                 </a>
                 <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                     <li class="w-100">
-                        <a href="/Admin/Label/Index" class="nav-link px-0"> <span class="d-none d-sm-inline">Etiketler</span></a>
+                        <a href="/Admin/Project/Index" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fa fa-project-diagram"></i> Projeler</span></a>
                     </li>
                     <li>
-                        <a href="/Admin/Service/Index" class="nav-link px-0"> <span class="d-none d-sm-inline">Hizmetler</span></a>
+                        <a href="/Admin/Label/Index" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class=" fa fa-ticket"></i> Etiketler</span></a>
+                    </li>
+                    <li>
+                        <a href="/Admin/Statu/Index" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fa fa-stream"></i> Süreçler</span></a>
                     </li>
                 </ul>
             </li>
             <li>
                 <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span>
+                    <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">İşler</span>
                 </a>
                 <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                     <li class="w-100">
-                        <a href="/Admin/Project/Index" class="nav-link px-0"> <span class="d-none d-sm-inline">Projeler</span></a>
+                        <a href="/Admin/ProjectParticipant/Index" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fa fa-users"></i> Ekipler</span></a>
                     </li>
-                    <li>
+                    @*<li>
                         <a href="/Admin/ProjectParticipant/Index" class="nav-link px-0"> <span class="d-none d-sm-inline">Ekipler</span></a>
                     </li>
                     <li>
                         <a href="/Admin/Statu/Index" class="nav-link px-0"> <span class="d-none d-sm-inline">İş Durumları</span> 3</a>
-                    </li>
+                    </li>*@
                     <li>
-                        <a href="/Admin/Job/Index" class="nav-link px-0"> <span class="d-none d-sm-inline">İşler</span> 4</a>
+                        <a href="/Admin/Job/Index" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fa fa-tasks"></i> İşler</span> </a>
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="#" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span>
-                </a>
-            </li>
+          
         </ul>
         <hr>
         <div class="dropdown pb-4">
@@ -80,7 +82,7 @@
             </a>
 
         </div>
-        <a  href="/Admin/Authentication/SignOut" class="btn btn-danger text-center mt-2 mb-2" type="button">
+        <a  href="/Admin/Authentication/SignOut" class="btn btn-danger text-center mt-2 mb-2" type="button"><i class="fa fa-sign-out"></i>
             Çıkış Yap
         </a>
 

@@ -31,9 +31,13 @@ namespace ToDo.Business.Implementations
             if (Id <= 0)
                 throw new BadRequestException("id değeri 0 dan büyük olmalıdır");
             var user = await _repo.GetByIdAsync(Id);
-
-            await _repo.DeleteAsync(user);
-            return ApiResponse<NoData>.Success(StatusCodes.Status200OK);
+            if(user != null)
+            {
+                user.IsDeleted = true;
+                await _repo.UpdateAsync(user);
+                return ApiResponse<NoData>.Success(StatusCodes.Status200OK);
+            }
+            throw new NotFoundException("Girilen id ye uygun kişi bulunamadı");
         }
 
         public async Task<ApiResponse<ProjectParticipantGetDto>> GetByIdAsync(int Id, params string[] includeList)
@@ -69,7 +73,7 @@ namespace ToDo.Business.Implementations
 
         public async Task<ApiResponse<List<ProjectParticipantGetDto>>> GetUsersAsync(params string[] includeList)
         {
-            var users = await _repo.GetAllAsync(includeList: includeList);
+            var users = await _repo.GetAllAsync(k => k.IsDeleted == false, includeList: includeList);
             //if (users.Count > 0)
             //{
             //    var returnList = _mapper.Map<List<ProjectParticipantGetDto>>(users);

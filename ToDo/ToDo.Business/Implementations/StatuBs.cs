@@ -24,9 +24,15 @@ namespace ToDo.Business.Implementations
             if (Id <= 0)
                 throw new BadRequestException("id değeri 0 dan büyük olmalıdır");
             var statu = await _repo.GetByIdAsync(Id);
+            if (statu != null)
+            {
+                statu.IsDeleted = true;
+                await _repo.UpdateAsync(statu);
+                return ApiResponse<NoData>.Success(StatusCodes.Status200OK);
+            }
+            throw new NotFoundException("Girilen id ye uygun süreç bulunamadı");
 
-            await _repo.DeleteAsync(statu);
-            return ApiResponse<NoData>.Success(StatusCodes.Status200OK);
+
         }
 
         public async Task<ApiResponse<StatuGetDto>> GetByIdAsync(int Id, params string[] includeList)
@@ -45,7 +51,7 @@ namespace ToDo.Business.Implementations
 
         public async Task<ApiResponse<List<StatuGetDto>>> GetStatusAsync(params string[] includeList)
         {
-            var status = await _repo.GetAllAsync(includeList: includeList);
+            var status = await _repo.GetAllAsync(k=>k.IsDeleted == false ,includeList: includeList);
             //if (status.Count > 0)
             //{
             //    var returnList = _mapper.Map<List<StatuGetDto>>(status);

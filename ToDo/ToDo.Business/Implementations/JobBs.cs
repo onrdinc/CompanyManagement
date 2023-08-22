@@ -28,8 +28,16 @@ namespace ToDo.Business.Implementations
                 throw new BadRequestException("id değeri 0 dan büyük olmalıdır");
             var job = await _repo.GetByIdAsync(Id);
 
-            await _repo.DeleteAsync(job);
-            return ApiResponse<NoData>.Success(StatusCodes.Status200OK);
+            if (job != null)
+            {
+                job.IsDeleted = true;
+                await _repo.UpdateAsync(job);
+                //await _repo.DeleteAsync(job);
+                return ApiResponse<NoData>.Success(StatusCodes.Status200OK);
+            }
+
+            throw new NotFoundException("Girilen id ye uygun iş bulunamadı");
+
         }
 
         public async Task<ApiResponse<JobGetDto>> GetByIdAsync(int Id, params string[] includeList)
@@ -65,7 +73,7 @@ namespace ToDo.Business.Implementations
 
         public async Task<ApiResponse<List<JobGetDto>>> GetJobsAsync(params string[] includeList)
         {
-            var jobs = await _repo.GetAllAsync(includeList: includeList);
+            var jobs = await _repo.GetAllAsync(k=>k.IsDeleted == false, includeList: includeList);
             //if (jobs.Count > 0)
             //{
             //    var returnList = _mapper.Map<List<JobGetDto>>(jobs);

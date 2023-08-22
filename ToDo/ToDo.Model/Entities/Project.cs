@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace ToDo.Model.Entities
 {
-    [Table ("Projects")]
     public class Project:IEntity
     {
         [Key]
@@ -20,11 +19,10 @@ namespace ToDo.Model.Entities
         public string? Description { get; set; }
 
 
-        [ForeignKey("ServiceId")]
         public Service? Service { get;set; }
 
-        [ForeignKey("DepartmentId")]
         public Department? Department { get;set; }
+        public bool? IsDeleted { get; set; } = false;
 
 
     }
