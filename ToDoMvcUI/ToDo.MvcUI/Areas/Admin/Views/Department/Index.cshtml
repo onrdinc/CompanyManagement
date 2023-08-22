@@ -64,21 +64,9 @@
                                     $("#departmentAddModal").modal("hide");
 
 
-                                    ////bakılacak
+                                    // elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
 
-                                    //$("button[id='#pills-profile-tab']").addClass("active").attr("aria-selected", "true");
-                                    //$("button[id='#pills-home-tab']").removeClass("active").attr("aria-selected", "false");
-
-                                    //$("#pills-profile-tab").removeClass("active").attr("aria-selected", "false");
-                                    //$("#pills-home-tab").addClass("active").attr("aria-selected", "true");
-
-
-
-
-
-                                    //// elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
-
-                                    //$("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>DÜZENLE</td><td><button type='button' class='btn btn-danger btnDelete' id='" + response.id + "'>SİL</button></td></tr>");
+                                    $("#departmentList tbody").append("<tr><td></td><td>" + name + "</td><td><button type='button' class='btn btn-danger btnDelete' departmentId='" + response.id + "'>SİL</button></td><td><button type='button' class='btn btn-warning btnEdit' departmentId='" + response.id + "'>DÜZENLE</button></td></tr>");
 
                                 }
                             });
@@ -264,32 +252,35 @@
         <table id="departmentList" class="display" style="width:100%">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Departman Adı</th>
                     <th></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var item in Model.Select((value, index) => new { Value = value, Index = index }))
                 {
-
-
                     <tr>
-                        <td>@item.Name</td>
+                        <td>@(item.Index + 1)</td>
+                        <td>@item.Value.Name</td>
                         <td>
-                            <button id="btnDelete" type="button" class="btn btn-danger btnDelete" departmentId='@item.Id'>SİL</button>
+                            <button id="btnDelete" type="button" class="btn btn-danger btnDelete" departmentId='@item.Value.Id'>SİL</button>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-warning btnEdit" departmentId='@item.Id'>
+                            <button type="button" class="btn btn-warning btnEdit" departmentId='@item.Value.Id'>
                                 DÜZENLE
                             </button>
                         </td>
                     </tr>
                 }
 
+
+
             </tbody>
             <tfoot>
                 <tr>
+                    <th>#</th>
                     <th>Departman Adı</th>
                     <th></th>
                     <th></th>
