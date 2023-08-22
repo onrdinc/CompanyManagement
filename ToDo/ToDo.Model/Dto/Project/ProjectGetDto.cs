@@ -15,5 +15,7 @@ namespace ToDo.Model.Dto.Project
         public string? Description { get; set; }
         public DepartmentGetDto Department { get; set; }
         public ServiceGetDto Service { get; set; }
+        public int ProjectCount { get; set; }
+
     }
 }

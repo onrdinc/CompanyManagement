@@ -17,5 +17,7 @@ namespace ToDo.Model.Dto.Job
         public StatuGetDto? Statu { get; set; }
         public LabelGetDto? Label { get; set; }
         public UserGetDto? User { get; set; }
+        public int JobCount { get; set; }
+
     }
 }

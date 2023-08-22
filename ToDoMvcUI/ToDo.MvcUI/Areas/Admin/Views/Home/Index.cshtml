@@ -1,5 +1,56 @@
-﻿@{ 
+﻿@using ToDo.MvcUI.Areas.Admin.ViewModels
+@model StatisticsViewModel
+@{
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<b>hg</b>
+<div class="container justify-content-center align-items-center d-flex" style="height:25vh">
+    <h1 class="text-primary">OD Software</h1>
+</div>
+
+<div class="container justify-content-center align-items-center d-flex" style="height:25vh">
+    <div class="row">
+
+        <div class="col-md-4 mb-4">
+            <div class="card bg-warning">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Personeller</strong></h5>
+                    <p class="card-text">@Model.UserCount adet personeliniz vardır.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-info">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Departmanlar</strong></h5>
+                    <p class="card-text">@Model.DepartmentCount adet departman vardır.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-body">
+                <div class="card-body bg-light">
+                    <h5 class="card-title">Hizmetler</h5>
+                    <p class="card-text">@Model.ServiceCount adet hizmetiniz vardır.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body bg-secondary">
+                    <h5 class="card-title">Projeler</h5>
+                    <p class="card-text">@Model.ProjectCount adet projeniz vardır.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body bg-danger">
+                    <h5 class="card-title">İşler</h5>
+                    <p class="card-text">@Model.JobCount adet işiniz vardır.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

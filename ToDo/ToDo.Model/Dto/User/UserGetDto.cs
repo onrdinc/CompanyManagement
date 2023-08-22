@@ -21,6 +21,7 @@ namespace ToDo.Model.Dto.User
         public string UserPicture { get; set; }
         public string? PicturePath { get; set; }
 
+        public int UserCount { get;set; }
 
     }
 }
