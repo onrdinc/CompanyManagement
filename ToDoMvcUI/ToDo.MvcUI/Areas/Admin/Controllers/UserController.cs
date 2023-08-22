@@ -111,7 +111,7 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
                 //ya da response.statuscode == 201
                 if (response.StatusCode.ToString().StartsWith("2"))
                 {
-                    return Json(new { IsSuccess = true, Message = "Başarıyla Kaydedildi",UserPicture = response.Data.UserPicture,PicturePath = response.Data.PicturePath,Id = response.Data.Id });
+                    return Json(new { IsSuccess = true, Message = "Başarıyla Kaydedildi",UserPicture = response.Data.UserPicture,DepartmentName = response.Data.DepartmentName,PicturePath = response.Data.PicturePath,Id = response.Data.Id });
 
                 }
                 else

@@ -5,12 +5,24 @@
       "PackagePath": "staticwebassets\\ToDo.MvcUI.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\Images\\1f38b644-6686-4506-8497-0258bbeada36.png",
+      "PackagePath": "staticwebassets\\Images\\1f38b644-6686-4506-8497-0258bbeada36.png"
+    },
+    {
+      "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\Images\\2bb0cc2f-9b7e-414f-a767-258c19c07cda.jpeg",
+      "PackagePath": "staticwebassets\\Images\\2bb0cc2f-9b7e-414f-a767-258c19c07cda.jpeg"
+    },
+    {
       "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\Images\\34be8dba-30fb-448e-afa4-6ff91ea8dfc6.jpg",
       "PackagePath": "staticwebassets\\Images\\34be8dba-30fb-448e-afa4-6ff91ea8dfc6.jpg"
     },
     {
       "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\Images\\3a59d31f-1457-4285-98cd-24b879e1c766.png",
       "PackagePath": "staticwebassets\\Images\\3a59d31f-1457-4285-98cd-24b879e1c766.png"
+    },
+    {
+      "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\Images\\4c6b43b0-ef74-4ef7-8d05-0a0d99615124.png",
+      "PackagePath": "staticwebassets\\Images\\4c6b43b0-ef74-4ef7-8d05-0a0d99615124.png"
     },
     {
       "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\Images\\4c719ee3-77e9-4173-856c-13e4a44bd8de.jpg",
@@ -35,6 +47,10 @@
     {
       "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\Images\\c6bec85a-7b01-46c7-99d6-98a11b0c1b2c.png",
       "PackagePath": "staticwebassets\\Images\\c6bec85a-7b01-46c7-99d6-98a11b0c1b2c.png"
+    },
+    {
+      "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\Images\\dd3b3275-693e-401b-ab54-cd4d694373a7.png",
+      "PackagePath": "staticwebassets\\Images\\dd3b3275-693e-401b-ab54-cd4d694373a7.png"
     },
     {
       "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\css\\site.css",

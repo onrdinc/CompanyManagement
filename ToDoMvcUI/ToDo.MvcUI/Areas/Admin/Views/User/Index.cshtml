@@ -5,6 +5,18 @@
 @{
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
+<style>
+    .jobparticipantimg {
+        height: 250px;
+        width: 250px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px solid lightgray;
+        margin: 1px 0px 0px 1px;
+    }
+</style>
+
 @section customStyles{
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
     <link href="~/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
@@ -131,7 +143,7 @@
 
                                     // elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
 
-                                    $("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>DÜZENLE</td><td><button type='button' class='btn btn-danger btnDelete' id='" + response.id + "'>SİL</button></td></tr>");
+                                    $("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + response.departmentName + "</td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>" + nickname + "</td><td>" + password + "</td><td><button type='button' class='btn btn-danger btnDelete' userId='" + response.id + "'>SİL</button></td><td><button type='button' class='btn btn-warning btnEdit' userId='" + response.id + "'>DÜZENLE</button></td></tr>");
 
                                 }
                             });
@@ -589,7 +601,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Personel Düzenleme Formu</h1>
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>
+                @*<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>*@
             </div>
             <div class="modal-body">
                 <form>
@@ -597,6 +609,11 @@
                     <input type="hidden" id="hfUserId" />
 
                     <div class="card-body">
+
+                        <div class="form-group justify-content-center align-items-center mb-3">
+                            <img class="jobparticipantimg" id="imgUserPhotoEdit" />
+                        </div>
+
                         <div class="form-group">
                             <label>Departman</label>
                             <select id="departmentEditSelect" class="form-control">
@@ -638,10 +655,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Personel Resmi</label>
-                            <img id="imgUserPhotoEdit" />
-                        </div>
 
                     </div>
                     <!-- /.card-body -->
