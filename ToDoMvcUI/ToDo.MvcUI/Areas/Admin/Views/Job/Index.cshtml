@@ -89,15 +89,7 @@
                                     $("#jobAddModal").modal("hide");
 
 
-
-
-
-
-
-
-                                    //// elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
-
-                                    //$("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>DÜZENLE</td><td><button type='button' class='btn btn-danger btnDelete' id='" + response.id + "'>SİL</button></td></tr>");
+                                    $("#jobList tbody").append("<tr><td>" + response.projectId + "</td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + response.departmentName + "</td><td>" + response.userId + "</td><td>" + jobTitle + "</td><td>" + detail + "</td><td>" + response.statuId + "</td><td>" + response.labelId + "</td><td><button type='button' class='btn btn-danger btnDelete' userId='" + response.id + "'>SİL</button></td><td><button type='button' class='btn btn-warning btnEdit' userId='" + response.id + "'>DÜZENLE</button></td></tr>");
 
                                 }
                             });
