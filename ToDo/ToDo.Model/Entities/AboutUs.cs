@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ToDo.Model.Entities
 {
-    public class AboutUs :IEntity
+    public class AboutUs : IEntity
     {
         public int Id { get; set; }
         public string? About { get; set; }

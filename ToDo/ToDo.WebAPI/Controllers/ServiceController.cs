@@ -1,32 +1,29 @@
 ﻿using AutoMapper;
 using Infrastructure.Utilities.ApiResponses;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ToDo.Business.Implementations;
 using ToDo.Business.Interfaces;
-using ToDo.Model.Dto.Department;
 using ToDo.Model.Dto.Service;
 
 namespace ToDo.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ServiceController : BaseController
     {
         private readonly IServiceBs _serviceBs;
-        private readonly IMapper _mapper;
 
-        public ServiceController(IServiceBs serviceBs, IMapper mapper)
+        public ServiceController(IServiceBs serviceBs)
         {
             _serviceBs = serviceBs;
-            _mapper = mapper;
         }
 
         #region SWAGGER DOC
         [Produces("application/json", "text/plain")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<ServiceGetDto>))]
-        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<ServiceGetDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
         #endregion
 
         [HttpGet("{id}")]
@@ -41,11 +38,10 @@ namespace ToDo.WebAPI.Controllers
         #region SWAGGER DOC
         [Produces("application/json", "text/plain")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<List<ServiceGetDto>>))]
-        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<List<ServiceGetDto>>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
         #endregion
         [HttpGet]
         [AllowAnonymous]
-
         public async Task<IActionResult> GetServices()
         {
             ;
@@ -55,7 +51,11 @@ namespace ToDo.WebAPI.Controllers
 
         }
 
-
+        #region SWAGGER DOC
+        [Produces("application/json", "text/plain")]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(ApiResponse<ServiceGetDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        #endregion
         [HttpPost]
         public async Task<IActionResult> SaveNewService([FromBody] ServicePostDto dto)
         {
@@ -67,20 +67,27 @@ namespace ToDo.WebAPI.Controllers
 
         }
 
-        #region Swagger Doc
+        #region SWAGGER DOC
         [Produces("application/json", "text/plain")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
         #endregion
         [HttpPut]
-        public async Task<IActionResult> UpdateDepartment([FromBody] ServicePutDto dto)
+        public async Task<IActionResult> UpdateService([FromBody] ServicePutDto dto)
         {
             var response = await _serviceBs.UpdateAsync(dto);
             return await SendResponseAsync(response);
         }
 
+        #region SWAGGER DOC
+        [Produces("application/json", "text/plain")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
+        #endregion
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteDepartment(int Id)
+        public async Task<IActionResult> DeleteService(int Id)
         {
             var response = await _serviceBs.DeleteAsync(Id);
 

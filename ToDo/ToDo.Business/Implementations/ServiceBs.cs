@@ -71,7 +71,7 @@ namespace ToDo.Business.Implementations
                 throw new BadRequestException("Kaydedilecek hizmet bilgisi yollamalısınız");
 
             if (dto.Name == null)
-                throw new BadRequestException("Departman Adı Boş Olamaz");
+                throw new BadRequestException("Hizmet Adı Boş Olamaz");
 
             var department = _mapper.Map<Service>(dto);
 
@@ -87,7 +87,7 @@ namespace ToDo.Business.Implementations
                 throw new BadRequestException("Kaydedilecek hizmet bilgisi yollamalısınız");
 
             if (dto.Name == null)
-                throw new BadRequestException("Departman Adı Boş Olamaz");
+                throw new BadRequestException("Hizmet Adı Boş Olamaz");
 
             var department = _mapper.Map<Service>(dto);
 

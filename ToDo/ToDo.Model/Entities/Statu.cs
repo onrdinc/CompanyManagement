@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace ToDo.Model.Entities
 {
 
-    public class Statu:IEntity
+    public class Statu : IEntity
     {
         public int Id { get; set; }
         public string? Name { get; set; }
-        public bool? IsDeleted { get; set; } = false;
+        public bool IsDeleted { get; set; } = false;
 
     }
 }

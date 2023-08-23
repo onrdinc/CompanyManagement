@@ -60,6 +60,7 @@
                                 if (result.isConfirmed) {
 
                                     $("#btnClear").trigger("click");
+                                    $("#statuAddModal").modal("hide");
 
 
                                     $("#statuList tbody").append("<tr><td></td><td>" + name + "</td><td><button type='button' class='btn btn-danger btnDelete' departmentId='" + response.id + "'>SİL</button></td><td><button type='button' class='btn btn-warning btnEdit' departmentId='" + response.id + "'>DÜZENLE</button></td></tr>");

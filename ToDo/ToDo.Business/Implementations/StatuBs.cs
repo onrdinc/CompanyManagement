@@ -46,7 +46,7 @@ namespace ToDo.Business.Implementations
                 var dto = _mapper.Map<StatuGetDto>(statu);
                 return ApiResponse<StatuGetDto>.Success(StatusCodes.Status200OK, dto);
             }
-            throw new NotFoundException("Kilometre Taşı Bulunamadı");
+            throw new NotFoundException("Süreç Bulunamadı");
         }
 
         public async Task<ApiResponse<List<StatuGetDto>>> GetStatusAsync(params string[] includeList)
@@ -67,10 +67,10 @@ namespace ToDo.Business.Implementations
         public async Task<ApiResponse<StatuGetDto>> InsertAsync(StatuPostDto dto)
         {
             if (dto == null)
-                throw new BadRequestException("Kaydedilecek kişi bilgisi yollamalısınız");
+                throw new BadRequestException("Kaydedilecek süreç bilgisi yollamalısınız");
 
             if (dto.Name == null)
-                throw new BadRequestException("İsim Boş Olamaz");
+                throw new BadRequestException("Süreç Adı Olamaz");
 
             
 
@@ -85,10 +85,10 @@ namespace ToDo.Business.Implementations
         public async Task<ApiResponse<NoData>> UpdateAsync(StatuPutDto dto)
         {
             if (dto == null)
-                throw new BadRequestException("Kaydedilecek kişi bilgisi yollamalısınız");
+                throw new BadRequestException("Kaydedilecek süreç bilgisi yollamalısınız");
 
             if (dto.Name == null)
-                throw new BadRequestException("İsim Boş Olamaz");
+                throw new BadRequestException("Süreç Adı Olamaz");
 
             var statu = _mapper.Map<Statu>(dto);
 

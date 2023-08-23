@@ -78,7 +78,7 @@ namespace ToDo.Business.Implementations
                 throw new BadRequestException("Kaydedilecek etiket bilgisi yollamalısınız");
 
             if (dto.Name == null)
-                throw new BadRequestException("İsim Boş Olamaz");
+                throw new BadRequestException("Etiket İsmi Boş Olamaz");
 
             var label = _mapper.Map<Label>(dto);
 
@@ -94,7 +94,7 @@ namespace ToDo.Business.Implementations
                 throw new BadRequestException("Kaydedilecek etiket bilgisi yollamalısınız");
 
             if (dto.Name == null)
-                throw new BadRequestException("İsim Boş Olamaz");
+                throw new BadRequestException("Etiket İsmi Boş Olamaz");
 
             var label = _mapper.Map<Label>(dto);
 

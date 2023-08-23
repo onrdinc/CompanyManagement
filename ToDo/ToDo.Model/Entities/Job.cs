@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ToDo.Model.Entities
 {
 
-    public class Job:IEntity
+    public class Job : IEntity
     {
         public int Id { get; set; }
         public int StatuId { get; set; }
@@ -14,7 +14,7 @@ namespace ToDo.Model.Entities
         public int ProjectId { get; set; }
         public int LabelId { get; set; }
         public int UserId { get; set; }
-        public bool? IsDeleted { get; set; } = false;
+        public bool IsDeleted { get; set; } = false;
 
         public Project? Project { get; set; }
         public Statu? Statu { get; set; }

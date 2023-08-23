@@ -9,20 +9,19 @@ using System.Threading.Tasks;
 
 namespace ToDo.Model.Entities
 {
-    public class Project:IEntity
+    public class Project : IEntity
     {
-        [Key]
-        public int Id { get;set; }
-        public int ServiceId { get;set; }
-        public int DepartmentId { get;set; }
-        public string? Name { get;set; }
+        public int Id { get; set; }
+        public int ServiceId { get; set; }
+        public int DepartmentId { get; set; }
+        public string? Name { get; set; }
         public string? Description { get; set; }
 
 
-        public Service? Service { get;set; }
+        public Service? Service { get; set; }
 
-        public Department? Department { get;set; }
-        public bool? IsDeleted { get; set; } = false;
+        public Department? Department { get; set; }
+        public bool IsDeleted { get; set; } = false;
 
 
     }

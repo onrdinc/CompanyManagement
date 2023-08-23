@@ -4,20 +4,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ToDo.Model.Entities
 {
-    public class User:IEntity
+    public class User : IEntity
     {
         public int Id { get; set; }
         public int DepartmentId { get; set; }
-        public string? Name { get; set;}
-        public string? Surname { get; set;}
-        public string? Nickname { get; set;}
-        public string? Email { get; set;}
-        public string? Password { get; set;}
+        public string? Name { get; set; }
+        public string? Surname { get; set; }
+        public string? Nickname { get; set; }
+        public string? Email { get; set; }
+        public string? Password { get; set; }
         public string? Duty { get; set; }
 
-        public string? PicturePath { get; set;}
+        public string? PicturePath { get; set; }
         public byte[]? Picture { get; set; }
-        public bool? IsDeleted { get; set; } =false;
+        public bool IsDeleted { get; set; } = false;
 
 
         public Department? Department { get; set; }
@@ -33,7 +33,7 @@ namespace ToDo.Model.Entities
                     using (var ms = new MemoryStream())
                     {
 
-                        int offset = 0 ;
+                        int offset = 0;
                         ms.Write(Picture, offset, Picture.Length - offset);
                         var bmp = new System.Drawing.Bitmap(ms);
                         using (var jpegms = new MemoryStream())

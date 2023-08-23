@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ToDo.Model.Entities
 {
-    public class Contact:IEntity
+    public class Contact : IEntity
     {
         public int Id { get; set; }
         public string NameSurname { get; set; }

@@ -125,9 +125,6 @@ namespace ToDo.Business.Implementations
                 throw new BadRequestException("Kaydedilecek kişi bilgisi yollamalısınız");
 
             if (dto.Name == null)
-                throw new BadRequestException("İsim Boş Olamaz");
-
-            if (dto.Name == null)
                 throw new BadRequestException("Proje Adı Olamaz");
             if (dto.ServiceId == null)
                 throw new BadRequestException("Lütfen Hizmet Alanı Seçiniz");

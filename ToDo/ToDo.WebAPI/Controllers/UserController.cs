@@ -1,9 +1,7 @@
 ﻿using Infrastructure.Utilities.ApiResponses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ToDo.Business.Implementations;
 using ToDo.Business.Interfaces;
-using ToDo.Model.Dto.AdminUser;
 using ToDo.Model.Dto.User;
 
 namespace ToDo.WebAPI.Controllers
@@ -40,7 +38,8 @@ namespace ToDo.WebAPI.Controllers
         #region SWAGGER DOC
         [Produces("application/json", "text/plain")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<UserGetDto>))]
-        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<UserGetDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
         #endregion
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
@@ -55,7 +54,7 @@ namespace ToDo.WebAPI.Controllers
         #region SWAGGER DOC
         [Produces("application/json", "text/plain")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<List<UserGetDto>>))]
-        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<List<UserGetDto>>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
         #endregion
         [HttpGet]
         [AllowAnonymous]
@@ -86,11 +85,12 @@ namespace ToDo.WebAPI.Controllers
 
         }
 
-        #region Swagger Doc
+        #region SWAGGER DOC
         [Produces("application/json", "text/plain")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
-        #endregion
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
+        #endregion        
         [HttpPut]
         public async Task<IActionResult> UpdateUser([FromBody] UserPutDto dto)
         {
@@ -100,7 +100,12 @@ namespace ToDo.WebAPI.Controllers
 
 
         }
-
+        #region SWAGGER DOC
+        [Produces("application/json", "text/plain")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
+        #endregion
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int Id)
         {

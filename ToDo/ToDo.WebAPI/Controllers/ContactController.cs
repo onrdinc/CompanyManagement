@@ -7,6 +7,7 @@ using ToDo.Business.Implementations;
 using ToDo.Business.Interfaces;
 using ToDo.Model.Dto.Contact;
 using ToDo.Model.Dto.Department;
+using ToDo.Model.Dto.Wage;
 
 namespace ToDo.WebAPI.Controllers
 {
@@ -17,18 +18,17 @@ namespace ToDo.WebAPI.Controllers
     public class ContactController : BaseController
     {
         private readonly IContactBs _contactBs;
-        private readonly IMapper _mapper;
 
-        public ContactController(IContactBs contactBs, IMapper mapper)
+        public ContactController(IContactBs contactBs)
         {
             _contactBs = contactBs;
-            _mapper = mapper;
         }
 
         #region SWAGGER DOC
         [Produces("application/json", "text/plain")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<ContactGetDto>))]
-        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<ContactGetDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
         #endregion
 
         [HttpGet("{id}")]
@@ -43,10 +43,9 @@ namespace ToDo.WebAPI.Controllers
         #region SWAGGER DOC
         [Produces("application/json", "text/plain")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<List<ContactGetDto>>))]
-        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<List<ContactGetDto>>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
         #endregion
         [HttpGet]
-        [AllowAnonymous]
 
         public async Task<IActionResult> GetContacts()
         {
@@ -57,7 +56,11 @@ namespace ToDo.WebAPI.Controllers
 
         }
 
-
+        #region SWAGGER DOC
+        [Produces("application/json", "text/plain")]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(ApiResponse<ContactGetDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        #endregion
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> SaveNewContact([FromBody] ContactPostDto dto)
@@ -70,8 +73,13 @@ namespace ToDo.WebAPI.Controllers
 
         }
 
-      
 
+        #region SWAGGER DOC
+        [Produces("application/json", "text/plain")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
+        #endregion
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteContact(int id)
         {

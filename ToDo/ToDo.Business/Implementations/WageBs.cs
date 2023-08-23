@@ -75,7 +75,7 @@ namespace ToDo.Business.Implementations
                 throw new BadRequestException("Kaydedilecek departman bilgisi yollamalısınız");
 
             if (dto.Amount == null)
-                throw new BadRequestException("Ücret Adı Boş Olamaz");
+                throw new BadRequestException("Ücret Boş Olamaz");
 
             if (dto.UserId == null)
                 throw new BadRequestException("Kişi  Boş Olamaz");
@@ -94,10 +94,10 @@ namespace ToDo.Business.Implementations
                 throw new BadRequestException("Kaydedilecek departman bilgisi yollamalısınız");
 
             if (dto.Amount == null)
-                throw new BadRequestException("Ücret Adı Boş Olamaz");
+                throw new BadRequestException("Ücret Boş Olamaz");
 
             if (dto.UserId == null)
-                throw new BadRequestException("Kişi  Boş Olamaz");
+                throw new BadRequestException("Kişi Boş Olamaz");
             var wage = _mapper.Map<Wage>(dto);
 
             await _repo.UpdateAsync(wage);

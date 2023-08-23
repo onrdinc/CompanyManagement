@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ToDo.Model.Entities
 {
 
-    public class ProjectParticipant:IEntity
+    public class ProjectParticipant : IEntity
     {
 
         public int Id { get; set; }
@@ -18,7 +18,7 @@ namespace ToDo.Model.Entities
         public int UserId { get; set; }
         public string Duty { get; set; }
 
-        public bool? IsDeleted { get; set; } = false;
+        public bool IsDeleted { get; set; } = false;
 
         public Project? Project { get; set; }
         public User? User { get; set; }

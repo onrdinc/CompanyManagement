@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Infrastructure.Utilities.ApiResponses;
+﻿using Infrastructure.Utilities.ApiResponses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ToDo.Business.Interfaces;
@@ -13,18 +12,17 @@ namespace ToDo.WebAPI.Controllers
     public class DepartmentController : BaseController
     {
         private readonly IDepartmentBs _departmentBs;
-        private readonly IMapper _mapper;
 
-        public DepartmentController(IDepartmentBs departmentBs,IMapper mapper)
+        public DepartmentController(IDepartmentBs departmentBs)
         {
             _departmentBs = departmentBs;
-            _mapper = mapper;
         }
 
         #region SWAGGER DOC
         [Produces("application/json", "text/plain")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<DepartmentGetDto>))]
-        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<DepartmentGetDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
         #endregion
 
         [HttpGet("{id}")]
@@ -39,7 +37,7 @@ namespace ToDo.WebAPI.Controllers
         #region SWAGGER DOC
         [Produces("application/json", "text/plain")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<List<DepartmentGetDto>>))]
-        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<List<DepartmentGetDto>>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
         #endregion
         [HttpGet]
         [AllowAnonymous]
@@ -53,7 +51,11 @@ namespace ToDo.WebAPI.Controllers
 
         }
 
-
+        #region SWAGGER DOC
+        [Produces("application/json", "text/plain")]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(ApiResponse<DepartmentGetDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        #endregion
         [HttpPost]
         public async Task<IActionResult> SaveNewDepartment([FromBody] DepartmentPostDto dto)
         {
@@ -65,10 +67,11 @@ namespace ToDo.WebAPI.Controllers
 
         }
 
-        #region Swagger Doc
+        #region SWAGGER DOC
         [Produces("application/json", "text/plain")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
         #endregion
         [HttpPut]
         public async Task<IActionResult> UpdateDepartment([FromBody] DepartmentPutDto dto)
@@ -79,7 +82,12 @@ namespace ToDo.WebAPI.Controllers
 
 
         }
-
+        #region SWAGGER DOC
+        [Produces("application/json", "text/plain")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiResponse<NoData>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<NoData>))]
+        #endregion
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDepartment(int id)
         {
