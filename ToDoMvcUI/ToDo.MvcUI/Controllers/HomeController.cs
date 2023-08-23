@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using ToDo.MvcUI.Areas.Admin.Extensions;
 using ToDo.MvcUI.Areas.Admin.HttpApiServices;
 using ToDo.MvcUI.Areas.Admin.Models;
-using ToDo.MvcUI.Areas.Admin.ViewModels;
 using ToDo.MvcUI.Models;
 
 namespace ToDo.MvcUI.Controllers

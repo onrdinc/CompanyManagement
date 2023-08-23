@@ -8737,6 +8737,10 @@
       "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.min.js"
     },
     {
+      "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\web-template\\assets\\Images\\about-img-1.png",
+      "PackagePath": "staticwebassets\\web-template\\assets\\Images\\about-img-1.png"
+    },
+    {
       "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\web-template\\assets\\controller\\project-2.js",
       "PackagePath": "staticwebassets\\web-template\\assets\\controller\\project-2.js"
     },

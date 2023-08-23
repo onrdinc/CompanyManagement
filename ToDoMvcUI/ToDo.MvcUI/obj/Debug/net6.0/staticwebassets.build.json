@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "iHnMMzWs0UQ3S/GTzP8mPmlhplLvt/ZBAMBLXcsDlvQ=",
+  "Hash": "xKcwYp9ObtU1ugRKHZIf5zMegDCl+VObanEgt9tw0Zo=",
   "Source": "ToDo.MvcUI",
   "BasePath": "_content/ToDo.MvcUI",
   "Mode": "Default",
@@ -37228,6 +37228,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\web-template\\assets\\css\\wave-bsb.js"
+    },
+    {
+      "Identity": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\web-template\\assets\\Images\\about-img-1.png",
+      "SourceId": "ToDo.MvcUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\",
+      "BasePath": "_content/ToDo.MvcUI",
+      "RelativePath": "web-template/assets/Images/about-img-1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\web-template\\assets\\Images\\about-img-1.png"
     },
     {
       "Identity": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\web-template\\index.html",
