@@ -25,55 +25,7 @@
          
 
 
-            //$("#btnSave").click(function () {
-
-            //    var name = $("#txtName").val();
-            //    var fd = new FormData();
-            //    fd.append("name", name);
-
-
-
-            //    $.ajax({
-            //        url: "/Admin/Department/Save",
-            //        method: "post",
-            //        datatype: "json",
-            //        contentType: false,
-            //        processData: false,
-            //        data: fd,
-            //        success: function (response) {
-            //            //if (response.isSuccess) {
-            //            //    Swal.fire('İşlem Başarılı', response.message, 'success')
-            //            //    $("#btnClear").trigger("click");
-            //            //}
-            //            if (response.isSuccess) {
-            //                Swal.fire({
-            //                    title: 'İşlem Başarılı',
-            //                    text: response.message,
-            //                    icon: 'success',
-            //                    showCancelButton: false,
-            //                    confirmButtonColor: '#3085d6',
-            //                    confirmButtonText: 'Tamam'
-            //                }).then((result) => {
-            //                    if (result.isConfirmed) {
-
-            //                        $("#btnClear").trigger("click");
-            //                        $("#departmentAddModal").modal("hide");
-
-
-            //                        // elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
-
-            //                        $("#departmentList tbody").append("<tr><td></td><td>" + name + "</td><td><button type='button' class='btn btn-danger btnDelete' departmentId='" + response.id + "'>SİL</button></td><td><button type='button' class='btn btn-warning btnEdit' departmentId='" + response.id + "'>DÜZENLE</button></td></tr>");
-
-            //                    }
-            //                });
-            //            }
-
-            //            else {
-            //                Swal.fire('İşlem Başarısız', response.message, 'error')
-            //            }
-            //        }
-            //    })
-            //});
+         
 
             $(".btnDelete").click(function () {
 
@@ -141,104 +93,11 @@
 
             });
 
-            //$("#btnUpdate").click(function () {
-
-            //    var name = $("#txtNameEdit").val();
-            //    var id = $("#hfDepartmentId").val();
-
-            //    var fd = new FormData();
-            //    fd.append("id", id);
-            //    fd.append("name", name);
-
-
-
-            //    $.ajax({
-            //        url: "/Admin/Department/Update",
-            //        method: "post",
-            //        datatype: "json",
-            //        contentType: false,
-            //        processData: false,
-            //        data: fd,
-            //        success: function (response) {
-
-            //            if (response.isSuccess) {
-            //                Swal.fire({
-            //                    title: 'İşlem Başarılı',
-            //                    text: response.message,
-            //                    icon: 'success',
-            //                    showCancelButton: false,
-            //                    confirmButtonColor: '#3085d6',
-            //                    confirmButtonText: 'Tamam'
-            //                }).then((result) => {
-            //                    if (result.isConfirmed) {
-
-            //                        //------------------------------------------------
-
-            //                        $("#departmentModal").modal("hide");
-
-
-            //                        //bakılacak
-
-
-
-
-
-
-            //                        // elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
-
-            //                        /*  $("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>DÜZENLE</td><td><button type='button' class='btn btn-danger btnDelete' id='" + response.id + "'>SİL</button></td></tr>");*/
-
-            //                    }
-            //                });
-            //            }
-
-            //            else {
-            //                Swal.fire('İşlem Başarısız', response.message, 'error')
-            //            }
-            //        }
-            //    })
-            //});
+        
 
         });
     </script>
 }
-
-
-<!--<div class="modal fade" data-backdrop="static" id="departmentAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Departman Ekleme Formu</h1>-->
-                @*<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>*@
-            <!--</div>
-            <div class="modal-body">
-                <form>
-
-
-
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Departman Adı</label>
-                            <input type="text" class="form-control" id="txtName" placeholder="Departman Adı Giriniz">
-                        </div>
-
-                    </div>-->
-                    <!-- /.card-body -->
-
-                    <!--<div class="card-footer">
-                        <button id="btnSave" type="button" class="btn btn-primary">Kaydet</button>
-                    </div>
-
-
-                    <button id="btnClear" type="reset" style="display:none;"></button>
-
-                </form>
-            </div>
-        </div>
-    </div>
-</div>-->
-
-
 
 <div class="card">
     <div class="card-header">
@@ -303,7 +162,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Departman Düzenleme Formu</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">İletişim Detay</h1>
                 @*<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>*@
             </div>
             <div class="modal-body">

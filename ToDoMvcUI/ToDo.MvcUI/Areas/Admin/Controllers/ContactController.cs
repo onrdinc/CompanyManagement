@@ -74,7 +74,7 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
             //ya da response.statuscode == 201
             if (response.StatusCode.ToString().StartsWith("2"))
             {
-                return Json(new { IsSuccess = true, Message = "Başarıyla Kaydedildi", Id = response.Data.Id });
+                return Json(new { IsSuccess = true, Message = "Mesajınız alınmıştır en kısa süre içerisinde sizinle iletişime geçilecektir.", Id = response.Data.Id });
 
             }
             else
