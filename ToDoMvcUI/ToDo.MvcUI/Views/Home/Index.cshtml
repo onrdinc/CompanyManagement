@@ -9,7 +9,7 @@
     <div class="container mb-5 mb-md-6 mb-xl-10">
         <div class="row justify-content-md-center">
             <div class="col-12 col-md-10 col-lg-9 col-xl-8 col-xxl-7 text-center">
-                <h2 class="display-3 fw-bolder mb-4">You will get the <br>perfect <mark class="bsb-tpl-highlight bsb-tpl-highlight-yellow"><span class="bsb-tpl-font-hw display-1 text-accent fw-normal">resolutions</span></mark> with our proficient services.</h2>
+                <h2 class="display-3 fw-bolder mb-4">Mükemmeli elde etmek için <br> <mark class="bsb-tpl-highlight bsb-tpl-highlight-yellow"><span class="bsb-tpl-font-hw display-1 text-accent fw-normal">hizmetlerimizden</span></mark> faydalanabilirsiniz.</h2>
             </div>
         </div>
     </div>
@@ -40,7 +40,7 @@
     <div class="container">
         <div class="row gy-5 gy-lg-0 align-items-lg-center">
             <div class="col-12 col-lg-6">
-                <img class="img-fluid rounded" loading="lazy" src="./assets/img/about/about-img-1.png" alt="">
+                <img class="img-fluid rounded" loading="lazy" src="/web-template/assets/Images/about-img-1.png" alt="">
             </div>
             <div class="col-12 col-lg-6">
                 <div class="row justify-content-xl-end">
@@ -221,16 +221,16 @@
                 <div class="w-100">
                     <div class="">
                         <form class="form-inline">
-                            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Ad Soyad">
-                            <input type="email" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="E-Mail">
-                            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Telefon">
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="txtNameSurname" placeholder="Ad Soyad">
+                            <input type="email" class="form-control mb-2 mr-sm-2" id="txtEmail" placeholder="E-Mail">
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="txtPhone" placeholder="Telefon">
                             <div class="form-group">
-                                <textarea class="form-control" id="txtAboutEdit" rows="3" placeholder="Konu"></textarea>
+                                <textarea class="form-control" id="txtSubject" rows="3" placeholder="Konu"></textarea>
                             </div>
 
 
 
-                            <button type="submit" class="btn btn-primary  my-3">Submit</button>
+                            <button id="btnSave" type="button" class="btn btn-primary">Kaydet</button>
                         </form>
                     </div>
 
@@ -285,3 +285,65 @@
         </div>
     </div>
 </section>
+
+@section customStyles{
+ 
+    <link href="~/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+
+}
+
+@section customScripts {
+    <script src="~/lib/sweetalert2/sweetalert2.all.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btnSave").click(function () {
+
+                var name = $("#txtNameSurname").val();
+                var email = $("#txtEmail").val();
+                var phone = $("#txtPhone").val();
+                var subject = $("#txtSubject").val();
+                var fd = new FormData();
+                fd.append("nameSurname", name);
+                fd.append("email", email);
+                fd.append("phone", phone);
+                fd.append("subject", subject);
+
+
+
+                $.ajax({
+                    url: "/Admin/Contact/Save",
+                    method: "post",
+                    datatype: "json",
+                    contentType: false,
+                    processData: false,
+                    data: fd,
+                    success: function (response) {
+
+                        if (response.isSuccess) {
+                            Swal.fire({
+                                title: 'İşlem Başarılı',
+                                text: response.message,
+                                icon: 'success',
+                                showCancelButton: false,
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'Tamam'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+
+                                    $("#btnClear").trigger("click");
+
+
+
+                                }
+                            });
+                        }
+
+                        else {
+                            Swal.fire('İşlem Başarısız', response.message, 'error')
+                        }
+                    }
+                })
+            });
+        });
+    </script>
+}

@@ -72,6 +72,7 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="~/web-template/assets/css/wave-bsb.css">
     <link href="~/lib/fontawesome/css/all.min.css" rel="stylesheet" />
+    @RenderSection("customStyles", false) 
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#bsb-tpl-navbar" data-bs-smooth-scroll="true" tabindex="0">
@@ -81,8 +82,8 @@
         <!-- Navbar 1 - Bootstrap Brain Component -->
         <nav id="scrollspyNav" class="navbar navbar-expand-lg bsb-tpl-bg-blue bsb-navbar bsb-navbar-hover bsb-navbar-caret bsb-tpl-navbar-sticky" data-bsb-sticky-target="#header">
             <div class="container">
-                <a class="navbar-brand "  href="">
-                    <mark class="bg-transparent " ><span class="bsb-tpl-font-hw display-2 text-accent fw-normal" style="font-size:3rem !important">OD Software</span></mark>
+                <a class="navbar-brand " href="">
+                    <mark class="bg-transparent "><span class="bsb-tpl-font-hw display-2 text-accent fw-normal" style="font-size:3rem !important">OD Software</span></mark>
                 </a>
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
@@ -144,14 +145,14 @@
     <!-- Main -->
     <main id="main">
         @RenderBody()
-    
+
 
     </main>
 
     <!-- Footer 2 - Bootstrap Brain Component -->
     <footer class="footer">
 
-      
+
 
         <!-- Copyright - Bootstrap Brain Component -->
         <div class="bg-light py-4 py-md-5 py-xl-8 border-top border-light-subtle">
@@ -213,8 +214,9 @@
 
     <!-- Javascript Files: Controllers -->
     <script src="~/web-template/assets/controller/project-2.js"></script>
-  
+
     <script src="~/web-template/assets/controller/wave-bsb.js"></script>
+    @RenderSection("customScripts", false)
 </body>
 
 </html>
