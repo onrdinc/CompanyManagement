@@ -79,9 +79,9 @@ namespace ToDo.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteDepartment(int Id)
+        public async Task<IActionResult> DeleteDepartment(int id)
         {
-            var response = await _departmentBs.DeleteAsync(Id);
+            var response = await _departmentBs.DeleteAsync(id);
 
             return await SendResponseAsync(response);
         }

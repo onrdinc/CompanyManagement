@@ -28,5 +28,6 @@ namespace ToDo.DataAccess.EF.Contexts
         public DbSet<User> Users { get; set; }
         public DbSet<AdminUser> AdminUsers { get; set; }
         public DbSet<Wage> Wages { get; set; }
+        public DbSet<AboutUs> AboutUs { get; set; }
     }
 }

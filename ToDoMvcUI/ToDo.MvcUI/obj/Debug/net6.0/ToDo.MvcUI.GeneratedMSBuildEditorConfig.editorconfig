@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\onur_\Documents\GitHub\CompanyManagement\ToDoMvcUI\ToDo.MvcUI
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/onur_/Documents/GitHub/CompanyManagement/ToDoMvcUI/ToDo.MvcUI/Areas/Admin/Views/AboutUs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWJvdXRVc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/onur_/Documents/GitHub/CompanyManagement/ToDoMvcUI/ToDo.MvcUI/Areas/Admin/Views/Authentication/LogIn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0aGVudGljYXRpb25cTG9nSW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

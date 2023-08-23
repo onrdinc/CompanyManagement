@@ -56,6 +56,9 @@ namespace ToDo.Business
 
             services.AddScoped<IServiceBs, ServiceBs>();
             services.AddScoped<IServiceRepository, ServiceRepository>();
+
+            services.AddScoped<IAboutUsBs, AboutUsBs>();
+            services.AddScoped<IAboutUsRepository, AboutUsRepository>();
         }
     }
 }
