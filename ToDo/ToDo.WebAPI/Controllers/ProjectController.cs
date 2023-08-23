@@ -43,6 +43,8 @@ namespace ToDo.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<List<ProjectGetDto>>))]
         #endregion
         [HttpGet]
+        [AllowAnonymous]
+
         public async Task<IActionResult> GetProjects()
         {
             ;

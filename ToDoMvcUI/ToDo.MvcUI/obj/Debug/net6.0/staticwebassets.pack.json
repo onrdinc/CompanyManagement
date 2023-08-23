@@ -8737,6 +8737,26 @@
       "PackagePath": "staticwebassets\\lib\\sweetalert2\\sweetalert2.min.js"
     },
     {
+      "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\web-template\\assets\\controller\\project-2.js",
+      "PackagePath": "staticwebassets\\web-template\\assets\\controller\\project-2.js"
+    },
+    {
+      "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\web-template\\assets\\controller\\wave-bsb.js",
+      "PackagePath": "staticwebassets\\web-template\\assets\\controller\\wave-bsb.js"
+    },
+    {
+      "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\web-template\\assets\\css\\wave-bsb.css",
+      "PackagePath": "staticwebassets\\web-template\\assets\\css\\wave-bsb.css"
+    },
+    {
+      "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\web-template\\assets\\css\\wave-bsb.js",
+      "PackagePath": "staticwebassets\\web-template\\assets\\css\\wave-bsb.js"
+    },
+    {
+      "Id": "C:\\Users\\onur_\\Documents\\GitHub\\CompanyManagement\\ToDoMvcUI\\ToDo.MvcUI\\wwwroot\\web-template\\index.html",
+      "PackagePath": "staticwebassets\\web-template\\index.html"
+    },
+    {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.ToDo.MvcUI.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

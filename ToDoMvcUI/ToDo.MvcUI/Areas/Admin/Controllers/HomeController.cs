@@ -28,11 +28,11 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
             var jobResponse = await _httpApiService.GetData<ResponseBody<List<ProjectItem>>>("/job", token.Token);
 
             StatisticsViewModel vm = new StatisticsViewModel();
-            vm.UserCount = userResponse.Count;
-            vm.DepartmentCount = departmentResponse.Count;
-            vm.ProjectCount = projectResponse.Count;
-            vm.JobCount = jobResponse.Count;
-            vm.ServiceCount = serviceResponse.Count;
+            vm.UserCount = userResponse.Data.Count;
+            vm.DepartmentCount = departmentResponse.Data.Count;
+            vm.ProjectCount = projectResponse.Data.Count;
+            vm.JobCount = jobResponse.Data.Count;
+            vm.ServiceCount = serviceResponse.Data.Count;
             return View(vm);
         }
     }

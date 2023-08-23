@@ -42,6 +42,8 @@ namespace ToDo.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<List<DepartmentGetDto>>))]
         #endregion
         [HttpGet]
+        [AllowAnonymous]
+
         public async Task<IActionResult> GetDepartments()
         {
             ;
