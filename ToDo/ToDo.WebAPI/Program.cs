@@ -10,16 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApiServices(builder.Configuration);
 builder.Services.AddBusinessServices();
 
-//builder.Services.AddAutoMapper(typeof(Program));
 
-//builder.Services.AddScoped<ICompanyBs,CompanyBs>();
-//builder.Services.AddScoped<ICompanyRepository,CompanyRepository>();
-
-//builder.Services.AddScoped<IUserBs, UserBs>();
-//builder.Services.AddScoped<IUserRepository, UserRepository>();
-
-//builder.Services.AddScoped<IProjectBs, ProjectBs>();
-//builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 
 var app = builder.Build();
 
