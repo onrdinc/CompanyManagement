@@ -19,7 +19,6 @@ namespace ToDo.MvcUI.Controllers
             var departmentResponse = await _httpApiService.GetData<ResponseBody<List<DepartmentItem>>>("/department");
             var projectResponse = await _httpApiService.GetData<ResponseBody<List<ProjectItem>>>("/project");
             var serviceResponse = await _httpApiService.GetData<ResponseBody<List<ServiceItem>>>("/service");
-            var jobResponse = await _httpApiService.GetData<ResponseBody<List<ProjectItem>>>("/job");
             var aboutResponse = await _httpApiService.GetData<ResponseBody<List<AboutUsItem>>>("/aboutus");
 
             AllViewModel vm = new AllViewModel();
@@ -31,7 +30,6 @@ namespace ToDo.MvcUI.Controllers
             vm.UserCount = userResponse.Data.Count;
             vm.DepartmentCount = departmentResponse.Data.Count;
             vm.ProjectCount = projectResponse.Data.Count;
-            vm.JobCount = jobResponse.Data.Count;
             vm.ServiceCount = serviceResponse.Data.Count;
 
             return View(vm);
