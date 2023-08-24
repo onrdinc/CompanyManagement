@@ -5,6 +5,5 @@
         public T Data { get; set; }
         public List<string> ErrorMessages { get; set; }
         public int StatusCode { get; set; }
-        public int Count { get; set; } = 0;
     }
 }
