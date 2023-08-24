@@ -100,10 +100,7 @@
                     processData: false,
                     data: fd,
                     success: function (response) {
-                        //if (response.isSuccess) {
-                        //    Swal.fire('İşlem Başarılı', response.message, 'success')
-                        //    $("#btnClear").trigger("click");
-                        //}
+                
                         if (response.isSuccess) {
                             Swal.fire({
                                 title: 'İşlem Başarılı',
@@ -114,36 +111,14 @@
                                 confirmButtonText: 'Tamam'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    //$("#txtCategoryName").val("");
-                                    //$("#txtDescription").val("");
-                                    //------------------------------------
-
-                                    // javascript ile html deki bir elemanın click olayını tetiklemek:
-                                    //$("#btnClear").trigger("click");
-                                    //-------------------------------------
-
-                                    // javascript ile sayfayı yenilemek :
-                                    //window.location.reload();
-
-                                    //------------------------------------------------
+                
 
                                     $("#btnClear").trigger("click");
 
                                     $("#userAddModal").modal("hide");
 
-                                    ////bakılacak
+                                    window.location.href = "/Admin/User/Index";
 
-                                    //$("button[id='#pills-profile-tab']").addClass("active").attr("aria-selected", "true");
-                                    //$("button[id='#pills-home-tab']").removeClass("active").attr("aria-selected", "false");
-
-                                    //$("#pills-profile-tab").removeClass("active").attr("aria-selected", "false");
-                                    //$("#pills-home-tab").addClass("active").attr("aria-selected", "true");
-
-
-
-
-
-                                    // elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
 
                                     $("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + response.departmentName + "</td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>" + duty + "</td><td>" + nickname + "</td><td>" + password + "</td><td><button type='button' class='btn btn-danger btnDelete' userId='" + response.id + "'>SİL</button></td><td><button type='button' class='btn btn-warning btnEdit' userId='" + response.id + "'>DÜZENLE</button></td></tr>");
 
@@ -183,6 +158,8 @@
                             success: function (response) {
                                 if (response.isSuccess) {
                                     Swal.fire('İşlem Başarılı', response.message, 'success')
+                                    window.location.href = "/Admin/User/Index";
+
                                 }
                                 else {
                                     var errors = "";
@@ -280,32 +257,13 @@
                                 confirmButtonText: 'Tamam'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    //$("#txtCategoryName").val("");
-                                    //$("#txtDescription").val("");
-                                    //------------------------------------
-
-                                    // javascript ile html deki bir elemanın click olayını tetiklemek:
-                                    //$("#btnClear").trigger("click");
-                                    //-------------------------------------
-
-                                    // javascript ile sayfayı yenilemek :
-                                    //window.location.reload();
-
-                                    //------------------------------------------------
+                      
 
                                     $("#exampleModal").modal("hide");
 
+                                    window.location.href = "/Admin/User/Index";
 
-                                    //bakılacak
-
-
-
-
-
-
-                                    // elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
-
-                                    /*  $("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>DÜZENLE</td><td><button type='button' class='btn btn-danger btnDelete' id='" + response.id + "'>SİL</button></td></tr>");*/
+                                   
 
                                 }
                             });

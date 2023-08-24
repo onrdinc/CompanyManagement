@@ -71,6 +71,7 @@
                                     $("#projectAddModal").modal("hide");
 
 
+                                    window.location.href = "/Admin/Project/Index";
 
 
 
@@ -79,7 +80,7 @@
 
                                     //// elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
 
-                                    //$("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>DÜZENLE</td><td><button type='button' class='btn btn-danger btnDelete' id='" + response.id + "'>SİL</button></td></tr>");
+                                    $("#projectList tbody").append("<tr><td></td><td>" + name + "</td><td>" + description + "</td><td>" + response.department.name + "</td><td>" + response.service.name + "</td><td>DÜZENLE</td><td><button type='button' class='btn btn-danger btnDelete' id='" + response.id + "'>SİL</button></td></tr>");
 
                                 }
                             });
@@ -117,6 +118,8 @@
                             success: function (response) {
                                 if (response.isSuccess) {
                                     Swal.fire('İşlem Başarılı', response.message, 'success')
+                                    window.location.href = "/Admin/Project/Index";
+
                                 }
                                 else {
                                     var errors = "";
@@ -199,17 +202,8 @@
 
                                     $("#projectModal").modal("hide");
 
+                                    window.location.href = "/Admin/Project/Index";
 
-                                    //bakılacak
-
-
-
-
-
-
-                                    // elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
-
-                                    /*  $("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>DÜZENLE</td><td><button type='button' class='btn btn-danger btnDelete' id='" + response.id + "'>SİL</button></td></tr>");*/
 
                                 }
                             });

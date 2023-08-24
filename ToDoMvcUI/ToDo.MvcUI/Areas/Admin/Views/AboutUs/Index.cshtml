@@ -63,6 +63,7 @@
                                     $("#btnClear").trigger("click");
                                     $("#aboutAddModal").modal("hide");
 
+                                    window.location.href = "/Admin/AboutUs/Index";
 
                                     // elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
 
@@ -104,6 +105,8 @@
                             success: function (response) {
                                 if (response.isSuccess) {
                                     Swal.fire('İşlem Başarılı', response.message, 'success')
+                                    window.location.href = "/Admin/AboutUs/Index";
+
                                 }
                                 else {
                                     var errors = "";
@@ -177,6 +180,7 @@
 
                                     $("#aboutModal").modal("hide");
 
+                                    window.location.href = "/Admin/AboutUs/Index";
 
 
                                 }

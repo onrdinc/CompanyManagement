@@ -64,9 +64,12 @@
                                     $("#departmentAddModal").modal("hide");
 
 
+
                                     // elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
 
                                     $("#departmentList tbody").append("<tr><td></td><td>" + name + "</td><td><button type='button' class='btn btn-danger btnDelete' departmentId='" + response.id + "'>SİL</button></td><td><button type='button' class='btn btn-warning btnEdit' departmentId='" + response.id + "'>DÜZENLE</button></td></tr>");
+
+                                    window.location.href = "/Admin/Department/Index";
 
                                 }
                             });
@@ -104,6 +107,8 @@
                             success: function (response) {
                                 if (response.isSuccess) {
                                     Swal.fire('İşlem Başarılı', response.message, 'success')
+                                    window.location.href = "/Admin/Department/Index";
+
                                 }
                                 else {
                                     var errors = "";
@@ -176,12 +181,7 @@
                                     //------------------------------------------------
 
                                     $("#departmentModal").modal("hide");
-
-
-                                    //bakılacak
-
-
-
+                                    window.location.href = "/Admin/Department/Index";
 
 
 

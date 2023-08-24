@@ -52,6 +52,8 @@
                             success: function (response) {
                                 if (response.isSuccess) {
                                     Swal.fire('İşlem Başarılı', response.message, 'success')
+                                    window.location.href = "/Admin/Contact/Index";
+
                                 }
                                 else {
                                     var errors = "";
@@ -101,7 +103,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">İletişim Yönetimi</h3>
+        <h3 class="card-title">Mesaj Yönetimi</h3>
     </div>
   
     <div class="card-body">

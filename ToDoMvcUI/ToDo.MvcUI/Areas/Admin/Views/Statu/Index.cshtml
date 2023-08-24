@@ -61,6 +61,7 @@
 
                                     $("#btnClear").trigger("click");
                                     $("#statuAddModal").modal("hide");
+                                    window.location.href = "/Admin/Statu/Index";
 
 
                                     $("#statuList tbody").append("<tr><td></td><td>" + name + "</td><td><button type='button' class='btn btn-danger btnDelete' departmentId='" + response.id + "'>SİL</button></td><td><button type='button' class='btn btn-warning btnEdit' departmentId='" + response.id + "'>DÜZENLE</button></td></tr>");
@@ -101,6 +102,8 @@
                             success: function (response) {
                                 if (response.isSuccess) {
                                     Swal.fire('İşlem Başarılı', response.message, 'success')
+                                    window.location.href = "/Admin/Statu/Index";
+
                                 }
                                 else {
                                     var errors = "";
@@ -174,17 +177,7 @@
 
                                     $("#statuModal").modal("hide");
 
-
-                                    //bakılacak
-
-
-
-
-
-
-                                    // elemanın yaptığı kaydı html içindeki table a bir tr daha ekleyerek göster
-
-                                    /*  $("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>DÜZENLE</td><td><button type='button' class='btn btn-danger btnDelete' id='" + response.id + "'>SİL</button></td></tr>");*/
+                                    window.location.href = "/Admin/Statu/Index";
 
                                 }
                             });
