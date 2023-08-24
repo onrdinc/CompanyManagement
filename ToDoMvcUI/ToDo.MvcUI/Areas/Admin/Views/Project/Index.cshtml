@@ -21,6 +21,15 @@
                 language: {
                     url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/tr.json',
                 },
+                "columnDefs": [{
+                    "targets": 5,
+                    "orderable": false,
+                },
+                {
+                    "targets": 6,
+                    "orderable": false,
+                },
+                ],
             });
 
             $(".btnAdd").click(function () {
@@ -243,7 +252,7 @@
                                 <div class="col-auto">
                                     @foreach (var item in Model.Services)
                                     {
-                                        <a href="/Admin/Project/Index/@item.Id" class="btn btn-secondary">@item.Name</a>
+                                        <a href="/Admin/Project/Index/@item.Id" class="btn btn-secondary my-1">@item.Name</a>
                                     }
                                 </div>
                             </div>
@@ -255,7 +264,7 @@
                                 <div class="col-auto">
                                     @foreach (var item in Model.Departments)
                                     {
-                                        <a href="/Admin/Project/DepartmentProject/@item.Id" class="btn btn-secondary">@item.Name</a>
+                                        <a href="/Admin/Project/DepartmentProject/@item.Id" class="btn btn-secondary my-1">@item.Name</a>
                                     }
                                 </div>
                             </div>

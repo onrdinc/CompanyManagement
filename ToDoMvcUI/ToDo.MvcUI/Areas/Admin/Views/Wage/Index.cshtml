@@ -33,6 +33,14 @@
                 language: {
                     url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/tr.json',
                 },
+                "columnDefs": [{
+                    "targets": 2,
+                    "orderable": false,
+                },
+                {
+                    "targets": 3,
+                    "orderable": false,
+                }],
             });
 
             $(".btnAdd").click(function () {
@@ -233,7 +241,6 @@
                         <table id="wageList" class="display" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Personel Adı</th>
                                     <th>Ücreti</th>
                                     <th></th>
@@ -246,7 +253,6 @@
 
 
                                     <tr>
-                                        <td></td>
                                         <td><img src='@item.User.PicturePath' class="jobparticipantimg" /> @item.User.Name @item.User.Surname </td>
                                         <td>@item.Amount</td>
                                         <td>
@@ -264,7 +270,6 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>#</th>
                                     <th>Personel Adı</th>
                                     <th>Ücreti</th>
                                     <th></th>

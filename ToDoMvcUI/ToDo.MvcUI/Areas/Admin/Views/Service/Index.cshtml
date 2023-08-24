@@ -20,6 +20,14 @@
                 language: {
                     url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/tr.json',
                 },
+                "columnDefs": [{
+                    "targets": 2,
+                    "orderable": false,
+                },
+                {
+                    "targets": 3,
+                    "orderable": false,
+                }],
             });
 
             $(".btnAdd").click(function () {
@@ -249,7 +257,6 @@
                         <table id="serviceList" class="display" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Hizmet Adı</th>
                                     <th>Açıklama</th>
                                     <th></th>
@@ -262,7 +269,6 @@
 
 
                                     <tr>
-                                        <td></td>
                                         <td>@item.Name</td>
                                         <td>@item.Description</td>
                                         <td>
@@ -279,7 +285,6 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>#</th>
                                     <th>Hizmet Adı</th>
                                     <th>Açıklama</th>
                                     <th></th>
