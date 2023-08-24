@@ -1,6 +1,5 @@
 ﻿namespace ToDo.MvcUI.Areas.Admin.HttpApiServices
 {
-    //Servisle iletişim kurmamızı sağlayacak concrete sınıf için gerçekleştirilmesi gereken api operasyonları
     public interface IHttpApiService
     {
         //Get
