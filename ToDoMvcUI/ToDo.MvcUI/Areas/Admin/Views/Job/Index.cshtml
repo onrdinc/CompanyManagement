@@ -27,7 +27,6 @@
 
     <script>
         $(document).ready(function () {
-            //new DataTable('#userList');
             new DataTable('#jobList', {
                 language: {
                     url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/tr.json',
@@ -447,11 +446,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">İş Düzenleme Formu</h1>
-                @*<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>*@<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                @*<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>*@@*<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>*@
             </div>
             <div class="modal-body">
                 <form>
-                    @*Aşağıdaki hidden input içerisinde güncellenmek istenen  id si tutuluyor. btnEdit e tıklandığında hangi kategorinin güncelleneceği bu inputtan okunabilir.*@
+          
                     <input type="hidden" id="hfjobId" />
 
                     <div class="card-body">

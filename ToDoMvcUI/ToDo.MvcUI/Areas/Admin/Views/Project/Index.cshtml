@@ -16,7 +16,6 @@
 
     <script>
         $(document).ready(function () {
-            //new DataTable('#userList');
             new DataTable('#projectList', {
                 language: {
                     url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/tr.json',
@@ -400,12 +399,12 @@
             </div>
             <div class="modal-body">
                 <form>
-                    @*Aşağıdaki hidden input içerisinde güncellenmek istenen kategorinin id si tutuluyor. btnEdit e tıklandığında hangi kategorinin güncelleneceği bu inputtan okunabilir.*@
+            
                     <input type="hidden" id="hfProjectId" />
 
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Etiket Adı</label>
+                            <label for="exampleInputEmail1">Proje Adı</label>
                             <input type="text" class="form-control" id="txtNameEdit" placeholder="Proje Adı Giriniz">
                         </div>
                         <div class="form-group">
