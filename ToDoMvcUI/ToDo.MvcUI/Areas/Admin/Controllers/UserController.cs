@@ -206,31 +206,7 @@ namespace ToDo.MvcUI.Areas.Admin.Controllers
             }
             else
             {
-                //anonim nesne
-                var postObj = new
-                {
-                    Id = dto.Id,
-                    Name = dto.Name,
-                    Surname = dto.Surname,
-                    Email = dto.Email,
-                    Nickname = dto.Nickname,
-                    DepartmentId = dto.DepartmentId,
-                    Password = dto.Password,
-                  
-                };
-
-                var response = await _httpApiService.PutData<ResponseBody<UserItem>>("/user", JsonSerializer.Serialize(postObj), token.Token);
-
-                //ya da response.statuscode == 201
-                if (response.StatusCode.ToString().StartsWith("2"))
-                {
-                    return Json(new { IsSuccess = true, Message = "Başarıyla Güncellendi" });
-
-                }
-                else
-                {
-                    return Json(new { IsSuccess = false, Messages = response.ErrorMessages });
-                }
+                return Json(new { IsSuccess = false, Message = "Personel için resim seçilmelidir." });
 
             }
         }

@@ -125,7 +125,7 @@
             @foreach (var item in Model.users)
             {
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="card border-0 border-bottom border-primary shadow-sm overflow-hidden">
+                    <div class="card border-0 border-bottom border-primary shadow-sm overflow-hidden my-2">
                         <div class="card-body p-0">
                             <figure class="m-0 p-0">
                                 <img class="img-fluid" style="min-height:300px !important; object-fit:cover; " loading="lazy" src="@item.PicturePath" alt="">
@@ -179,8 +179,8 @@
         <div class="row gy-4">
             @foreach (var item in Model.projects)
             {
-                <div class="col-12 col-sm-6 col-xl-3">
-                    <div class="card border-0 border-bottom border-primary shadow-sm">
+                <div class="col-12 col-sm-6 col-xl-3" >
+                    <div class="card border-0 border-bottom border-primary shadow-sm" style="min-height:450px !important;">
                         <div class="card-body text-center p-4 p-xxl-5">
                             <div class="btn btn-primary bsb-btn-circle bsb-btn-circle-4xl pe-none mb-2 bsb-tpl-bg-yellow text-primary border-0">
                                <i class="fa fa-tasks fs-2"></i>

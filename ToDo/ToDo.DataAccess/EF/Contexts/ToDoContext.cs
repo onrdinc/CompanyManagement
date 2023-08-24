@@ -5,17 +5,11 @@ namespace ToDo.DataAccess.EF.Contexts
 {
     public class ToDoContext : DbContext
     {
-        //private readonly IConfiguration _configuration;
 
-        //public ToDoContext(IConfiguration configuration)
-        //{
-        //    _configuration = configuration;
-        //}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //_configuration.GetConnectionString("ToDoConnStr");
-            //optionsBuilder.UseSqlServer();
-            optionsBuilder.UseSqlServer("server=.\\SQLEXPRESS;database=ToDoApp;trusted_connection=true;");
+
+            optionsBuilder.UseSqlServer("server=.\\SQLEXPRESS;database=ToDo;trusted_connection=true;");
         }
 
         public DbSet<Department> Departments { get; set; }
