@@ -83,9 +83,9 @@ namespace ToDo.Business.Implementations
             var wage = _mapper.Map<Wage>(dto);
 
             var insertedWage = await _repo.InsertAsync(wage);
-            var retCat = _mapper.Map<WageGetDto>(insertedWage);
+            var retwage = _mapper.Map<WageGetDto>(insertedWage);
 
-            return ApiResponse<WageGetDto>.Success(StatusCodes.Status201Created, retCat);
+            return ApiResponse<WageGetDto>.Success(StatusCodes.Status201Created, retwage);
         }
 
         public async Task<ApiResponse<NoData>> UpdateAsync(WagePutDto dto)

@@ -83,9 +83,9 @@ namespace ToDo.Business.Implementations
             var label = _mapper.Map<Label>(dto);
 
             var insertedLabel = await _repo.InsertAsync(label);
-            var retCat = _mapper.Map<LabelGetDto>(insertedLabel);
+            var lbl = _mapper.Map<LabelGetDto>(insertedLabel);
 
-            return ApiResponse<LabelGetDto>.Success(StatusCodes.Status201Created, retCat);
+            return ApiResponse<LabelGetDto>.Success(StatusCodes.Status201Created, lbl);
         }
 
         public async Task<ApiResponse<NoData>> UpdateAsync(LabelPutDto dto)

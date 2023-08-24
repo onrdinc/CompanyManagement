@@ -108,9 +108,9 @@ namespace ToDo.Business.Implementations
 
             var insertedUser = await _repo.InsertAsync(user);
 
-            var retCat = _mapper.Map<UserGetDto>(insertedUser);
+            var usr = _mapper.Map<UserGetDto>(insertedUser);
 
-            return ApiResponse<UserGetDto>.Success(StatusCodes.Status201Created, retCat);
+            return ApiResponse<UserGetDto>.Success(StatusCodes.Status201Created, usr);
         }
 
         public async Task<ApiResponse<UserGetDto>> LogIn(string nickname, string password, params string[] includeList)

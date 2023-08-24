@@ -118,10 +118,10 @@ namespace ToDo.Business.Implementations
             var job = _mapper.Map<Job>(dto);
 
             var insertedJob = await _repo.InsertAsync(job);
-            var retCat = _mapper.Map<JobGetDto>(insertedJob);
+            var retJob = _mapper.Map<JobGetDto>(insertedJob);
 
 
-            return ApiResponse<JobGetDto>.Success(StatusCodes.Status201Created, retCat);
+            return ApiResponse<JobGetDto>.Success(StatusCodes.Status201Created, retJob);
         }
 
         public async Task<ApiResponse<NoData>> UpdateAsync(JobPutDto dto)

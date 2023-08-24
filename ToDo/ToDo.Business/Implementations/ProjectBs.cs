@@ -113,10 +113,10 @@ namespace ToDo.Business.Implementations
             var project = _mapper.Map<Project>(dto);
 
             var insertedProject = await _repo.InsertAsync(project);
-            var retCat = _mapper.Map<ProjectGetDto>(insertedProject);
+            var prj = _mapper.Map<ProjectGetDto>(insertedProject);
 
 
-            return ApiResponse<ProjectGetDto>.Success(StatusCodes.Status201Created, retCat);
+            return ApiResponse<ProjectGetDto>.Success(StatusCodes.Status201Created, prj);
         }
 
         public async Task<ApiResponse<NoData>> UpdateAsync(ProjectPutDto dto)

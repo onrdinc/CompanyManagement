@@ -111,9 +111,9 @@ namespace ToDo.Business.Implementations
             var user = _mapper.Map<ProjectParticipant>(dto);
 
             var insertedUser = await _repo.InsertAsync(user);
-            var retCat = _mapper.Map<ProjectParticipantGetDto>(insertedUser);
+            var prjp = _mapper.Map<ProjectParticipantGetDto>(insertedUser);
 
-            return ApiResponse<ProjectParticipantGetDto>.Success(StatusCodes.Status201Created, retCat);
+            return ApiResponse<ProjectParticipantGetDto>.Success(StatusCodes.Status201Created, prjp);
         }
 
         public async Task<ApiResponse<NoData>> UpdateAsync(ProjectParticipantPutDto dto)

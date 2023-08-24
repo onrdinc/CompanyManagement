@@ -81,9 +81,9 @@ namespace ToDo.Business.Implementations
             var department = _mapper.Map<Department>(dto);
 
             var insertedDepartment = await _repo.InsertAsync(department);
-            var retCat = _mapper.Map<DepartmentGetDto>(insertedDepartment);
+            var dep = _mapper.Map<DepartmentGetDto>(insertedDepartment);
 
-            return ApiResponse<DepartmentGetDto>.Success(StatusCodes.Status201Created, retCat);
+            return ApiResponse<DepartmentGetDto>.Success(StatusCodes.Status201Created, dep);
         }
 
         public async Task<ApiResponse<NoData>> UpdateAsync(DepartmentPutDto dto)
