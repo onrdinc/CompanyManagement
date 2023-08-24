@@ -117,7 +117,7 @@
 
                                     $("#userAddModal").modal("hide");
 
-                                    window.location.href = "/Admin/User/Index";
+                                    //window.location.href = "/Admin/User/Index";
 
 
                                     $("#userList tbody").append("<tr><td><img src='data:image/jpeg;base64," + response.userPicture + "' style='width:150px;' /></td><td><img src='" + response.picturePath + "' style='width:150px;' /></td><td>" + response.departmentName + "</td><td>" + name + "</td><td>" + surname + "</td><td>" + email + "</td><td>" + duty + "</td><td>" + nickname + "</td><td>" + password + "</td><td><button type='button' class='btn btn-danger btnDelete' userId='" + response.id + "'>SİL</button></td><td><button type='button' class='btn btn-warning btnEdit' userId='" + response.id + "'>DÜZENLE</button></td></tr>");
