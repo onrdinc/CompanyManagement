@@ -109,8 +109,9 @@
                             datatype: "json",
                             success: function (response) {
                                 if (response.isSuccess) {
-                                    Swal.fire('İşlem Başarılı', response.message, 'success')
-                                    window.location.href = "/Admin/Service/Index";
+                                    Swal.fire('İşlem Başarılı', response.message, 'success').then(() => {
+                                        window.location.href = "/Admin/Service/Index";
+                                    });
 
                                 }
                                 else {
