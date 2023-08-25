@@ -4,9 +4,7 @@ using Microsoft.AspNetCore.Http;
 using ToDo.Business.CustomExceptions;
 using ToDo.Business.Interfaces;
 using ToDo.DataAccess.Interfaces;
-using ToDo.Model.Dto.Department;
 using ToDo.Model.Dto.Project;
-using ToDo.Model.Dto.User;
 using ToDo.Model.Entities;
 
 namespace ToDo.Business.Implementations

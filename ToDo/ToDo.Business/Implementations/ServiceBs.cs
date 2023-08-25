@@ -53,13 +53,13 @@ namespace ToDo.Business.Implementations
         public async Task<ApiResponse<List<ServiceGetDto>>> GetServicesAsync(params string[] includeList)
         {
             var services = await _repo.GetAllAsync(k=>k.IsDeleted == false ,includeList: includeList);
-            //if (departments.Count > 0)
+            //if (services.Count > 0)
             //{
-            //    var returnList = _mapper.Map<List<DepartmentGetDto>>(departments);
-            //    var response = ApiResponse<List<DepartmentGetDto>>.Success(StatusCodes.Status200OK, returnList);
+            //    var returnList = _mapper.Map<List<ServiceGetDto>>(services);
+            //    var response = ApiResponse<List<ServiceGetDto>>.Success(StatusCodes.Status200OK, returnList);
             //    return response;
             //}
-            //throw new NotFoundException("Kişiler Bulunamadı");
+            //throw new NotFoundException("Hizmet Bulunamadı");
             var returnList = _mapper.Map<List<ServiceGetDto>>(services);
             var response = ApiResponse<List<ServiceGetDto>>.Success(StatusCodes.Status200OK, returnList);
             return response;

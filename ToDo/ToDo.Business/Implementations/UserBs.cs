@@ -4,9 +4,6 @@ using Microsoft.AspNetCore.Http;
 using ToDo.Business.CustomExceptions;
 using ToDo.Business.Interfaces;
 using ToDo.DataAccess.Interfaces;
-using ToDo.Model.Dto.AdminUser;
-using ToDo.Model.Dto.Department;
-using ToDo.Model.Dto.Project;
 using ToDo.Model.Dto.User;
 using ToDo.Model.Entities;
 
@@ -139,7 +136,7 @@ namespace ToDo.Business.Implementations
                 var dto = _mapper.Map<UserGetDto>(user);
                 return ApiResponse<UserGetDto>.Success(StatusCodes.Status200OK, dto);
             }
-            throw new NotFoundException("İçerik Bulunamadı.");
+            throw new NotFoundException("Kullanıcı Bulunamadı.");
         }
 
         public async Task<ApiResponse<NoData>> UpdateAsync(UserPutDto dto)

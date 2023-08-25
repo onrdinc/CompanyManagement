@@ -1,16 +1,10 @@
 ﻿using AutoMapper;
 using Infrastructure.Utilities.ApiResponses;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ToDo.Business.CustomExceptions;
 using ToDo.Business.Interfaces;
 using ToDo.DataAccess.Interfaces;
 using ToDo.Model.Dto.Contact;
-using ToDo.Model.Dto.Department;
 using ToDo.Model.Entities;
 
 namespace ToDo.Business.Implementations
@@ -57,13 +51,13 @@ namespace ToDo.Business.Implementations
         public async Task<ApiResponse<List<ContactGetDto>>> GetContactsAsync(params string[] includeList)
         {
             var contacts = await _repo.GetAllAsync(k => k.IsDeleted == false, includeList: includeList);
-            //if (departments.Count > 0)
+            //if (contacts.Count > 0)
             //{
-            //    var returnList = _mapper.Map<List<DepartmentGetDto>>(departments);
-            //    var response = ApiResponse<List<DepartmentGetDto>>.Success(StatusCodes.Status200OK, returnList);
+            //    var returnList = _mapper.Map<List<ContactGetDto>>(contacts);
+            //    var response = ApiResponse<List<ContactGetDto>>.Success(StatusCodes.Status200OK, returnList);
             //    return response;
             //}
-            //throw new NotFoundException("Kişiler Bulunamadı");
+            //throw new NotFoundException("Mesajlar Bulunamadı");
             var returnList = _mapper.Map<List<ContactGetDto>>(contacts);
             var response = ApiResponse<List<ContactGetDto>>.Success(StatusCodes.Status200OK, returnList);
             return response;

@@ -50,7 +50,7 @@ namespace ToDo.Business.Implementations
                 var dto = _mapper.Map<AdminUserGetDto>(adminUser);
                 return ApiResponse<AdminUserGetDto>.Success(StatusCodes.Status200OK, dto);
             }
-            throw new NotFoundException("İçerik Bulunamadı.");
+            throw new NotFoundException("Kullanıcı Bulunamadı.");
         }
     }
 }
